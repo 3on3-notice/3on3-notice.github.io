@@ -11,7 +11,6 @@ window.NOTICE = {
     foot: "앞으로도 이용자분들께서 불편을 겪지 않도록 최선을 다하겠습니다. 감사합니다.",
     issuesEmpty: "현재 확인된 이슈가 없습니다.", st: { checking: "확인 중", planned: "수정 예정", fixed: "수정 완료" },
     issues: [
-      { status: "planned", date: "10/21", text: "크루 미션 탭과 멤버 탭에 같은 이름의 '협동 점수' 항목이 표시되고 있으나 서로 다른 항목입니다. 크루 미션 탭의 항목은 추후 패치를 통해 '공동 미션'으로 명칭이 변경되며, 멤버 > 기여도 탭의 '협동 점수'는 크루원과 함께 게임을 플레이하여 얻는 기여도입니다." },
       { status: "fixed", date: "10/21", text: "인벤토리 내 장착한 의상을 포함한 일부 의상이 노출되지 않던 현상이 수정되었습니다." }
     ],
     cards: [
@@ -46,7 +45,6 @@ window.NOTICE = {
     left: "left", ended: "Ended", d: "d", h: "h", m: "m", foot: "Thank you.",
     issuesEmpty: "There are no known issues at this time.", st: { checking: "Investigating", planned: "Fix Scheduled", fixed: "Fixed" },
     issues: [
-      { status: "planned", date: "10/21", text: "The Crew Mission tab and the Member tab both show an item labeled \"Co-op Score,\" but they are different items. The one in the Crew Mission tab will be renamed to \"Shared Mission\" in a future patch; the \"Co-op Score\" in Member > Contribution is the contribution earned by playing matches together with your Crew members." },
       { status: "fixed", date: "10/21", text: "Fixed an issue where some costumes, including equipped costumes, were not displayed in the inventory." }
     ],
     cards: [
@@ -76,7 +74,6 @@ window.NOTICE = {
     left: "残り", ended: "終了", d: "日", h: "時間", m: "分", leftFirst: true, foot: "ありがとうございます。",
     issuesEmpty: "現在確認されている不具合はありません。", st: { checking: "確認中", planned: "修正予定", fixed: "修正済み" },
     issues: [
-      { status: "planned", date: "10/21", text: "クルーミッションタブとメンバータブに同じ名前の「協力スコア」項目が表示されておりますが、異なる項目です。クルーミッションタブの項目は今後のパッチで「共同ミッション」に名称が変更され、メンバー > 貢献度タブの「協力スコア」はクルーメンバーと一緒にゲームをプレイして獲得する貢献度です。" },
       { status: "fixed", date: "10/21", text: "インベントリで、装着中の衣装を含む一部の衣装が表示されない問題を修正いたしました。" }
     ],
     cards: [
