@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>3on3 FreeStyle Update Notice</title>
+<style>
+:root{--bg:#1B1B1B;--card:#262626;--card2:#313131;--line:#3A3A3A;--or:#FF5A1F;--wh:#F5F5F5;--ink:#D9D9D9;--mu:#ABABAB;
+  --c-deadline:#FF5A1F;--c-reward:#FFC24D;--c-change:#4FB3FF;--c-issues:#5BD68A}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg);scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:"Segoe UI","Malgun Gothic","Yu Gothic UI","Meiryo",sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1200px;margin:0 auto}
+.hero{position:relative;padding:60px 64px 34px;background:url(bg.jpg) center 40%/cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(27,27,27,.96),rgba(27,27,27,.75) 55%,rgba(27,27,27,.35)),linear-gradient(0deg,#1B1B1B,rgba(27,27,27,0) 45%)}
+.hero>*{position:relative;z-index:1}
+.langs{position:absolute;top:22px;right:28px;z-index:2;display:flex;gap:4px;background:rgba(20,20,20,.8);border:1px solid var(--line);border-radius:999px;padding:4px}
+.langs button{background:none;border:0;color:var(--mu);font:700 14px inherit;font-family:inherit;padding:7px 14px;border-radius:999px;cursor:pointer}
+.langs button.on{background:var(--or);color:#fff}
+.eyebrow{font-size:19px;color:var(--mu)}
+h1{font-size:clamp(36px,6vw,58px);color:var(--wh);font-weight:800;margin:8px 0 12px;letter-spacing:-1px}
+h1 b{color:var(--or)}
+.lead{font-size:clamp(16px,2.2vw,20px)}
+/* 주제 바로가기: 주제 이름 + 건수 */
+.nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.nav a{display:flex;align-items:center;gap:8px;font-size:16px;font-weight:700;color:var(--wh);background:rgba(38,38,38,.9);border:1px solid var(--line);padding:8px 14px;border-radius:6px;text-decoration:none}
+.nav a::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--c)}
+.nav a span{font-size:13px;color:var(--mu);font-weight:600}
+.nav a:hover{border-color:var(--c)}
+/* 주제 구역 */
+.sec{padding:22px 64px 6px;scroll-margin-top:10px}
+.sec-h{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.sec-h i{width:6px;height:26px;border-radius:3px;background:var(--c)}
+.sec-h h2{font-size:24px;color:var(--wh);font-weight:800;letter-spacing:-.3px}
+.sec-h span{font-size:15px;color:var(--mu)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+.card{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--c);border-radius:8px;padding:22px 24px;opacity:0;transform:translateY(16px);animation:up .55s ease forwards}
+.card.wide,.card:only-child{grid-column:1/-1}
+@keyframes up{to{opacity:1;transform:none}}
+.shot .card{animation:none;opacity:1;transform:none}
+h3{font-size:24px;color:var(--wh);font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+.desc{font-size:17px;line-height:1.65}
+.big{display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px;background:#141414;border:1px solid var(--line);border-radius:6px;padding:14px 18px;margin-top:14px}
+.big .k{font-size:15px;color:var(--mu);width:100%}
+.big .v{font-size:32px;color:var(--c);font-weight:800;letter-spacing:-.5px}
+.cd{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700;color:var(--wh);background:rgba(255,90,31,.15);border:1px solid rgba(255,90,31,.5);border-radius:999px;padding:4px 13px}
+.cd::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--or);animation:blink 1.2s infinite}
+.cd.end{color:var(--mu);background:#222;border-color:var(--line)}.cd.end::before{background:var(--mu);animation:none}
+@keyframes blink{50%{opacity:.25}}
+.lbl{font-size:14px;color:var(--mu);font-weight:700;margin:14px 0 8px}
+ul{list-style:none}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.chips li{font-size:16px;font-weight:700;color:var(--wh);background:var(--card2);border-radius:5px;padding:7px 12px}
+.rows{margin-top:14px}
+.rows li{display:flex;justify-content:space-between;gap:12px;font-size:16px;padding:9px 14px;background:var(--card2);border-radius:5px;margin-bottom:6px}
+.rows b{color:var(--wh)}.rows em{font-style:normal;color:var(--c);font-weight:700;text-align:right}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.g2 li{display:flex;justify-content:space-between;font-size:16px;padding:9px 14px;background:var(--card2);border-radius:5px}
+.g2 b{color:var(--wh)}.g2 em{font-style:normal;color:var(--c);font-weight:800}
+.chars{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:14px}
+.chars li{background:var(--card2);border-radius:5px;padding:10px 14px;font-size:16px;line-height:1.45}
+.chars b{display:block;color:var(--wh)}
+.note{font-size:15px;color:var(--mu);line-height:1.6;margin-top:12px}
+.note b{color:var(--ink)}
+/* 확인된 이슈 */
+.issues{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--c);border-radius:8px;padding:8px 24px}
+.issues .empty{font-size:17px;color:var(--mu);padding:14px 0}
+.iss{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-top:1px solid var(--line);font-size:16px;line-height:1.6}
+.iss:first-child{border-top:0}
+.st{flex:none;width:108px;text-align:center;font-size:13px;font-weight:800;padding:3px 0;border-radius:4px;margin-top:3px}
+.st.checking{background:#4a3a12;color:#FFC24D}.st.planned{background:rgba(255,90,31,.18);color:var(--or)}.st.fixed{background:#1d3a26;color:#5BD68A}
+.iss .dt{flex:none;color:var(--mu);font-size:14px;margin-top:3px}
+.foot{padding:26px 64px 48px;font-size:15px;color:var(--mu)}
+.foot small{display:block;margin-top:6px;font-size:13px}
+@media (max-width:760px){
+  .hero{padding:72px 16px 24px}.langs{top:16px;right:16px}
+  .sec{padding:18px 16px 4px}.grid{grid-template-columns:1fr;gap:12px}.card{padding:18px}
+  h3{font-size:21px}.desc{font-size:16px}.big .v{font-size:26px}
+  .chars,.g2{grid-template-columns:1fr 1fr}.issues{padding:6px 16px}.iss{flex-wrap:wrap;gap:4px 10px}.foot{padding:22px 16px 36px}
+}
+</style></head><body>
+<div class="wrap">
+  <div class="hero">
+    <div class="langs" id="langs"><button data-l="kr">KR</button><button data-l="en">EN</button><button data-l="jp">JP</button></div>
+    <div class="eyebrow" id="eyebrow"></div><h1 id="title"></h1><div class="lead" id="lead"></div><div class="nav" id="nav"></div>
+  </div>
+  <div id="body"></div>
+  <div class="foot" id="foot"></div>
+</div>
+<script src="data.js"></script>
+<script>
+const N = window.NOTICE, ORDER = ["issues", "deadline", "reward", "change"];
+const qs = new URLSearchParams(location.search);
+if (qs.has("shot")) document.documentElement.classList.add("shot");
+const pick = () => { const q = qs.get("lang"); if (N[q]) return q;
+  const n = (navigator.language || "en").toLowerCase(); return n.startsWith("ko") ? "kr" : n.startsWith("ja") ? "jp" : "en"; };
+let L = pick();
+const col = s => `--c:var(--c-${s})`;
+function left(dl, t) {
+  const ms = new Date(dl) - Date.now(); if (ms <= 0) return null;
+  const d = Math.floor(ms / 864e5), h = Math.floor(ms % 864e5 / 36e5), m = Math.floor(ms % 36e5 / 6e4);
+  const s = (d ? d + t.d + " " : "") + h + t.h + " " + m + t.m; return t.leftFirst ? t.left + " " + s : s + " " + t.left;
+}
+function card(c, i) {
+  let h = `<div class="card${c.wide ? " wide" : ""}" style="${col(c.sec)};animation-delay:${i * .07}s"><h3>${c.title}</h3><div class="desc">${c.desc}</div>`;
+  if (c.big) h += `<div class="big"><div class="k">${c.big.k}</div><div class="v">${c.big.v}</div>${c.big.deadline ? `<div class="cd" data-dl="${c.big.deadline}"></div>` : ""}</div>`;
+  if (c.items) h += `<ul class="chips">${c.items.map(x => `<li>${x}</li>`).join("")}</ul>`;
+  if (c.rows) h += `<ul class="rows">${c.rows.map(r => `<li><b>${r[0]}</b>${r[2] ? `<em>${r[1]}</em>` : `<span>${r[1]}</span>`}</li>`).join("")}</ul>`;
+  if (c.lbl) h += `<div class="lbl">${c.lbl}</div>`;
+  if (c.grid2) h += `<ul class="g2">${c.grid2.map(r => `<li><b>${r[0]}</b><em>${r[1]}</em></li>`).join("")}</ul>`;
+  if (c.chars) h += `<ul class="chars">${c.chars.map(x => `<li><b>${x[0]}</b>${x[1]}</li>`).join("")}</ul>`;
+  if (c.note) h += `<div class="note">${c.note}</div>`;
+  return h + "</div>";
+}
+function render() {
+  const t = N[L]; document.documentElement.lang = { kr: "ko", en: "en", jp: "ja" }[L];
+  document.querySelectorAll("#langs button").forEach(b => b.classList.toggle("on", b.dataset.l === L));
+  eyebrow.textContent = t.eyebrow; title.innerHTML = t.title[0] + "<b>" + t.title[1] + "</b>"; lead.textContent = t.lead;
+  const groups = {}; t.cards.forEach(c => (groups[c.sec] = groups[c.sec] || []).push(c));
+  const is = t.issues || [];
+  const count = s => s === "issues" ? is.length : (groups[s] || []).length;
+  const secs = ORDER.filter(s => s === "issues" || groups[s]);
+  nav.innerHTML = secs.map(s => `<a href="#s-${s}" style="${col(s)}">${t.secs[s]}<span>${count(s)}</span></a>`).join("");
+  let k = 0;
+  document.getElementById("body").innerHTML = secs.map(s => {
+    const inner = s === "issues"
+      ? `<div class="issues" style="${col(s)}">${is.length ? is.map(x => `<div class="iss"><span class="st ${x.status}">${t.st[x.status]}</span><span class="dt">${x.date}</span><span>${x.text}</span></div>`).join("") : `<div class="empty">${t.issuesEmpty}</div>`}</div>`
+      : `<div class="grid">${groups[s].map(c => card(c, k++)).join("")}</div>`;
+    return `<section class="sec" id="s-${s}" style="${col(s)}"><div class="sec-h"><i></i><h2>${t.secs[s]}</h2></div>${inner}</section>`;
+  }).join("");
+  foot.innerHTML = t.foot + `<small>Updated ${N.updated}</small>`;
+  tick();
+}
+function tick() { const t = N[L];
+  document.querySelectorAll(".cd").forEach(e => { const s = left(e.dataset.dl, t); e.textContent = s || t.ended; e.classList.toggle("end", !s); }); }
+document.getElementById("langs").onclick = e => { const l = e.target.dataset.l; if (l) { L = l; history.replaceState(null, "", "?lang=" + l); render(); } };
+render(); setInterval(tick, 30000);
+</script>
+</body></html>
