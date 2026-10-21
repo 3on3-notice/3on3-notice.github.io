@@ -84,8 +84,15 @@ ul{list-style:none}
   <div id="body"></div>
   <div class="foot" id="foot"></div>
 </div>
-<script src="data.js"></script>
 <script>
+// ?week=YYYY-MM-DD 이면 지난 주 공지(archive/)를, 아니면 이번 주 data.js 를 읽는다
+(function () { const w = new URLSearchParams(location.search).get("week");
+  const src = w && /^\d{4}-\d{2}-\d{2}$/.test(w) ? "archive/" + w + ".js" : "data.js";
+  const sc = document.createElement("script"); sc.src = src + "?v=" + Date.now(); sc.onload = () => window.start();
+  sc.onerror = () => { if (src !== "data.js") location.search = ""; }; document.head.appendChild(sc); })();
+</script>
+<script>
+window.start = function () {
 const N = window.NOTICE, ORDER = ["issues", "deadline", "reward", "change"];
 const qs = new URLSearchParams(location.search);
 if (qs.has("shot")) document.documentElement.classList.add("shot");
@@ -132,5 +139,6 @@ function tick() { const t = N[L];
   document.querySelectorAll(".cd").forEach(e => { const s = left(e.dataset.dl, t); e.textContent = s || t.ended; e.classList.toggle("end", !s); }); }
 document.getElementById("langs").onclick = e => { const l = e.target.dataset.l; if (l) { L = l; history.replaceState(null, "", "?lang=" + l); render(); } };
 render(); setInterval(tick, 30000);
+};
 </script>
 </body></html>
