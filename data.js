@@ -9,7 +9,7 @@ window.NOTICE = {
     secs: { deadline: "기한 안내", reward: "보상 · 환급", change: "변경 사항", issues: "확인된 이슈" },
     left: "남음", ended: "종료", d: "일", h: "시간", m: "분",
     foot: "앞으로도 이용자분들께서 불편을 겪지 않도록 최선을 다하겠습니다. 감사합니다.",
-    issuesEmpty: "현재 확인된 이슈가 없습니다.", st: { checking: "확인 중", planned: "수정 예정", fixed: "수정 완료" },
+    issuesEmpty: "현재 확인된 이슈가 없습니다.", st: { checking: "확인 중", planned: "수정 예정", fixed: "수정 완료" }, dl: { found: "확인일", fixed: "수정일" },
     issues: [
       { status: "planned", date: "10/21", text: "카밀라의 일부 특성(티키타카, 공간 확보)에서 발동 조건을 충족하지 않았는데도 발동 버프 아이콘이 뜨는 현상이 발견되었습니다. 해당 현상은 추후에 수정될 예정입니다." },
       { status: "fixed", date: "10/21", text: "인벤토리 내 장착한 의상을 포함한 일부 의상이 노출되지 않던 현상이 수정되었습니다." }
@@ -44,7 +44,7 @@ window.NOTICE = {
     lead: "Everything you need to know with this maintenance, all in one place.",
     secs: { deadline: "Deadlines", reward: "Rewards", change: "Changes", issues: "Known Issues" },
     left: "left", ended: "Ended", d: "d", h: "h", m: "m", foot: "Thank you.",
-    issuesEmpty: "There are no known issues at this time.", st: { checking: "Investigating", planned: "Fix Scheduled", fixed: "Fixed" },
+    issuesEmpty: "There are no known issues at this time.", st: { checking: "Investigating", planned: "Fix Scheduled", fixed: "Fixed" }, dl: { found: "Reported", fixed: "Fixed on" },
     issues: [
       { status: "planned", date: "10/21", text: "The activation buff icon of some of CAMILA's skills (TIKI-TAKA, FREE UP SPACE) appears even when their activation conditions have not been met. This issue will be fixed in a future update." },
       { status: "fixed", date: "10/21", text: "Fixed an issue where some costumes, including equipped costumes, were not displayed in the inventory." }
@@ -74,7 +74,7 @@ window.NOTICE = {
     lead: "今回のメンテナンスとあわせてご確認いただきたいご案内をまとめました。",
     secs: { deadline: "期限のご案内", reward: "報酬", change: "変更点", issues: "確認されている不具合" },
     left: "残り", ended: "終了", d: "日", h: "時間", m: "分", leftFirst: true, foot: "ありがとうございます。",
-    issuesEmpty: "現在確認されている不具合はありません。", st: { checking: "確認中", planned: "修正予定", fixed: "修正済み" },
+    issuesEmpty: "現在確認されている不具合はありません。", st: { checking: "確認中", planned: "修正予定", fixed: "修正済み" }, dl: { found: "確認日", fixed: "修正日" },
     issues: [
       { status: "planned", date: "10/21", text: "カミラの一部スキル（ティキタカ、空間確保）において、発動条件を満たしていないにもかかわらず発動バフアイコンが表示される現象が確認されました。本現象は今後修正される予定です。" },
       { status: "fixed", date: "10/21", text: "インベントリで、装着中の衣装を含む一部の衣装が表示されない問題を修正いたしました。" }

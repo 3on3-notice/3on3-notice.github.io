@@ -66,7 +66,8 @@ ul{list-style:none}
 .iss:first-child{border-top:0}
 .st{flex:none;width:108px;text-align:center;font-size:13px;font-weight:800;padding:3px 0;border-radius:4px;margin-top:3px}
 .st.checking{background:#4a3a12;color:#FFC24D}.st.planned{background:rgba(255,90,31,.18);color:var(--or)}.st.fixed{background:#1d3a26;color:#5BD68A}
-.iss .dt{flex:none;color:var(--mu);font-size:14px;margin-top:3px}
+.iss .it{display:flex;flex-direction:column;gap:2px}
+.iss .dt{color:var(--mu);font-size:13px}
 .foot{padding:26px 64px 48px;font-size:15px;color:var(--mu)}
 .foot small{display:block;margin-top:6px;font-size:13px}
 @media (max-width:760px){
@@ -128,7 +129,7 @@ function render() {
   let k = 0;
   document.getElementById("body").innerHTML = secs.map(s => {
     const inner = s === "issues"
-      ? `<div class="issues" style="${col(s)}">${is.length ? is.map(x => `<div class="iss"><span class="st ${x.status}">${t.st[x.status]}</span><span class="dt">${x.date}</span><span>${x.text}</span></div>`).join("") : `<div class="empty">${t.issuesEmpty}</div>`}</div>`
+      ? `<div class="issues" style="${col(s)}">${is.length ? is.map(x => `<div class="iss"><span class="st ${x.status}">${t.st[x.status]}</span><div class="it"><span>${x.text}</span><span class="dt">${(x.status === "fixed" ? t.dl.fixed : t.dl.found)} ${x.date}</span></div></div>`).join("") : `<div class="empty">${t.issuesEmpty}</div>`}</div>`
       : `<div class="grid">${groups[s].map(c => card(c, k++)).join("")}</div>`;
     return `<section class="sec" id="s-${s}" style="${col(s)}"><div class="sec-h"><i></i><h2>${t.secs[s]}</h2></div>${inner}</section>`;
   }).join("");
