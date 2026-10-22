@@ -15,8 +15,8 @@ window.NOTICE = {
       { status: "fixed", date: "10/21", text: "인벤토리 내 장착한 의상을 포함한 일부 의상이 노출되지 않던 현상이 수정되었습니다." }
     ],
     cards: [
-      { sec: "deadline", title: "크루 토큰",
-        desc: "크루 시스템 개편으로 매달 지급되던 크루 토큰 보상이 이번 시즌을 끝으로 종료됩니다. 보유 중인 토큰은 기간 내 모두 사용해 주세요.",
+      { sec: "deadline", title: "토큰",
+        desc: "크루 시스템 개편으로 매달 지급되던 토큰 보상이 이번 시즌을 끝으로 종료됩니다. 보유 중인 토큰은 기간 내 모두 사용해 주세요.",
         big: { k: "사용 기간", v: "~ 11/18 16:00 KST", deadline: "2026-11-18T07:00:00Z" },
         add: [{ date: "10/22", text: "아케이드 모드 랭킹 보상에 포함된 토큰도 코인으로 교체됩니다." }] },
       { sec: "deadline", title: "펫 관련 아이템",
@@ -25,7 +25,7 @@ window.NOTICE = {
         items: ["펫 등급 업 아이템", "펫 효과 변경 티켓", "펫 외형 변경 티켓", "펫 이름 변경 티켓"],
         note: "개편 이후 남은 아이템은 인벤토리에서 판매하실 수 있습니다." },
       { sec: "reward", title: "크루 시즌 보상 정산",
-        desc: "현재 크루 시즌이 조기 종료되어, 이번 시즌 크루 토큰 보상을 금일까지의 기록 기준으로 정산합니다.",
+        desc: "현재 크루 시즌이 조기 종료되어, 이번 시즌 토큰 보상을 금일까지의 기록 기준으로 정산합니다.",
         rows: [["지급", "금일 점검 중", 1]] },
       { sec: "reward", title: "PlayStation 한국 스토어 차액 환급",
         desc: "가격이 변동된 기간 동안 대상 상품을 구매하신 분께 차액을 포인트로 환급해 드립니다. 불편을 드려 죄송합니다.",
@@ -51,8 +51,8 @@ window.NOTICE = {
       { status: "fixed", date: "10/21", text: "Fixed an issue where some costumes, including equipped costumes, were not displayed in the inventory." }
     ],
     cards: [
-      { sec: "deadline", title: "Crew Tokens",
-        desc: "With the Crew System Renewal, monthly Crew Token rewards end with this season. Please use all of your Crew Tokens within the period.",
+      { sec: "deadline", title: "Tokens",
+        desc: "With the Crew System Renewal, monthly Token rewards end with this season. Please use all of your Tokens within the period.",
         big: { k: "Usage Period", v: "~ 11/17 23:00 PST", deadline: "2026-11-18T07:00:00Z" },
         add: [{ date: "10/22", text: "Tokens included in Arcade Mode ranking rewards will also be replaced with Coins." }] },
       { sec: "deadline", title: "Pet-related Items",
@@ -61,7 +61,7 @@ window.NOTICE = {
         items: ["Pet Prestige Up Item", "Pet Skill Change Ticket", "Pet Appearance Change Ticket", "Rename Ticket"],
         note: "Remaining items can be sold from your inventory after the renewal." },
       { sec: "reward", title: "Crew Season Rewards", wide: true,
-        desc: "The current Crew Season ends early, so this season's Crew Token rewards are settled based on your records up to today.",
+        desc: "The current Crew Season ends early, so this season's Token rewards are settled based on your records up to today.",
         rows: [["Distribution", "During today's maintenance", 1]] },
       { sec: "change", title: "Character Skill Improvements", wide: true,
         desc: "Some character skills have been improved to activate more effectively.",
@@ -82,8 +82,8 @@ window.NOTICE = {
       { status: "fixed", date: "10/21", text: "インベントリで、装着中の衣装を含む一部の衣装が表示されない問題を修正いたしました。" }
     ],
     cards: [
-      { sec: "deadline", title: "クルートークン",
-        desc: "クルーシステム改編により、毎月配布していたクルートークン報酬は今シーズンをもって終了します。お持ちのトークンは期間内にすべてご使用ください。",
+      { sec: "deadline", title: "トークン",
+        desc: "クルーシステム改編により、毎月配布していたトークン報酬は今シーズンをもって終了します。お持ちのトークンは期間内にすべてご使用ください。",
         big: { k: "使用期間", v: "～ 11/18 16:00 KST", deadline: "2026-11-18T07:00:00Z" },
         add: [{ date: "10/22", text: "アーケードモードのランキング報酬に含まれるトークンも、コインに置き換えられます。" }] },
       { sec: "deadline", title: "ペット関連アイテム",
@@ -92,7 +92,7 @@ window.NOTICE = {
         items: ["ペットランクアップアイテム", "ペット効果変更チケット", "ペットの外見変更チケット", "ペットの名前変更チケット"],
         note: "改編後に残ったアイテムは、インベントリで売却できます。" },
       { sec: "reward", title: "クルーシーズン報酬の精算", wide: true,
-        desc: "現在のクルーシーズンが早期終了となるため、今シーズンのクルートークン報酬を本日までの記録をもとに精算します。",
+        desc: "現在のクルーシーズンが早期終了となるため、今シーズンのトークン報酬を本日までの記録をもとに精算します。",
         rows: [["配布", "本日のメンテナンス中", 1]] },
       { sec: "change", title: "キャラクタースキル改善", wide: true,
         desc: "一部キャラクターのスキルがより効果的に発動するよう改善されました。",
