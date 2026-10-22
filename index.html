@@ -59,6 +59,9 @@ ul{list-style:none}
 .chars b{display:block;color:var(--wh)}
 .note{font-size:15px;color:var(--mu);line-height:1.6;margin-top:12px}
 .note b{color:var(--ink)}
+.add{margin-top:12px;border-top:1px dashed var(--line);padding-top:10px}
+.add li{font-size:16px;color:var(--wh);line-height:1.6}
+.add li span{font-size:13px;color:var(--c);font-weight:700;white-space:nowrap}
 /* 확인된 이슈 */
 .issues{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--c);border-radius:8px;padding:8px 24px}
 .issues .empty{font-size:17px;color:var(--mu);padding:14px 0}
@@ -115,6 +118,7 @@ function card(c, i) {
   if (c.grid2) h += `<ul class="g2">${c.grid2.map(r => `<li><b>${r[0]}</b><em>${r[1]}</em></li>`).join("")}</ul>`;
   if (c.chars) h += `<ul class="chars">${c.chars.map(x => `<li><b>${x[0]}</b>${x[1]}</li>`).join("")}</ul>`;
   if (c.note) h += `<div class="note">${c.note}</div>`;
+  if (c.add) h += `<ul class="add">${c.add.map(a => `<li>* ${a.text} <span>(${a.date} ${N[L].added})</span></li>`).join("")}</ul>`;
   return h + "</div>";
 }
 function render() {

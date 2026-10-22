@@ -2,14 +2,14 @@
 // 칸은 sec(주제)로 묶는다: deadline 기한 / reward 보상·환급 / change 변경 사항. issues 는 확인된 이슈.
 // deadline 은 UTC ISO. 크루 11/18 16:00 KST = 07:00Z, 펫 10/28 15:00 KST = 06:00Z
 window.NOTICE = {
-  updated: "2026-10-21",
+  updated: "2026-10-22",
   kr: {
     eyebrow: "3on3 FreeStyle · 10/21 정기 점검", title: ["금주 ", "업데이트 안내"],
     lead: "금번 점검과 함께 확인하셔야 할 안내를 한 곳에 모았습니다.",
     secs: { deadline: "기한 안내", reward: "보상 · 환급", change: "변경 사항", issues: "확인된 이슈" },
     left: "남음", ended: "종료", d: "일", h: "시간", m: "분",
     foot: "앞으로도 이용자분들께서 불편을 겪지 않도록 최선을 다하겠습니다. 감사합니다.",
-    issuesEmpty: "현재 확인된 이슈가 없습니다.", st: { checking: "확인 중", planned: "수정 예정", fixed: "수정 완료" }, dl: { found: "확인일", fixed: "수정일" },
+    issuesEmpty: "현재 확인된 이슈가 없습니다.", st: { checking: "확인 중", planned: "수정 예정", fixed: "수정 완료" }, added: "추가", dl: { found: "확인일", fixed: "수정일" },
     issues: [
       { status: "planned", date: "10/21", text: "카밀라의 일부 특성(티키타카, 공간 확보)에서 발동 조건을 충족하지 않았는데도 발동 버프 아이콘이 뜨는 현상이 발견되었습니다. 해당 현상은 추후에 수정될 예정입니다." },
       { status: "fixed", date: "10/21", text: "인벤토리 내 장착한 의상을 포함한 일부 의상이 노출되지 않던 현상이 수정되었습니다." }
@@ -17,7 +17,8 @@ window.NOTICE = {
     cards: [
       { sec: "deadline", title: "크루 토큰",
         desc: "크루 시스템 개편으로 매달 지급되던 크루 토큰 보상이 이번 시즌을 끝으로 종료됩니다. 보유 중인 토큰은 기간 내 모두 사용해 주세요.",
-        big: { k: "사용 기간", v: "~ 11/18 16:00 KST", deadline: "2026-11-18T07:00:00Z" } },
+        big: { k: "사용 기간", v: "~ 11/18 16:00 KST", deadline: "2026-11-18T07:00:00Z" },
+        add: [{ date: "10/22", text: "아케이드 모드 랭킹 보상에 포함된 크루 토큰도 코인으로 교체됩니다." }] },
       { sec: "deadline", title: "펫 관련 아이템",
         desc: "10/28 정기 점검에서 펫 시스템이 개편되며, 이후에는 아래 아이템을 사용하실 수 없습니다.",
         big: { k: "사용 기한", v: "~ 10/28 15:00 KST", deadline: "2026-10-28T06:00:00Z" },
@@ -44,7 +45,7 @@ window.NOTICE = {
     lead: "Everything you need to know with this maintenance, all in one place.",
     secs: { deadline: "Deadlines", reward: "Rewards", change: "Changes", issues: "Known Issues" },
     left: "left", ended: "Ended", d: "d", h: "h", m: "m", foot: "Thank you.",
-    issuesEmpty: "There are no known issues at this time.", st: { checking: "Investigating", planned: "Fix Scheduled", fixed: "Fixed" }, dl: { found: "Reported", fixed: "Fixed on" },
+    issuesEmpty: "There are no known issues at this time.", st: { checking: "Investigating", planned: "Fix Scheduled", fixed: "Fixed" }, added: "Added", dl: { found: "Reported", fixed: "Fixed on" },
     issues: [
       { status: "planned", date: "10/21", text: "The activation buff icon of some of CAMILA's skills (TIKI-TAKA, FREE UP SPACE) appears even when their activation conditions have not been met. This issue will be fixed in a future update." },
       { status: "fixed", date: "10/21", text: "Fixed an issue where some costumes, including equipped costumes, were not displayed in the inventory." }
@@ -52,7 +53,8 @@ window.NOTICE = {
     cards: [
       { sec: "deadline", title: "Crew Tokens",
         desc: "With the Crew System Renewal, monthly Crew Token rewards end with this season. Please use all of your Crew Tokens within the period.",
-        big: { k: "Usage Period", v: "~ 11/17 23:00 PST", deadline: "2026-11-18T07:00:00Z" } },
+        big: { k: "Usage Period", v: "~ 11/17 23:00 PST", deadline: "2026-11-18T07:00:00Z" },
+        add: [{ date: "10/22", text: "Crew Tokens included in Arcade Mode ranking rewards will also be replaced with Coins." }] },
       { sec: "deadline", title: "Pet-related Items",
         desc: "The Pet System Renewal takes place during the 10/28 maintenance. After that, the items below can no longer be used.",
         big: { k: "Deadline", v: "~ 10/27 23:00 PDT", deadline: "2026-10-28T06:00:00Z" },
@@ -74,7 +76,7 @@ window.NOTICE = {
     lead: "今回のメンテナンスとあわせてご確認いただきたいご案内をまとめました。",
     secs: { deadline: "期限のご案内", reward: "報酬", change: "変更点", issues: "確認されている不具合" },
     left: "残り", ended: "終了", d: "日", h: "時間", m: "分", leftFirst: true, foot: "ありがとうございます。",
-    issuesEmpty: "現在確認されている不具合はありません。", st: { checking: "確認中", planned: "修正予定", fixed: "修正済み" }, dl: { found: "確認日", fixed: "修正日" },
+    issuesEmpty: "現在確認されている不具合はありません。", st: { checking: "確認中", planned: "修正予定", fixed: "修正済み" }, added: "追加", dl: { found: "確認日", fixed: "修正日" },
     issues: [
       { status: "planned", date: "10/21", text: "カミラの一部スキル（ティキタカ、空間確保）において、発動条件を満たしていないにもかかわらず発動バフアイコンが表示される現象が確認されました。本現象は今後修正される予定です。" },
       { status: "fixed", date: "10/21", text: "インベントリで、装着中の衣装を含む一部の衣装が表示されない問題を修正いたしました。" }
@@ -82,7 +84,8 @@ window.NOTICE = {
     cards: [
       { sec: "deadline", title: "クルートークン",
         desc: "クルーシステム改編により、毎月配布していたクルートークン報酬は今シーズンをもって終了します。お持ちのトークンは期間内にすべてご使用ください。",
-        big: { k: "使用期間", v: "～ 11/18 16:00 KST", deadline: "2026-11-18T07:00:00Z" } },
+        big: { k: "使用期間", v: "～ 11/18 16:00 KST", deadline: "2026-11-18T07:00:00Z" },
+        add: [{ date: "10/22", text: "アーケードモードのランキング報酬に含まれるクルートークンも、コインに置き換えられます。" }] },
       { sec: "deadline", title: "ペット関連アイテム",
         desc: "10/28の定期メンテナンスでペットシステムが改編され、以降は下記のアイテムをご使用いただけなくなります。",
         big: { k: "使用期限", v: "～ 10/28 15:00 KST", deadline: "2026-10-28T06:00:00Z" },
