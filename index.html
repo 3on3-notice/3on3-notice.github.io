@@ -71,7 +71,7 @@ button{font:inherit;color:inherit}
 .ch-h i{flex:none;width:5px;height:20px;border-radius:3px;background:var(--c)}
 .ch-h h2{font-size:21px;font-weight:800;letter-spacing:-.5px;line-height:1.35;color:var(--t1)}
 .ch-h span{font-size:15px;font-weight:700;color:var(--t3)}
-.cards{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;align-items:start}   /* 짧은 카드를 옆 카드 높이로 늘리면 아래가 비어 보여 내용만큼만 */
+.cards{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}   /* 같은 줄 두 카드는 높이를 맞춘다(10/29 피드백 "UI 크기가 안 맞아") */
 .blk{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--c);border-radius:10px;padding:20px 24px 22px}
 .blk.wide,.blk:only-child{grid-column:1/-1}
 .bh{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px}
