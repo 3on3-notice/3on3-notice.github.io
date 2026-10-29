@@ -111,6 +111,26 @@ button{font:inherit;color:inherit}
 .chars li{border:1px solid var(--line);border-radius:8px;background:var(--card2);padding:10px 14px;font-size:13.5px;color:var(--t2);line-height:1.5}
 .chars b{display:block;font-size:15px;font-weight:700;color:var(--t1)}
 
+/* 바뀌기 전 → 후 (펫 가이드 swap 과 같은 모양, 빗금 없이 흐린 글자) */
+.swap{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px;margin-top:14px}
+.sg{border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.sg h4{font-size:13px;font-weight:700;color:var(--t1);padding:8px 14px;background:var(--card2);border-bottom:1px solid var(--line)}
+.sg li{display:grid;grid-template-columns:minmax(0,1fr) 14px minmax(0,1fr);gap:8px;align-items:center;padding:9px 14px;font-size:14px;line-height:1.45}
+.sg li+li{border-top:1px solid var(--line2)}
+.sg li span{color:var(--t3)}
+.sg .ar{color:var(--t4);text-align:center}
+.sg b{font-weight:600;color:var(--t1)}
+
+/* 점 목록 */
+.list{margin-top:6px}
+.list li{position:relative;padding-left:14px;font-size:14.5px;color:var(--t1);line-height:1.7}
+.list li::before{content:"";position:absolute;left:2px;top:.78em;width:4px;height:4px;border-radius:50%;background:var(--c)}
+
+/* 바로가기 버튼 */
+.lnk{display:inline-flex;align-items:center;gap:2px;margin-top:14px;font-size:14px;font-weight:700;color:#fff;background:var(--or);border-radius:8px;padding:9px 14px 9px 16px;text-decoration:none}
+.lnk:hover{background:#E84E15}
+.lnk svg{width:16px;height:16px}
+
 /* 공지 후 덧붙인 내용: * 줄 */
 .add{margin-top:14px;border-top:1px dashed var(--line);padding-top:10px}
 .add li{font-size:14.5px;color:var(--t1);line-height:1.6}
@@ -214,7 +234,7 @@ const pick = () => { const q = qs.get("lang"); if (N[q]) return q;
 let L = pick();
 const col = s => `--c:var(--c-${s})`;
 
-/* 카드 하나: 제목(+D-N) → 설명 → 날짜 칸 → 칩 → 작은 칸 → 두 칸 목록 → 캐릭터 → ※ → * 덧붙임 */
+/* 카드 하나: 제목(+D-N) → 설명 → 날짜 칸 → 칩 → 작은 칸 → 두 칸 목록 → 캐릭터 → 전→후 → 점 목록 → ※ → 바로가기 → * 덧붙임 */
 function card(c, t) {
   const b = c.big;
   let h = `<div class="blk${c.wide ? " wide" : ""}" style="${col(c.sec)}"><div class="bh"><h3>${c.title || ""}</h3>${b && b.deadline ? `<span class="dd-badge" data-dl="${b.deadline}"></span>` : ""}</div>`;
@@ -225,7 +245,10 @@ function card(c, t) {
   if (c.lbl) h += `<p class="sub">${c.lbl}</p>`;
   if (c.grid2) h += `<ul class="pairs">${c.grid2.map(r => `<li><b>${r[0]}</b><em>${r[1]}</em></li>`).join("")}</ul>`;
   if (c.chars) h += `<ul class="chars">${c.chars.map(x => `<li><b>${x[0]}</b>${x[1]}</li>`).join("")}</ul>`;
+  if (c.swap) h += `<div class="swap">${c.swap.map(g => `<div class="sg"><h4>${g.g || ""}</h4><ul>${(g.rows || []).map(r => `<li><span>${r[0]}</span><i class="ar" aria-hidden="true">→</i><b>${r[1]}</b></li>`).join("")}</ul></div>`).join("")}</div>`;
+  if (c.list) h += `<ul class="list">${c.list.map(x => `<li>${x}</li>`).join("")}</ul>`;
   if (c.note) h += `<p class="note">※ ${c.note}</p>`;
+  if (c.link) h += `<div><a class="lnk" href="${c.link.href}">${c.link.text}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></div>`;
   if (c.add) h += `<ul class="add">${c.add.map(a => `<li>* ${a.text} <span>(${a.date} ${t.added || ""})</span></li>`).join("")}</ul>`;
   return h + "</div>";
 }
