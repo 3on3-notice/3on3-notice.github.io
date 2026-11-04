@@ -55,7 +55,7 @@ const isExt = u => /^https?:/.test(u);
 const pages = () => (S.pages || []).filter(p => p && pathOf(p));
 const pageOf = id => pages().find(p => p.id === id);
 const hrefOf = p => { const u = pathOf(p); return isExt(u) ? u : u + (u.includes("?") ? "&" : "?") + "lang=" + L; };
-const pageArt = p => p.art || (p.yt ? `https://i.ytimg.com/vi/${p.yt}/mqdefault.jpg` : "");
+const pageArt = p => ((p[L] && p[L].art) || p.art || "").replace("{L}", L) || (p.yt ? `https://i.ytimg.com/vi/${p.yt}/mqdefault.jpg` : "");   // art 의 {L} 은 언어
 const extAttr = p => isExt(pathOf(p)) ? ' target="_blank" rel="noopener"' : "";
 const ymd = d => (d || "").replace(/^(\d{4})-(\d{2})-(\d{2})$/, "$1.$2.$3");
 const tagOf = c => c.tag || TAG_OF_SEC[c.sec] || "change";
