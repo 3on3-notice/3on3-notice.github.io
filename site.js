@@ -32,7 +32,7 @@ window.SITE = {
       en: { title: "Nov 4 Update Video", desc: "JOY walks through the Nov 4 update — Ox Queen P8 Intensive" },
       jp: { title: "11/4 アップデート動画", desc: "JOY と見る 11/4 アップデート — 牛魔王の8星超越" } },
     // 접수 마감 11/13 23:59 PST 가 지나면 state: "past"
-    { id: "court-summit-2026", kind: "notice", path: "https://3on3.fsgames.com/newNews/event/6953/view", art: "/img/banner/1104-court-summit-{L}.jpg", date: "2026-11-04", state: "live",
+    { id: "court-summit-2026", kind: "notice", path: "https://3on3.fsgames.com/newNews/event/6953/view", art: "/img/links/court-summit-2026-{L}.jpg", date: "2026-11-04", state: "live",
       kr: { title: "코트 서밋 2026 사전 질문" }, en: { title: "Court Summit 2026 Questions" }, jp: { title: "コートサミット2026 事前質問" } },
     { id: "pet", path: "/pet/", date: "2026-10-28", state: "live", color: "#FF6A1A", art: "/pet/pet_art.png",
       kr: { title: "펫 가이드", desc: "새로워진 펫 시스템 — 위치 · 능력 · 입양 · 조합을 한 곳에서" },
