@@ -145,7 +145,7 @@ function railHTML() {
   if (!ps.length) return "";
   const kinds = tx.kinds || {};
   return `<p class="gr-k">${tx.rail || tx.guides || ""}<span class="gr-n"></span></p><div class="gr-vp">${ps.map((p, i) => { const g = p[L] || p.en || {}, k = p.kind || "guide", art = pageArt(p);
-    return `<a class="gr-s gr-${k}${i ? "" : " on"}" href="${hrefOf(p)}"${extAttr(p)} style="--g:${p.color || "var(--or)"}"><span class="gr-art">${art ? `<img src="${art}" alt="" loading="lazy">` : ""}${k === "video" ? PLAY : ""}</span><span class="gr-t"><small>${p.state === "past" ? (tx.pastGuides || "") : (kinds[k] || "")}</small><b>${g.title || p.id}</b><em>${(k === "video" ? tx.watch : tx.open) || ""}${ARR}</em></span></a>`; }).join("")}</div>` +
+    return `<a class="gr-s gr-${k}${i ? "" : " on"}" href="${hrefOf(p)}"${extAttr(p)} style="--g:${p.color || "var(--or)"}"><span class="gr-art">${art ? `<img src="${art}" alt="">` : ""}${k === "video" ? PLAY : ""}</span><span class="gr-t"><small>${p.state === "past" ? (tx.pastGuides || "") : (kinds[k] || "")}</small><b>${g.title || p.id}</b><em>${(k === "video" ? tx.watch : tx.open) || ""}${ARR}</em></span></a>`; }).join("")}</div>` +
     (ps.length > 1 ? `<div class="gr-dots">${arr(-1, tx.railPrev, "M15 6l-6 6 6 6")}${ps.map((_, i) => `<button type="button" data-i="${i}" aria-label="${i + 1}"></button>`).join("")}${arr(1, tx.railNext, "M9 6l6 6-6 6")}</div>` : "");
 }
 // 좌우 화살표(11/04 사용자 "화살표나 휠로도 돌아가게") — 휠·키보드 ←→·손가락 밀기는 아래 GR 에 한 번만 붙인다
