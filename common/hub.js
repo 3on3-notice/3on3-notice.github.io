@@ -45,7 +45,7 @@ const ymd = d => (d || "").replace(/-/g, ".");
 
 function draw(bar) {
   const S = window.SITE || {}, L = lang(), tx = Object.assign({}, (S.text || {}).en, (S.text || {})[L]);
-  const pages = (S.pages || []).filter(p => p && p.path), here = location.pathname;
+  const pages = (S.pages || []).filter(p => p && p.path && (p.kind || "guide") === "guide"), here = location.pathname;   // 메뉴엔 가이드만(영상·공지는 공지 홈 오른쪽 배너)
   const item = p => { const g = p[L] || p.en || {}, cur = here.startsWith(p.path);
     return `<a href="${withLang(p.path, L)}" class="${cur ? "cur" : ""}"${cur ? ' aria-current="page"' : ""}>${g.title || p.id}<small>${ymd(p.date)}</small></a>`; };
   const live = pages.filter(p => p.state !== "past"), past = pages.filter(p => p.state === "past");

@@ -33,7 +33,7 @@ const P = {
 P.deadline = P.limit; P.renew = P.change; P.hl = '<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>'; P.guides = '<path d="M2 4h7a3 3 0 0 1 3 3v14a2 2 0 0 0-2-2H2zM22 4h-7a3 3 0 0 0-3 3v14a2 2 0 0 1 2-2h8z"/>'; P.archive = '<path d="M21 8v13H3V8M1 3h22v5H1zM10 12h4"/>';
 const ico = k => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[k] || P.ball}</svg>`;
 const ARR = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
-const TAG_ORDER = ["limit", "new", "renew", "change", "end", "reward"];
+const TAG_ORDER = ["limit", "new", "renew", "change", "event", "end", "reward"];
 const TAG_OF_SEC = { deadline: "limit", reward: "reward", change: "change" };
 
 function start() {
@@ -48,12 +48,18 @@ const pick = () => { const q = qs.get("lang"); if (N[q]) return q;
   const n = (navigator.language || "en").toLowerCase(); const g = n.startsWith("ko") ? "kr" : n.startsWith("ja") ? "jp" : "en"; return N[g] ? g : LANGS[0]; };
 let L = pick();
 const TX = () => { const a = (S.text || {}).en || {}, b = (S.text || {})[L] || {}; return Object.assign({}, a, b, { tags: Object.assign({}, a.tags, b.tags) }); };
-const pages = () => (S.pages || []).filter(p => p && p.path);
+// 오른쪽 배너 항목: kind = guide(가이드, 기본) / video(영상) / notice(공지). yt 에 유튜브 영상 id 만 적으면 주소·썸네일을 만든다.
+// 언어별 주소가 다르면 kr/en/jp 안에 path. 바깥 주소(https://…)는 새 탭으로 열고 lang 을 붙이지 않는다.
+const pathOf = p => (p[L] && p[L].path) || p.path || (p.yt ? "https://www.youtube.com/watch?v=" + p.yt : "");
+const isExt = u => /^https?:/.test(u);
+const pages = () => (S.pages || []).filter(p => p && pathOf(p));
 const pageOf = id => pages().find(p => p.id === id);
-const hrefOf = p => p.path + (p.path.includes("?") ? "&" : "?") + "lang=" + L;
+const hrefOf = p => { const u = pathOf(p); return isExt(u) ? u : u + (u.includes("?") ? "&" : "?") + "lang=" + L; };
+const pageArt = p => p.art || (p.yt ? `https://i.ytimg.com/vi/${p.yt}/mqdefault.jpg` : "");
+const extAttr = p => isExt(pathOf(p)) ? ' target="_blank" rel="noopener"' : "";
 const ymd = d => (d || "").replace(/^(\d{4})-(\d{2})-(\d{2})$/, "$1.$2.$3");
 const tagOf = c => c.tag || TAG_OF_SEC[c.sec] || "change";
-const artOf = c => c.img || (c.link && c.link.page && (pageOf(c.link.page) || {}).art) || "";
+const artOf = c => c.img || (c.link && c.link.page && pageArt(pageOf(c.link.page) || {})) || "";
 const icon = c => { const a = artOf(c); return a ? `<img src="${a}" alt="" loading="lazy">` : ico(P[c.sec] ? c.sec : tagOf(c)); };
 const dd = dl => dl ? `<em class="dd" data-dl="${dl}"></em>` : "";
 const linkOf = c => {   // page: site.js 의 id 로 주소를 찾는다(가이드 주소가 바뀌어도 공지는 그대로). 없으면 href
@@ -75,7 +81,13 @@ const popAttr = (src, cap) => `data-pop="${esc(popSrc(src))}" data-cap="${esc(ca
 // 확인된 이슈: 주별 공지는 id 만 적고 상태·문장은 issues.js 한 곳에서. 거기서 fixed 로 바꾸면 이번 주·지난 주 페이지가 함께 '수정 완료'
 const resolveIssue = x => { const g = x && x.id && (window.ISSUES || {})[x.id]; if (!g) return x;
   const lt = g[L] || g.en || {}, fixed = g.status === "fixed";
-  return { status: g.status, date: fixed ? (g.fixed || g.found) : g.found, text: (fixed && lt.fixedText) || lt.text || "", pop: g.pop }; };
+  return { status: g.status, found: g.found, date: fixed ? (g.fixed || g.found) : g.found, text: (fixed && lt.fixedText) || lt.text || "", pop: g.pop }; };
+// 확인일(M/D)로부터 14일 이상 지난 이슈는 목록에서 내린다(11/03 사용자 "괜한 혼란 안 불러오게"). 기준일은 그 주 공지 날짜 — 지난 공지는 그때 모습 그대로
+const ISSUE_DAYS = 14;
+const issueOld = x => { const m = String(x.found || x.date || "").match(/(\d{1,2})\/(\d{1,2})/); const base = new Date((N.updated || "") + "T00:00:00");
+  if (!m || isNaN(base)) return false;
+  let y = base.getFullYear(); if (+m[1] > base.getMonth() + 1) y--;   // 12/30 확인 → 1/6 공지면 지난해
+  return (base - new Date(y, +m[1] - 1, +m[2])) / 864e5 >= ISSUE_DAYS; };
 const countTx = n => { const tx = TX(); return ((n === 1 && tx.count1) || tx.count || "{n}").replace("{n}", n); };
 
 /* 변경 카드 하나: 머리(아이콘·태그·제목) → 설명 → 기간 → 전⇒후 → 묶음별 전⇒후 → 목록 → ※ → 바로가기 → 날짜별 덧붙임 */
@@ -90,7 +102,8 @@ function block(c, i, t) {
   if (c.chg) h += `<ul class="chg">${c.chg.map(r => `<li>${r.k ? `<b>${r.k}</b>: ` : ""}${arrow(r.from, r.to)}</li>`).join("")}</ul>`;
   if (c.swap) h += c.swap.map(s => `<h4>${s.g || ""}</h4><ul class="chg">${(s.rows || []).map(r => `<li>${arrow(r[0], r[1])}</li>`).join("")}</ul>`).join("");
   if (c.items) h += c.items.some(x => x && x.pop)   // 항목에 배너가 있으면 누르는 칸으로
-    ? `<ul class="pops">${c.items.map(x => typeof x === "string" ? `<li><span class="pop-chip plain">${x}</span></li>` : `<li><button type="button" class="pop-chip" ${popAttr(x.pop, x.t)}>${x.pop ? `<img src="${esc(popSrc(x.pop))}" alt="" loading="lazy">` : ""}<span>${x.t || ""}</span>${x.pop ? ZOOM : ""}</button></li>`).join("")}</ul>`
+    ? `<ul class="pops">${c.items.map(x => !x || !x.pop ? `<li><span class="pop-chip plain">${typeof x === "string" ? x : (x && x.t) || ""}</span></li>`   // 배너 없는 항목은 누르지 않는 칸
+        : `<li><button type="button" class="pop-chip" ${popAttr(x.pop, x.t)}><img src="${esc(popSrc(x.pop))}" alt="" loading="lazy"><span>${x.t || ""}</span>${ZOOM}</button></li>`).join("")}</ul>`
     : `<ul class="dots">${c.items.map(x => `<li>${typeof x === "string" ? x : x.t || ""}</li>`).join("")}</ul>`;
   if (c.rows) h += `<ul class="dots">${c.rows.map(r => `<li><b>${r[0]}</b>: ${r[2] ? `<strong>${r[1]}</strong>` : r[1]}</li>`).join("")}</ul>`;
   if (c.lbl) h += `<h4>${c.lbl}</h4>`;
@@ -121,18 +134,22 @@ function highlightHTML(t, cards) {
   const tile = x => `<li><a href="#c-${x.i}"><span class="hl-ic${artOf(x.c) ? " pic" : ""}">${icon(x.c)}</span><span class="hl-n">${x.c.title}</span>${dd(x.c.big && x.c.big.deadline)}</a></li>`;
   return `<div class="hl"><div class="hl-no"><b>${tt[0].trim()}</b><span>${tt[1] || ""}</span></div><div class="hl-grid${big.length ? "" : " solo"}">` +
     big.map(x => { const lk = linkOf(x.c);
-      return `<div class="hl-big" style="--c:var(--t-${tagOf(x.c)})"><a class="hl-hit" href="#c-${x.i}" aria-label="${x.c.title}"></a>${artOf(x.c) ? `<img src="${artOf(x.c)}" alt="" loading="lazy">` : `<span class="hl-bi">${icon(x.c)}</span>`}<span class="tag">${tx.tags[tagOf(x.c)] || ""}</span><b>${x.c.title}</b>${lk ? `<a class="hl-go" href="${lk.href}">${lk.text}${ARR}</a>` : ""}</div>`; }).join("") +
+      const art = artOf(x.c), ban = !art && x.c.pop ? popSrc(x.c.pop) : "";   // 그림이 없으면 그 카드의 배너를 큰 칸 위에 깐다(11/04)
+      return `<div class="hl-big" style="--c:var(--t-${tagOf(x.c)})"><a class="hl-hit" href="#c-${x.i}" aria-label="${x.c.title}"></a>${art ? `<img src="${art}" alt="" loading="lazy">` : ban ? `<img class="ban" src="${esc(ban)}" alt="" loading="lazy">` : `<span class="hl-bi">${icon(x.c)}</span>`}<span class="tag">${tx.tags[tagOf(x.c)] || ""}</span><b>${x.c.title}</b>${lk ? `<a class="hl-go" href="${lk.href}">${lk.text}${ARR}</a>` : ""}</div>`; }).join("") +
     `<div class="hl-gs">${groups.map(x => `<div class="hl-g" style="--c:var(--t-${x.g})"><p class="hl-gk">${ico(x.g)}${tx.tags[x.g] || x.g}</p><ul>${x.xs.map(tile).join("")}</ul></div>`).join("")}</div></div></div>`;
 }
-// 가이드 배너: 오른쪽 작은 배너(좁은 화면은 첫 화면 안). site.js 에 쌓인 가이드를 돌아가며 보여 준다(지금 가이드 먼저, 지난 가이드 뒤)
+// 오른쪽 작은 돌아가는 배너(좁은 화면은 첫 화면 안). site.js 에 쌓인 가이드·영상·공지를 최근 게시 순으로(지난 항목은 뒤)
 function railHTML() {
-  const tx = TX(), ps = pages().filter(p => p.state !== "past").concat(pages().filter(p => p.state === "past"));
+  const tx = TX(), byDate = (a, b) => (b.date || "").localeCompare(a.date || "");
+  const ps = pages().filter(p => p.state !== "past").sort(byDate).concat(pages().filter(p => p.state === "past").sort(byDate));
   if (!ps.length) return "";
-  return `<p class="gr-k">${tx.guides || ""}<span class="gr-n"></span></p><div class="gr-vp">${ps.map((p, i) => { const g = p[L] || p.en || {};
-    return `<a class="gr-s${i ? "" : " on"}" href="${hrefOf(p)}" style="--g:${p.color || "var(--or)"}"><span class="gr-art">${p.art ? `<img src="${p.art}" alt="" loading="lazy">` : ""}</span><span class="gr-t">${p.state === "past" ? `<small>${tx.pastGuides || ""}</small>` : ""}<b>${g.title || p.id}</b><em>${tx.open || ""}${ARR}</em></span></a>`; }).join("")}</div>` +
+  const kinds = tx.kinds || {};
+  return `<p class="gr-k">${tx.rail || tx.guides || ""}<span class="gr-n"></span></p><div class="gr-vp">${ps.map((p, i) => { const g = p[L] || p.en || {}, k = p.kind || "guide", art = pageArt(p);
+    return `<a class="gr-s gr-${k}${i ? "" : " on"}" href="${hrefOf(p)}"${extAttr(p)} style="--g:${p.color || "var(--or)"}"><span class="gr-art">${art ? `<img src="${art}" alt="" loading="lazy">` : ""}${k === "video" ? PLAY : ""}</span><span class="gr-t"><small>${p.state === "past" ? (tx.pastGuides || "") : (kinds[k] || "")}</small><b>${g.title || p.id}</b><em>${(k === "video" ? tx.watch : tx.open) || ""}${ARR}</em></span></a>`; }).join("")}</div>` +
     (ps.length > 1 ? `<div class="gr-dots">${ps.map((_, i) => `<button type="button" data-i="${i}" aria-label="${i + 1}"></button>`).join("")}</div>` : "");
 }
-let RAIL_T = 0, RAIL_HOLD = false;
+const PLAY = `<i class="gr-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></i>`;
+let RAIL_T = 0, RAIL_HOLD = false, RAIL_FIT = null;
 function railWire() {
   const gr = $("#gr"); clearInterval(RAIL_T); if (!gr) return;
   gr.hidden = !gr.innerHTML;
@@ -141,7 +158,11 @@ function railWire() {
   let i = 0;
   const show = k => { i = (k + ss.length) % ss.length;
     ss.forEach((s, j) => { const on = j === i; s.classList.toggle("on", on); if (on) { s.removeAttribute("aria-hidden"); s.removeAttribute("tabindex"); } else { s.setAttribute("aria-hidden", "true"); s.setAttribute("tabindex", "-1"); } });
-    ds.forEach((d, j) => d.classList.toggle("on", j === i)); if (n) n.textContent = ss.length > 1 ? `${i + 1} / ${ss.length}` : ""; };
+    ds.forEach((d, j) => d.classList.toggle("on", j === i)); if (n) n.textContent = ss.length > 1 ? `${i + 1} / ${ss.length}` : ""; fit(); };
+  // 그림 칸은 그림 비율 그대로(빈 띠 없음) — 배너마다 높이가 달라 보이는 칸 높이를 지금 항목에 맞춘다
+  const vp = gr.querySelector(".gr-vp"), fit = () => { if (vp && ss[i]) vp.style.height = ss[i].offsetHeight + "px"; };
+  gr.querySelectorAll(".gr-art img").forEach(im => im.addEventListener("load", fit));
+  window.removeEventListener("resize", RAIL_FIT); RAIL_FIT = fit; window.addEventListener("resize", fit);
   ds.forEach((d, j) => d.addEventListener("click", () => show(j)));
   show(0);
   if (ss.length > 1 && !SHOT && !matchMedia("(prefers-reduced-motion: reduce)").matches)
@@ -207,7 +228,7 @@ function render() {
   const pn = (a, cls, label, dir) => `<${a ? `a href="${weekHref(a)}"` : "span"} class="pn ${cls}${a ? "" : " off"}">${dir < 0 ? "‹" : ""}<span><small>${label}</small>${a ? `<b>${a[L] || a.en || a.d}</b>` : ""}</span>${dir > 0 ? "›" : ""}</${a ? "a" : "span"}>`;
   past.innerHTML = WEEK ? `<p class="msg">${tx.viewingPast || ""} <a href="?lang=${L}">${tx.latest || ""} →</a></p><div class="pns">${pn(older, "older", tx.prevWeek, -1)}${pn(newer, "newer", tx.nextWeek, 1)}</div>` : "";
 
-  const cards = t.cards || [], is = (t.issues || []).map(resolveIssue), secs = t.secs || {};
+  const cards = t.cards || [], is = (t.issues || []).map(resolveIssue).filter(x => !issueOld(x)), secs = t.secs || {};
   const areas = Object.keys(secs).filter(s => s !== "issues" && cards.some(c => c.sec === s));
   cards.forEach(c => { if (c.sec && !secs[c.sec] && !areas.includes(c.sec)) areas.push(c.sec); });   // secs 에 없는 sec 도 버리지 않는다
   const name = s => secs[s] || s;
