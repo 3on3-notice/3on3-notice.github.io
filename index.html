@@ -214,6 +214,10 @@ html.lb-on{overflow:hidden}
 .gr-dots{display:flex;justify-content:center;gap:6px;margin-top:6px}
 .gr-dots button{width:7px;height:7px;padding:0;border:0;border-radius:50%;background:#4A4A4A;cursor:pointer}
 .gr-dots button.on{width:18px;border-radius:4px;background:var(--or)}
+.gr-dots{align-items:center}
+.gr-dots .gr-ar{width:22px;height:22px;border-radius:50%;background:transparent;color:var(--t3);display:grid;place-items:center;margin:0 2px}
+.gr-dots .gr-ar:hover{background:#333;color:#fff}
+.gr-dots .gr-ar svg{width:14px;height:14px}
 @media (max-width:1379px){   /* 본문(940)+양옆 배너 자리가 안 되면 첫 화면 안으로 */
   .gr{position:relative;right:auto;top:auto;width:auto;margin-top:16px;box-shadow:none;padding:8px 10px}
   .gr-k{margin-bottom:6px}
@@ -221,7 +225,8 @@ html.lb-on{overflow:hidden}
   .gr-s{flex-direction:row;align-items:center;gap:14px}
   .gr-art{flex:none;width:132px}
   .gr-t b{font-size:16px}
-  .gr-dots{position:absolute;right:12px;bottom:12px;margin:0}
+  .gr-dots{position:absolute;right:8px;top:4px;margin:0}   /* 화살표가 붙어 넓어져 제목줄로(11/04) — 순번은 점이 대신 */
+  .gr-n{display:none}
 }
 
 /* 지난 점검 안내: 달 표시 + 좌우 버튼 / 달별 줄(손가락으로 밀기) / 달 고르는 스크롤 바 */

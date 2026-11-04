@@ -7,19 +7,19 @@
    예) { id: "court-summit", kind: "notice", path: "/court-summit/", art: "/court-summit/art.jpg", date: "…", state: "live", kr: {…}, en: {…}, jp: {…} } */
 window.SITE = {
   text: {
-    kr: { rail: "바로가기", kinds: { guide: "가이드", video: "영상", notice: "공지" }, watch: "영상 보기",
+    kr: { rail: "바로가기", railPrev: "이전", railNext: "다음", kinds: { guide: "가이드", video: "영상", notice: "공지" }, watch: "영상 보기",
           home: "공지 홈", guides: "가이드", pastGuides: "지난 가이드", pastNotices: "지난 점검 안내", open: "보기", since: "게시",
           unit: "건", viewingPast: "지난 공지를 보고 있습니다", latest: "이번 주 공지 보기",
           cat: "공지", hl: "점검 하이라이트", relGuides: "관련 가이드", pastMaint: "지난 점검 안내", updatedOn: "업데이트",
           prevWeek: "이전 점검", nextWeek: "다음 점검", prevMonth: "이전 달", nextMonth: "다음 달", pickMonth: "달 고르기", thisWeek: "이번 주", viewing: "보는 중", count: "{n}건", count1: "1건", seeBanner: "배너 보기", seeScreen: "화면 보기",
           tags: { new: "신규", renew: "개편", change: "변경", event: "이벤트", end: "종료", reward: "지급", limit: "기한" } },
-    en: { rail: "Quick Links", kinds: { guide: "Guide", video: "Video", notice: "Notice" }, watch: "Watch",
+    en: { rail: "Quick Links", railPrev: "Previous", railNext: "Next", kinds: { guide: "Guide", video: "Video", notice: "Notice" }, watch: "Watch",
           home: "Notice Home", guides: "Guides", pastGuides: "Past Guides", pastNotices: "Past Maintenance Notices", open: "Open", since: "Posted",
           unit: "", viewingPast: "You are viewing a past notice", latest: "See this week's notice",
           cat: "Notice", hl: "Maintenance Highlights", relGuides: "Related Guides", pastMaint: "Past Maintenance Notices", updatedOn: "Updated",
           prevWeek: "Previous", nextWeek: "Next", prevMonth: "Previous month", nextMonth: "Next month", pickMonth: "Choose a month", thisWeek: "This week", viewing: "Viewing", count: "{n} notices", count1: "1 notice", seeBanner: "View banner", seeScreen: "View screen",
           tags: { new: "New", renew: "Renewal", change: "Change", event: "Event", end: "Ended", reward: "Reward", limit: "Deadline" } },
-    jp: { rail: "クイックリンク", kinds: { guide: "ガイド", video: "動画", notice: "お知らせ" }, watch: "動画を見る",
+    jp: { rail: "クイックリンク", railPrev: "前へ", railNext: "次へ", kinds: { guide: "ガイド", video: "動画", notice: "お知らせ" }, watch: "動画を見る",
           home: "お知らせホーム", guides: "ガイド", pastGuides: "過去のガイド", pastNotices: "過去のメンテナンスのご案内", open: "見る", since: "掲載",
           unit: "件", viewingPast: "過去のお知らせを表示しています", latest: "今週のお知らせを見る",
           cat: "お知らせ", hl: "メンテナンスハイライト", relGuides: "関連ガイド", pastMaint: "過去のメンテナンスのご案内", updatedOn: "更新",

@@ -146,14 +146,18 @@ function railHTML() {
   const kinds = tx.kinds || {};
   return `<p class="gr-k">${tx.rail || tx.guides || ""}<span class="gr-n"></span></p><div class="gr-vp">${ps.map((p, i) => { const g = p[L] || p.en || {}, k = p.kind || "guide", art = pageArt(p);
     return `<a class="gr-s gr-${k}${i ? "" : " on"}" href="${hrefOf(p)}"${extAttr(p)} style="--g:${p.color || "var(--or)"}"><span class="gr-art">${art ? `<img src="${art}" alt="" loading="lazy">` : ""}${k === "video" ? PLAY : ""}</span><span class="gr-t"><small>${p.state === "past" ? (tx.pastGuides || "") : (kinds[k] || "")}</small><b>${g.title || p.id}</b><em>${(k === "video" ? tx.watch : tx.open) || ""}${ARR}</em></span></a>`; }).join("")}</div>` +
-    (ps.length > 1 ? `<div class="gr-dots">${ps.map((_, i) => `<button type="button" data-i="${i}" aria-label="${i + 1}"></button>`).join("")}</div>` : "");
+    (ps.length > 1 ? `<div class="gr-dots">${arr(-1, tx.railPrev, "M15 6l-6 6 6 6")}${ps.map((_, i) => `<button type="button" data-i="${i}" aria-label="${i + 1}"></button>`).join("")}${arr(1, tx.railNext, "M9 6l6 6-6 6")}</div>` : "");
+}
+// 좌우 화살표(11/04 사용자 "화살표나 휠로도 돌아가게") — 휠·키보드 ←→·손가락 밀기는 아래 GR 에 한 번만 붙인다
+function arr(d, label, path) {
+  return `<button type="button" class="gr-ar" data-d="${d}" aria-label="${label || ""}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${path}"/></svg></button>`;
 }
 const PLAY = `<i class="gr-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></i>`;
-let RAIL_T = 0, RAIL_HOLD = false, RAIL_FIT = null;
+let RAIL_T = 0, RAIL_HOLD = false, RAIL_FIT = null, RAIL_STEP = null;
 function railWire() {
   const gr = $("#gr"); clearInterval(RAIL_T); if (!gr) return;
   gr.hidden = !gr.innerHTML;
-  const ss = [...gr.querySelectorAll(".gr-s")], ds = [...gr.querySelectorAll(".gr-dots button")], n = gr.querySelector(".gr-n");
+  const ss = [...gr.querySelectorAll(".gr-s")], ds = [...gr.querySelectorAll(".gr-dots button[data-i]")], n = gr.querySelector(".gr-n");
   if (!ss.length) return;
   let i = 0;
   const show = k => { i = (k + ss.length) % ss.length;
@@ -163,10 +167,13 @@ function railWire() {
   const vp = gr.querySelector(".gr-vp"), fit = () => { if (vp && ss[i]) vp.style.height = ss[i].offsetHeight + "px"; };
   gr.querySelectorAll(".gr-art img").forEach(im => im.addEventListener("load", fit));
   window.removeEventListener("resize", RAIL_FIT); RAIL_FIT = fit; window.addEventListener("resize", fit);
-  ds.forEach((d, j) => d.addEventListener("click", () => show(j)));
-  show(0);
-  if (ss.length > 1 && !SHOT && !matchMedia("(prefers-reduced-motion: reduce)").matches)
-    RAIL_T = setInterval(() => { if (!RAIL_HOLD && !document.hidden) show(i + 1); }, 4500);
+  // 손으로 넘기면 자동 넘김 시계를 처음부터 다시 잰다
+  const auto = ss.length > 1 && !SHOT && !matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const tick = () => { clearInterval(RAIL_T); if (auto) RAIL_T = setInterval(() => { if (!RAIL_HOLD && !document.hidden) show(i + 1); }, 4500); };
+  ds.forEach((d, j) => d.addEventListener("click", () => { show(j); tick(); }));
+  gr.querySelectorAll(".gr-ar").forEach(b => b.addEventListener("click", () => { show(i + +b.dataset.d); tick(); }));
+  RAIL_STEP = ss.length > 1 ? d => { show(i + d); tick(); } : null;
+  show(0); tick();
 }
 // 지난 점검 안내: 달별 줄(왼쪽 옛날 → 오른쪽 최근). 좌우 버튼은 한 달씩, 아래 스크롤 바는 달을 골라 바로, 폰은 손가락으로 밀기
 function archiveHTML() {
@@ -307,6 +314,15 @@ addEventListener("keydown", e => { if (e.key === "Escape" && !LB.hidden) lbClose
 const GR = $("#gr");
 if (GR) ["mouseenter", "focusin"].forEach(ev => GR.addEventListener(ev, () => RAIL_HOLD = true));
 if (GR) ["mouseleave", "focusout"].forEach(ev => GR.addEventListener(ev, () => RAIL_HOLD = false));
+if (GR) {   // 휠(한 번 굴리면 한 칸, 0.45초에 한 번)·키보드 ←→·손가락 좌우 밀기
+  let wheelAt = 0, x0 = null, y0 = 0;
+  GR.addEventListener("wheel", e => { if (!RAIL_STEP) return; const d = Math.abs(e.deltaY) >= Math.abs(e.deltaX) ? e.deltaY : e.deltaX; if (!d) return;
+    e.preventDefault(); const now = Date.now(); if (now - wheelAt < 450) return; wheelAt = now; RAIL_STEP(d > 0 ? 1 : -1); }, { passive: false });
+  GR.addEventListener("keydown", e => { if (RAIL_STEP && (e.key === "ArrowLeft" || e.key === "ArrowRight")) { e.preventDefault(); RAIL_STEP(e.key === "ArrowRight" ? 1 : -1); } });
+  GR.addEventListener("touchstart", e => { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
+  GR.addEventListener("touchend", e => { if (x0 === null || !RAIL_STEP) return; const dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0; x0 = null;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) RAIL_STEP(dx < 0 ? 1 : -1); }, { passive: true });
+}
 
 /* 맨 위 · 맨 아래 버튼 */
 const jTop = $("#jTop"), jBot = $("#jBot");
