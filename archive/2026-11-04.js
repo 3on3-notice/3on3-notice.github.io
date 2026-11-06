@@ -13,7 +13,7 @@ window.NOTICE = {
     left: "남음", ended: "종료", d: "일", h: "시간", m: "분",
     foot: "앞으로도 이용자분들께서 불편을 겪지 않도록 최선을 다하겠습니다. 감사합니다.",
     issuesEmpty: "현재 확인된 이슈가 없습니다.", st: { checking: "확인 중", planned: "수정 예정", fixed: "수정 완료", notice: "공지" }, added: "추가", dl: { found: "확인", fixed: "수정" },
-    issues: [{ id: "pet-box-cumulative-reward" }],
+    issues: [{ id: "crew-season-oct-reward" }, { id: "pet-box-cumulative-reward" }],
     cards: [
       { sec: "character", tag: "new", hl: true, title: "신규 초월 8성 캐릭터 업데이트", pop: "img/banner/1104-intensive-p8-{L}.jpg",
         desc: "새로운 8성 초월 캐릭터가 등장합니다! 더욱 강해진 스킬과 이펙트로 무장한 우마왕을 8성 초월과 함께 만나보세요!" },
@@ -57,7 +57,7 @@ window.NOTICE = {
     secs: { issues: "Post-Maintenance Updates", character: "Characters", event: "Events", mode: "Modes", shop: "Shop", system: "Systems", fix: "Bug Fixes & Improvements" },
     left: "left", ended: "Ended", d: "d", h: "h", m: "m", foot: "Thank you.",
     issuesEmpty: "There are no known issues at this time.", st: { checking: "Investigating", planned: "Fix Scheduled", fixed: "Fixed", notice: "Notice" }, added: "Added", dl: { found: "Reported", fixed: "Fixed" },
-    issues: [{ id: "pet-box-cumulative-reward" }],
+    issues: [{ id: "crew-season-oct-reward" }, { id: "pet-box-cumulative-reward" }],
     cards: [
       { sec: "character", tag: "new", hl: true, title: "New P8 Intensive Character Update", pop: "img/banner/1104-intensive-p8-{L}.jpg",
         desc: "A new P8 Intensive character has arrived! Meet Ox Queen with P8 Intensive, featuring enhanced skills and upgraded effects!" },
@@ -101,7 +101,7 @@ window.NOTICE = {
     secs: { issues: "追加のお知らせ", character: "キャラクター", event: "イベント", mode: "モード", shop: "ショップ", system: "システム", fix: "バグ修正および機能改善" },
     left: "残り", ended: "終了", d: "日", h: "時間", m: "分", leftFirst: true, foot: "ありがとうございます。",
     issuesEmpty: "現在確認されている不具合はありません。", st: { checking: "確認中", planned: "修正予定", fixed: "修正済み", notice: "お知らせ" }, added: "追加", dl: { found: "確認", fixed: "修正" },
-    issues: [{ id: "pet-box-cumulative-reward" }],
+    issues: [{ id: "crew-season-oct-reward" }, { id: "pet-box-cumulative-reward" }],
     cards: [
       { sec: "character", tag: "new", hl: true, title: "新規超越8星キャラクターアップデート", pop: "img/banner/1104-intensive-p8-{L}.jpg",
         desc: "新たな8星超越キャラクター登場！さらに強力になったスキルとエフェクトをまとった牛魔王を8星超越でチェックしよう！" },
