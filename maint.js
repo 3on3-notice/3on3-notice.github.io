@@ -307,6 +307,12 @@ LB.innerHTML = '<button type="button" class="lb-x" aria-label="Close"><svg viewB
 document.body.appendChild(LB);
 let lbFrom = null;
 const lbClose = () => { LB.hidden = true; document.documentElement.classList.remove("lb-on"); if (lbFrom) lbFrom.focus(); };
+// 쪽 안 이동(#칸): 주소에 #을 남기지 않는다 — 남으면 다음에 주소창으로 들어올 때 그 칸(대개 아래쪽)에서 열린다
+document.addEventListener("click", e => {
+  const a = e.target.closest('a[href^="#"]'); if (!a || e.defaultPrevented || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  const el = document.getElementById(decodeURIComponent(a.getAttribute("href").slice(1))); if (!el) return;
+  e.preventDefault(); el.scrollIntoView();
+});
 document.addEventListener("click", e => {
   const b = e.target.closest("[data-pop]");
   if (b && !LB.contains(b)) { lbFrom = b; LB.querySelector("img").src = b.dataset.pop; LB.querySelector("figcaption").textContent = b.dataset.cap || "";
@@ -334,7 +340,10 @@ jTop.onclick = () => scrollTo({ top: 0, behavior: "smooth" });
 jBot.onclick = () => scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" });
 addEventListener("scroll", jumpVis, { passive: true }); addEventListener("resize", jumpVis);
 
+// 새로고침·탭 복원 때 브라우저가 지난 스크롤 위치로 돌려놓지 않게 — 항상 맨 위(주소에 #칸이 있으면 그 칸)에서 시작
+try { history.scrollRestoration = "manual"; } catch (_) {}
 render(); jumpVis(); setInterval(tick, 60000);
-if (location.hash && !SHOT) { const el = document.getElementById(decodeURIComponent(location.hash.slice(1))); if (el) el.scrollIntoView(); }
+const hashEl = location.hash && !SHOT ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : null;
+if (hashEl) hashEl.scrollIntoView(); else scrollTo(0, 0);
 }
 })();
