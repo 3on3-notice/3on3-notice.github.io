@@ -88,6 +88,7 @@ const issueOld = x => { const m = String(x.found || x.date || "").match(/(\d{1,2
   if (!m || isNaN(base)) return false;
   let y = base.getFullYear(); if (+m[1] > base.getMonth() + 1) y--;   // 12/30 확인 → 1/6 공지면 지난해
   return (base - new Date(y, +m[1] - 1, +m[2])) / 864e5 >= ISSUE_DAYS; };
+const CHEV = `<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>`;
 const countTx = n => { const tx = TX(); return ((n === 1 && tx.count1) || tx.count || "{n}").replace("{n}", n); };
 
 /* 변경 카드 하나: 머리(아이콘·태그·제목) → 설명 → 기간 → 전⇒후 → 묶음별 전⇒후 → 목록 → ※ → 바로가기 → 날짜별 덧붙임 */
@@ -101,8 +102,10 @@ function block(c, i, t) {
   const arrow = (from, to) => `<span class="was">${from}</span><i aria-hidden="true">⇒</i><strong>${to}</strong>`;
   if (c.chg) h += `<ul class="chg">${c.chg.map(r => `<li>${r.k ? `<b>${r.k}</b>: ` : ""}${arrow(r.from, r.to)}</li>`).join("")}</ul>`;
   if (c.swap) h += c.swap.map(s => `<h4>${s.g || ""}</h4><ul class="chg">${(s.rows || []).map(r => `<li>${arrow(r[0], r[1])}</li>`).join("")}</ul>`).join("");
-  if (c.items) h += c.items.some(x => x && x.pop)   // 항목에 배너가 있으면 누르는 칸으로
-    ? `<ul class="pops">${c.items.map(x => !x || !x.pop ? `<li><span class="pop-chip plain">${typeof x === "string" ? x : (x && x.t) || ""}</span></li>`   // 배너 없는 항목은 누르지 않는 칸
+  // 항목 more: [[조건, 보상], ...] 또는 문자열 목록 — 누르면 그 자리에서 펼침 (카드 아래로 따로 빼지 않는다)
+  const more = x => `<li><details class="pop-more"><summary class="pop-chip">${x.t || ""}${CHEV}</summary><ul class="dots">${x.more.map(r => Array.isArray(r) ? `<li><b>${r[0]}</b>: <strong>${r[1]}</strong></li>` : `<li>${r}</li>`).join("")}</ul></details></li>`;
+  if (c.items) h += c.items.some(x => x && (x.pop || x.more))   // 항목에 배너·내용이 있으면 누르는 칸으로
+    ? `<ul class="pops">${c.items.map(x => x && x.more ? more(x) : !x || !x.pop ? `<li><span class="pop-chip plain">${typeof x === "string" ? x : (x && x.t) || ""}</span></li>`   // 배너·내용 없는 항목은 누르지 않는 칸
         : `<li><button type="button" class="pop-chip" ${popAttr(x.pop, x.t)}><img src="${esc(popSrc(x.pop))}" alt="" loading="lazy"><span>${x.t || ""}</span>${ZOOM}</button></li>`).join("")}</ul>`
     : `<ul class="dots">${c.items.map(x => `<li>${typeof x === "string" ? x : x.t || ""}</li>`).join("")}</ul>`;
   if (c.rows) h += `<ul class="dots">${c.rows.map(r => `<li><b>${r[0]}</b>: ${r[2] ? `<strong>${r[1]}</strong>` : r[1]}</li>`).join("")}</ul>`;
