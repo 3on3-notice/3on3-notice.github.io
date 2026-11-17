@@ -27,12 +27,16 @@ window.SITE = {
           tags: { new: "新規", renew: "改編", change: "変更", event: "イベント", end: "終了", reward: "配布", limit: "期限" } }
   },
   pages: [
+    { id: "freestyle", path: "/freestyle/", date: "2026-11-18", state: "live", color: "#6E3BF2", art: "/freestyle/bg.jpg",
+      kr: { title: "프리스타일 가이드", desc: "새로워진 프리스타일 — 구매 · 사이클 · 강화와 모션 변경 전 · 후 영상" },
+      en: { title: "Freestyle Guide", desc: "The renewed Freestyle — buying, cycles, enhancement and before/after motion videos" },
+      jp: { title: "フリースタイルガイド", desc: "改編されたフリースタイル — 購入・サイクル・強化とモーション変更前後の動画" } },
     { id: "video-1104", kind: "video", yt: "moRncSnZ8p4", date: "2026-11-04", state: "live",
       kr: { title: "11/4 업데이트 영상", desc: "JOY 와 함께 보는 11/4 업데이트 — 초월 8성 우마왕" },
       en: { title: "Nov 4 Update Video", desc: "JOY walks through the Nov 4 update — Ox Queen P8 Intensive" },
       jp: { title: "11/4 アップデート動画", desc: "JOY と見る 11/4 アップデート — 牛魔王の8星超越" } },
-    // 접수 마감 11/13 23:59 PST 가 지나면 state: "past"
-    { id: "court-summit-2026", kind: "notice", path: "https://3on3.fsgames.com/newNews/event/6953/view", art: "/img/links/court-summit-2026-{L}.jpg", date: "2026-11-04", state: "live",
+    // 접수 마감 11/13 23:59 PST 지나 past 로 내림(11/17)
+    { id: "court-summit-2026", kind: "notice", path: "https://3on3.fsgames.com/newNews/event/6953/view", art: "/img/links/court-summit-2026-{L}.jpg", date: "2026-11-04", state: "past",
       kr: { title: "코트 서밋 2026 사전 질문" }, en: { title: "Court Summit 2026 Questions" }, jp: { title: "コートサミット2026 事前質問" } },
     { id: "pet", path: "/pet/", date: "2026-10-28", state: "live", color: "#FF6A1A", art: "/pet/pet_art.png",
       kr: { title: "펫 가이드", desc: "새로워진 펫 시스템 — 위치 · 능력 · 입양 · 조합을 한 곳에서" },

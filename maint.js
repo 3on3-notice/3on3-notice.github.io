@@ -80,10 +80,11 @@ const esc = v => String(v || "").replace(/&/g, "&amp;").replace(/"/g, "&quot;").
 const popAttr = (src, cap) => `data-pop="${esc(popSrc(src))}" data-cap="${esc(cap)}"`;
 // 확인된 이슈: 주별 공지는 id 만 적고 상태·문장은 issues.js 한 곳에서. 거기서 fixed 로 바꾸면 이번 주·지난 주 페이지가 함께 '수정 완료'
 const resolveIssue = x => { const g = x && x.id && (window.ISSUES || {})[x.id]; if (!g) return x;
-  const lt = g[L] || g.en || {}, fixed = g.status === "fixed";
+  const lt = g[L] || g.en || {}, fixed = g.status === "fixed" || g.status === "delivered";   // delivered = 지급 약속(notice)이 실제로 지급됨(11/11)
   return { status: g.status, found: g.found, date: fixed ? (g.fixed || g.found) : g.found, text: (fixed && lt.fixedText) || lt.text || "", pop: g.pop }; };
 // 확인일(M/D)로부터 14일 이상 지난 이슈는 목록에서 내린다(11/03 사용자 "괜한 혼란 안 불러오게"). 기준일은 그 주 공지 날짜 — 지난 공지는 그때 모습 그대로
 const ISSUE_DAYS = 14;
+const ST_DEF = { kr: { delivered: "지급 완료" }, en: { delivered: "Delivered" }, jp: { delivered: "配布済み" } };
 const issueOld = x => { const m = String(x.found || x.date || "").match(/(\d{1,2})\/(\d{1,2})/); const base = new Date((N.updated || "") + "T00:00:00");
   if (!m || isNaN(base)) return false;
   let y = base.getFullYear(); if (+m[1] > base.getMonth() + 1) y--;   // 12/30 확인 → 1/6 공지면 지난해
@@ -123,7 +124,7 @@ function block(c, i, t) {
 function updatesHTML(t, is) {
   if (!is.length) return `<div class="mp"><p class="mp-empty">${t.issuesEmpty || ""}</p></div>`;
   const by = []; is.forEach(x => { let g = by.find(y => y.d === x.date); if (!g) by.push(g = { d: x.date, xs: [] }); g.xs.push(x); });
-  const st = t.st || {};
+  const st = Object.assign({}, ST_DEF[L], t.st);   // 지난 공지(archive)의 st 에 없는 상태도 글자가 나오게
   const see = x => x.pop ? `<button type="button" class="iss-pop" ${popAttr(x.pop, "")}>${ZOOM}${TX().seeScreen || ""}</button>` : "";
   return `<div class="mp">${by.map(g => `<div class="mp-g"><h3>${g.d || ""}</h3>${g.xs.map(x => `<div class="mp-r"><span class="sb ${x.status || ""}">${st[x.status] || x.status || ""}</span><div><p>${x.text || ""}</p>${see(x)}</div></div>`).join("")}</div>`).join("")}</div>`;
 }

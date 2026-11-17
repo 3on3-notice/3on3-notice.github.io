@@ -1,7 +1,8 @@
 /* 확인된 이슈 목록 — 한 곳에서 관리한다. 주별 공지(data.js · archive/*.js)는 issues 에 { id: "..." } 만 적는다.
    고쳐지면 여기서 그 이슈의 status 를 "fixed" 로, fixed 에 수정일(M/D)을, 언어별 fixedText 에 '수정되었습니다' 문장을 넣는다.
    그러면 그 이슈를 실은 모든 주의 페이지(이번 주 · 지난 주)가 함께 '수정 완료'로 바뀐다.
-   status: checking 확인 중 / planned 수정 예정 / fixed 수정 완료 / notice 공지(버그가 아닌 안내 — 보상 일정 등). 지우지 않는다(지난 공지가 이 목록을 본다).
+   status: checking 확인 중 / planned 수정 예정 / fixed 수정 완료 / notice 공지(버그가 아닌 안내 — 보상 일정 등).
+   지급 약속(notice)은 실제 지급을 확인한 뒤에만 status 를 "delivered"(지급 완료)로, fixed 에 지급일, fixedText 에 '지급되었습니다' 문장을 넣는다. 날짜가 지났다고 바꾸지 않는다. 지우지 않는다(지난 공지가 이 목록을 본다).
    확인일(found)로부터 14일 지난 이슈는 화면이 그 주 목록에서 자동으로 내린다. */
 window.ISSUES = {
   "crew-season-oct-reward": { found: "11/6", status: "notice", fixed: "",
