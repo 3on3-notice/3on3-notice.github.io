@@ -341,10 +341,11 @@ jTop.onclick = () => scrollTo({ top: 0, behavior: "smooth" });
 jBot.onclick = () => scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" });
 addEventListener("scroll", jumpVis, { passive: true }); addEventListener("resize", jumpVis);
 
-// 새로고침·탭 복원 때 브라우저가 지난 스크롤 위치로 돌려놓지 않게 — 항상 맨 위(주소에 #칸이 있으면 그 칸)에서 시작
+// 새로고침·탭 복원 때 브라우저가 지난 스크롤 위치로 돌려놓지 않게
 try { history.scrollRestoration = "manual"; } catch (_) {}
 render(); jumpVis(); setInterval(tick, 60000);
-const hashEl = location.hash && !SHOT ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : null;
-if (hashEl) hashEl.scrollIntoView(); else scrollTo(0, 0);
+// 링크로 들어오면 항상 맨 위에서 시작한다 — 주소에 #칸이 붙어 있어도 그 칸으로 내려가지 않고, #칸 표시도 지운다(10/28·11/17 사용자 지시)
+if (location.hash) { try { history.replaceState(history.state, "", location.pathname + location.search); } catch (_) {} }
+scrollTo(0, 0);
 }
 })();
