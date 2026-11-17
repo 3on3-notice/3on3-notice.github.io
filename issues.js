@@ -5,10 +5,10 @@
    지급 약속(notice)은 실제 지급을 확인한 뒤에만 status 를 "delivered"(지급 완료)로, fixed 에 지급일, fixedText 에 '지급되었습니다' 문장을 넣는다. 날짜가 지났다고 바꾸지 않는다. 지우지 않는다(지난 공지가 이 목록을 본다).
    확인일(found)로부터 14일 지난 이슈는 화면이 그 주 목록에서 자동으로 내린다. */
 window.ISSUES = {
-  "crew-season-oct-reward": { found: "11/6", status: "notice", fixed: "",
-    kr: { text: "10월 크루 시즌 보상이 지급되지 않은 오류 현상이 확인되었습니다. 크루 보상과 개인 보상은 다음 점검 시(11/11) 우편을 통해 지급해 드릴 예정입니다. 이용에 불편을 드려 죄송합니다.", fixedText: "" },
-    en: { text: "We have confirmed an issue where the October Crew Season rewards were not delivered. Both crew and individual rewards will be sent by mail during the next maintenance (Nov 11th). We apologize for the inconvenience.", fixedText: "" },
-    jp: { text: "10月クルーシーズンの報酬が支給されていない不具合が確認されました。クルー報酬および個人報酬は次回のメンテナンス時（11/11）にメールにて支給いたします。ご迷惑をおかけし、申し訳ございません。", fixedText: "" } },
+  "crew-season-oct-reward": { found: "11/6", status: "delivered", fixed: "11/11",
+    kr: { text: "10월 크루 시즌 보상이 지급되지 않은 오류 현상이 확인되었습니다. 크루 보상과 개인 보상은 다음 점검 시(11/11) 우편을 통해 지급해 드릴 예정입니다. 이용에 불편을 드려 죄송합니다.", fixedText: "10월 크루 시즌 보상이 지급되지 않았던 건과 관련하여, 11/11 점검 중 크루 보상과 개인 보상을 우편으로 지급해 드렸습니다. 이용에 불편을 드려 죄송합니다." },
+    en: { text: "We have confirmed an issue where the October Crew Season rewards were not delivered. Both crew and individual rewards will be sent by mail during the next maintenance (Nov 11th). We apologize for the inconvenience.", fixedText: "The October Crew Season rewards that had not been delivered, including both crew and individual rewards, were sent by mail during the Nov 11th maintenance. We apologize for the inconvenience." },
+    jp: { text: "10月クルーシーズンの報酬が支給されていない不具合が確認されました。クルー報酬および個人報酬は次回のメンテナンス時（11/11）にメールにて支給いたします。ご迷惑をおかけし、申し訳ございません。", fixedText: "支給されていなかった10月クルーシーズンの報酬につきまして、11/11のメンテナンス中にクルー報酬および個人報酬をメールにて支給いたしました。ご迷惑をおかけし、申し訳ございません。" } },
   "pet-box-cumulative-reward": { found: "11/4", status: "notice", fixed: "",
     kr: { text: "두근두근 플래티넘 펫 박스 누적 구매 보상이 처음 설계와 다르게 1주 더 길게 안내되었습니다. 잘못 안내된 만큼, 남은 1주분의 보상은 다음 점검 시 지급해 드릴 예정입니다.<br>※ 이미 수령하신 보상은 중복 지급되지 않습니다.<br>※ 두근두근 플래티넘 펫 박스는 구매 제한이 15회이며, 현재까지 누적 구매하신 수량만큼 차감됩니다. 구매 전 잔여 구매 가능 횟수를 확인해 주시기 바랍니다.", fixedText: "" },
     en: { text: "The cumulative purchase rewards for the Platinum Pet Surprise Box were announced with a period one week longer than originally designed. Since the period was announced incorrectly, the rewards for the remaining one week will be provided during the next maintenance.<br>※ Rewards you have already received will not be given again.<br>※ The Platinum Pet Surprise Box has a purchase limit of 15 times, and the quantity you have purchased so far counts toward this limit. Please check your remaining purchase count before purchasing.", fixedText: "" },
