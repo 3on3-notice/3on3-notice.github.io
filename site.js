@@ -29,7 +29,7 @@ window.SITE = {
   },
   pages: [
     // 11/18 사용자 지시: 11/18 업데이트 상세(공식 홈페이지 개발자 노트 6969)는 프리스타일 가이드가 아니라 공지 홈 바로가기에 연결. 화면에 '패치 노트'라는 말은 쓰지 않는다
-    { id: "update-1118", kind: "notice", path: "https://3on3.fsgames.com/newNews/devnote/6969/view", art: "/img/banner/1118-p8-giant-g-{L}.jpg", date: "2026-11-18", state: "live",
+    { id: "update-1118", kind: "notice", path: "https://3on3.fsgames.com/newNews/devnote/6969/view", art: "/img/banner/1118-p8-giant-g-{L}.jpg", date: "2026-11-18", state: "off",
       kr: { title: "11/18 업데이트 상세 내용" }, en: { title: "Nov 18 Update Details" }, jp: { title: "11/18 アップデート詳細" } },
     { id: "freestyle", path: "/freestyle/", date: "2026-11-18", state: "live", color: "#6E3BF2", art: "/img/links/freestyle-guide.jpg",
       kr: { title: "프리스타일 가이드", desc: "새로워진 프리스타일 — 구매 · 사이클 · 강화와 모션 변경 전 · 후 영상" },
