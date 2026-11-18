@@ -145,7 +145,7 @@ function highlightHTML(t, cards) {
 // 오른쪽 작은 돌아가는 배너(좁은 화면은 첫 화면 안). site.js 에 쌓인 가이드·영상·공지를 최근 게시 순으로(지난 항목은 뒤)
 function railHTML() {
   const tx = TX(), byDate = (a, b) => (b.date || "").localeCompare(a.date || "");
-  const ps = pages().filter(p => p.state !== "past").sort(byDate).concat(pages().filter(p => p.state === "past").sort(byDate));
+  const ps = pages().filter(p => p.state === "live").sort(byDate).concat(pages().filter(p => p.state === "past").sort(byDate));   // "off" 는 배너에서 뺌
   if (!ps.length) return "";
   const kinds = tx.kinds || {};
   return `<p class="gr-k">${tx.rail || tx.guides || ""}<span class="gr-n"></span></p><div class="gr-vp">${ps.map((p, i) => { const g = p[L] || p.en || {}, k = p.kind || "guide", art = pageArt(p);

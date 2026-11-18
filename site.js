@@ -1,6 +1,7 @@
 /* 3on3 FreeStyle 공지 사이트 목록 — 공지 홈(/)이 중심이고, 가이드 페이지는 pages 에 한 줄씩 등록한다.
    등록하면 공지 홈 오른쪽의 돌아가는 가이드 배너와 모든 가이드 페이지 윗줄(common/hub.js) 메뉴에 함께 나온다.
    state: "live" = 지금 보여 줌 / "past" = 지난 가이드로 내림(주소는 그대로 살아 있음). 페이지를 지우지 말고 past 로 내린다.
+   "off" = 공지 홈 배너에서 아예 뺌(지난 가이드에도 안 나옴, 주소·지난 점검 안내의 관련 가이드 연결은 그대로).
    kind: "guide" 가이드(기본) / "video" 영상 / "notice" 공지 — 영상·공지도 오른쪽 배너에 함께 돈다(가이드 윗줄 메뉴엔 가이드만).
    유튜브 영상은 yt 에 영상 id 만 적으면 주소·썸네일이 만들어진다. 언어마다 주소가 다르면 kr/en/jp 안에 path.
    예) { id: "maint-video-1104", kind: "video", yt: "영상id", date: "2026-11-04", state: "live", kr: { title: "11/04 점검 영상" }, en: {…}, jp: {…} }
@@ -31,12 +32,13 @@ window.SITE = {
       kr: { title: "프리스타일 가이드", desc: "새로워진 프리스타일 — 구매 · 사이클 · 강화와 모션 변경 전 · 후 영상" },
       en: { title: "Freestyle Guide", desc: "The renewed Freestyle — buying, cycles, enhancement and before/after motion videos" },
       jp: { title: "フリースタイルガイド", desc: "リニューアルされたフリースタイル — 購入・サイクル・強化とモーション変更前後の動画" } },
-    { id: "video-1104", kind: "video", yt: "moRncSnZ8p4", date: "2026-11-04", state: "live",
+    // 11/18 사용자 지시: 공지 홈 바로가기는 프리스타일·펫 가이드만 → 영상·코트 서밋은 off
+    { id: "video-1104", kind: "video", yt: "moRncSnZ8p4", date: "2026-11-04", state: "off",
       kr: { title: "11/4 업데이트 영상", desc: "JOY 와 함께 보는 11/4 업데이트 — 초월 8성 우마왕" },
       en: { title: "Nov 4 Update Video", desc: "JOY walks through the Nov 4 update — Ox Queen P8 Intensive" },
       jp: { title: "11/4 アップデート動画", desc: "JOY と見る 11/4 アップデート — 牛魔王の8星超越" } },
     // 접수 마감 11/13 23:59 PST 지나 past 로 내림(11/17)
-    { id: "court-summit-2026", kind: "notice", path: "https://3on3.fsgames.com/newNews/event/6953/view", art: "/img/links/court-summit-2026-{L}.jpg", date: "2026-11-04", state: "past",
+    { id: "court-summit-2026", kind: "notice", path: "https://3on3.fsgames.com/newNews/event/6953/view", art: "/img/links/court-summit-2026-{L}.jpg", date: "2026-11-04", state: "off",
       kr: { title: "코트 서밋 2026 사전 질문" }, en: { title: "Court Summit 2026 Questions" }, jp: { title: "コートサミット2026 事前質問" } },
     { id: "pet", path: "/pet/", date: "2026-10-28", state: "live", color: "#FF6A1A", art: "/pet/pet_art.png",
       kr: { title: "펫 가이드", desc: "새로워진 펫 시스템 — 위치 · 능력 · 입양 · 조합을 한 곳에서" },
