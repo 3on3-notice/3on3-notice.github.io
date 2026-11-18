@@ -5,7 +5,7 @@
    kind: "guide" 가이드(기본) / "video" 영상 / "notice" 공지 — 영상·공지도 오른쪽 배너에 함께 돈다(가이드 윗줄 메뉴엔 가이드만).
    유튜브 영상은 yt 에 영상 id 만 적으면 주소·썸네일이 만들어진다. 언어마다 주소가 다르면 kr/en/jp 안에 path.
    예) { id: "maint-video-1104", kind: "video", yt: "영상id", date: "2026-11-04", state: "live", kr: { title: "11/04 점검 영상" }, en: {…}, jp: {…} }
-   예) { id: "court-summit", kind: "notice", path: "/preview/court-summit/", art: "/preview/court-summit/art.jpg", date: "…", state: "live", kr: {…}, en: {…}, jp: {…} } */
+   예) { id: "court-summit", kind: "notice", path: "/vmlkte81ttb13mni/court-summit/", art: "/vmlkte81ttb13mni/court-summit/art.jpg", date: "…", state: "live", kr: {…}, en: {…}, jp: {…} } */
 window.SITE = {
   text: {
     kr: { rail: "바로가기", railPrev: "이전", railNext: "다음", kinds: { guide: "가이드", video: "영상", notice: "공지" }, watch: "영상 보기",
@@ -29,9 +29,9 @@ window.SITE = {
   },
   pages: [
     // 11/18 사용자 지시: 11/18 업데이트 상세(공식 홈페이지 개발자 노트 6969)는 프리스타일 가이드가 아니라 공지 홈 바로가기에 연결. 화면에 '패치 노트'라는 말은 쓰지 않는다
-    { id: "update-1118", kind: "notice", path: "https://3on3.fsgames.com/newNews/devnote/6969/view", art: "/preview/img/banner/1118-p8-giant-g-{L}.jpg", date: "2026-11-18", state: "live",
+    { id: "update-1118", kind: "notice", path: "https://3on3.fsgames.com/newNews/devnote/6969/view", art: "/vmlkte81ttb13mni/img/banner/1118-p8-giant-g-{L}.jpg", date: "2026-11-18", state: "live",
       kr: { title: "11/18 업데이트 상세 내용" }, en: { title: "Nov 18 Update Details" }, jp: { title: "11/18 アップデート詳細" } },
-    { id: "freestyle", path: "/preview/freestyle/", date: "2026-11-18", state: "live", color: "#6E3BF2", art: "/preview/img/links/freestyle-guide.jpg",
+    { id: "freestyle", path: "/vmlkte81ttb13mni/freestyle/", date: "2026-11-18", state: "live", color: "#6E3BF2", art: "/vmlkte81ttb13mni/img/links/freestyle-guide.jpg",
       kr: { title: "프리스타일 가이드", desc: "새로워진 프리스타일 — 구매 · 사이클 · 강화와 모션 변경 전 · 후 영상" },
       en: { title: "Freestyle Guide", desc: "The renewed Freestyle — buying, cycles, enhancement and before/after motion videos" },
       jp: { title: "フリースタイルガイド", desc: "リニューアルされたフリースタイル — 購入・サイクル・強化とモーション変更前後の動画" } },
@@ -41,9 +41,9 @@ window.SITE = {
       en: { title: "Nov 4 Update Video", desc: "JOY walks through the Nov 4 update — Ox Queen P8 Intensive" },
       jp: { title: "11/4 アップデート動画", desc: "JOY と見る 11/4 アップデート — 牛魔王の8星超越" } },
     // 접수 마감 11/13 23:59 PST 지나 past 로 내림(11/17)
-    { id: "court-summit-2026", kind: "notice", path: "https://3on3.fsgames.com/newNews/event/6953/view", art: "/preview/img/links/court-summit-2026-{L}.jpg", date: "2026-11-04", state: "off",
+    { id: "court-summit-2026", kind: "notice", path: "https://3on3.fsgames.com/newNews/event/6953/view", art: "/vmlkte81ttb13mni/img/links/court-summit-2026-{L}.jpg", date: "2026-11-04", state: "off",
       kr: { title: "코트 서밋 2026 사전 질문" }, en: { title: "Court Summit 2026 Questions" }, jp: { title: "コートサミット2026 事前質問" } },
-    { id: "pet", path: "/preview/pet/", date: "2026-10-28", state: "live", color: "#FF6A1A", art: "/preview/pet/pet_art.png",
+    { id: "pet", path: "/vmlkte81ttb13mni/pet/", date: "2026-10-28", state: "live", color: "#FF6A1A", art: "/vmlkte81ttb13mni/pet/pet_art.png",
       kr: { title: "펫 가이드", desc: "새로워진 펫 시스템 — 위치 · 능력 · 입양 · 조합을 한 곳에서" },
       en: { title: "Pet Guide", desc: "The renewed Pet System — where to find pets, abilities, adoption and combination" },
       jp: { title: "ペットガイド", desc: "改編されたペットシステム — 場所・能力・養子縁組・合成をまとめて確認" } }

@@ -1,5 +1,5 @@
 /* 가이드 페이지 맨 위에 붙는 공통 윗줄: 왼쪽 '공지 홈', 오른쪽 '가이드' 메뉴(site.js 목록).
-   가이드 페이지는 <script src="/preview/common/hub.js" defer></script> 한 줄만 넣는다. 언어는 그 페이지의 <html lang> 을 따라간다. */
+   가이드 페이지는 <script src="/vmlkte81ttb13mni/common/hub.js" defer></script> 한 줄만 넣는다. 언어는 그 페이지의 <html lang> 을 따라간다. */
 (function () {
 "use strict";
 if (document.getElementById("hub")) return;
@@ -36,7 +36,7 @@ const DOWN = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-
 function siteList(cb) {
   if (window.SITE) return cb();
   const s = document.createElement("script");
-  s.src = "/preview/site.js?v=" + Date.now(); s.onload = cb; s.onerror = cb;
+  s.src = "/vmlkte81ttb13mni/site.js?v=" + Date.now(); s.onload = cb; s.onerror = cb;
   document.head.appendChild(s);
 }
 const lang = () => LANG[(document.documentElement.lang || "en").slice(0, 2)] || "en";
@@ -51,11 +51,11 @@ function draw(bar) {
   const live = pages.filter(p => p.state !== "past"), past = pages.filter(p => p.state === "past");
   const wasOpen = bar.querySelector(".hub-menu[open]");
   bar.innerHTML = `<div class="hub-in">
-    <a class="hub-home" href="${withLang("/preview/", L)}">${ARL}${BALL}<span>3on3 FreeStyle · ${tx.home || "Home"}</span></a>
+    <a class="hub-home" href="${withLang("/vmlkte81ttb13mni/", L)}">${ARL}${BALL}<span>3on3 FreeStyle · ${tx.home || "Home"}</span></a>
     <details class="hub-menu"${wasOpen ? " open" : ""}><summary>${tx.guides || "Guides"}${DOWN}</summary><div class="hub-list">
       ${live.map(item).join("")}
       ${past.length ? `<p>${tx.pastGuides || ""}</p>${past.map(item).join("")}` : ""}
-      <hr><a href="${withLang("/preview/", L)}#s-archive">${tx.pastNotices || ""}</a>
+      <hr><a href="${withLang("/vmlkte81ttb13mni/", L)}#s-archive">${tx.pastNotices || ""}</a>
     </div></details></div>`;
 }
 

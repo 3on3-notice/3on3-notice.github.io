@@ -4,15 +4,15 @@
 <meta name="robots" content="noindex,nofollow">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>펫 가이드</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23FF6A1A'/%3E%3Cg fill='%23fff'%3E%3Cellipse cx='11' cy='11.5' rx='2.4' ry='3'/%3E%3Cellipse cx='21' cy='11.5' rx='2.4' ry='3'/%3E%3Cellipse cx='7.2' cy='17' rx='2.1' ry='2.6'/%3E%3Cellipse cx='24.8' cy='17' rx='2.1' ry='2.6'/%3E%3Cpath d='M16 15.5c-3.6 0-7 4.6-7 7.4 0 2 1.6 2.8 3.3 2.8 1.5 0 2.4-.8 3.7-.8s2.2.8 3.7.8c1.7 0 3.3-.8 3.3-2.8 0-2.8-3.4-7.4-7-7.4z'/%3E%3C/g%3E%3C/svg%3E">
+<title>프리스타일 가이드</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%236E3BF2'/%3E%3Ccircle cx='16' cy='16' r='8.5' fill='none' stroke='%23fff' stroke-width='2.4'/%3E%3Cpath d='M7.5 16h17M16 7.5v17' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
-/* 펫 가이드 화면. 구조·규칙은 화면_설계.md. 내용은 data.js / pets.js / photos.js 에서만 온다. */
+/* 프리스타일 가이드 화면 — 펫 가이드(/vmlkte81ttb13mni/pet/) 화면 엔진을 그대로 가져와 도감을 '변경 전·후 영상 비교'로 바꿨다. 내용은 data.js / freestyles.js / photos.js 에서만 온다. */
 :root{
   --bg:#F5F6F7;--card:#fff;--line:#E5E8EB;--line2:#F2F4F6;
   --t1:#191F28;--t2:#4E5968;--t3:#8B95A1;--t4:#B0B8C1;
-  --or:#FF6A1A;--or-d:#E8590C;--or-bg:#FFF5EF;
+  --or:#6E3BF2;--or-d:#5526D6;--or-bg:#F4EFFF;
   --gnb:48px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -61,8 +61,9 @@ summary::-webkit-details-marker{display:none}
 main{grid-area:main;min-width:0}
 
 /* 배너 카드 */
-.banner{position:relative;height:220px;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#BDEFE4 url(bg.jpg) center bottom/cover no-repeat}
-.banner::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.78) 0%,rgba(255,255,255,.45) 42%,rgba(255,255,255,0) 68%)}
+.banner{position:relative;height:220px;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#1E1446 url(bg.jpg) right center/cover no-repeat}
+.banner::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(24,14,64,.92) 0%,rgba(24,14,64,.6) 50%,rgba(24,14,64,.1) 80%)}
+.banner .bt h1,.banner .bt p{color:#fff}.banner .bt p{opacity:.88}
 .banner .bt{position:relative;z-index:2;padding:28px 32px;max-width:60%}
 .ribbon{display:inline-block;font-size:12.5px;font-weight:700;color:#fff;background:var(--or);border-radius:4px;padding:3px 9px;letter-spacing:.1px}
 .ribbon:empty{display:none}
@@ -85,7 +86,7 @@ main{grid-area:main;min-width:0}
 .iss-empty{padding:22px 18px;font-size:14px;color:var(--t3)}
 .sb{display:inline-block;font-size:11.5px;font-weight:700;line-height:18px;border-radius:4px;padding:0 6px}
 .sb.checking{background:#FFF6DA;color:#A06A00}
-.sb.planned{background:#FFEFE6;color:var(--or-d)}
+.sb.planned{background:#EEE7FF;color:var(--or-d)}
 .sb.fixed{background:#E8F3FF;color:#1B64DA}
 .chev{width:16px;height:16px;flex:none;color:var(--t4);transition:transform .2s}
 details[open]>summary .chev{transform:rotate(180deg)}
@@ -169,7 +170,7 @@ a.mi::after{content:"";position:absolute;right:17px;top:50%;width:7px;height:7px
 .mi p{font-size:13.5px;color:var(--t2);margin-top:2px;line-height:1.5}
 
 /* 주의 */
-.alert{display:flex;gap:10px;align-items:flex-start;background:var(--or-bg);border:1px solid #FFDDC9;border-radius:10px;padding:14px 18px;margin-bottom:12px;font-size:14.5px;line-height:1.6}
+.alert{display:flex;gap:10px;align-items:flex-start;background:var(--or-bg);border:1px solid #DDD0FF;border-radius:10px;padding:14px 18px;margin-bottom:12px;font-size:14.5px;line-height:1.6}
 .alert .ic{flex:none;width:18px;height:18px;border-radius:50%;background:var(--or);color:#fff;font-size:12px;font-weight:800;line-height:1;display:grid;place-items:center;margin-top:2px}
 .alert b{color:var(--or-d)}
 .alert .fig{margin-top:10px;max-width:440px}
@@ -181,6 +182,10 @@ a.mi::after{content:"";position:absolute;right:17px;top:50%;width:7px;height:7px
 .t thead th{background:#F9FAFB;color:var(--t2);font-weight:600;font-size:13px}
 .t tbody th{text-align:left;font-weight:600;white-space:nowrap}
 .t td{color:var(--t2)}
+.t.boxed th,.t.boxed td{border:1px solid var(--line)}
+.t.boxed tbody th{background:#FAFAFB;white-space:normal;min-width:150px}
+.t.boxed td:nth-last-child(2){color:var(--t3)}
+.t.boxed td:last-child,.t.boxed thead th:last-child{background:#F3EEFF;color:var(--or-d);font-weight:800}
 .gdot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--g,var(--t4));margin-right:6px;vertical-align:1px}
 
 /* 작은 칸(정의 목록) */
@@ -223,10 +228,10 @@ a.mi::after{content:"";position:absolute;right:17px;top:50%;width:7px;height:7px
 .cmp .tag{display:none}
 .cmp-r b{font-weight:800}
 /* 개선·변경·유지 배지: 항목 옆 배지 + 변경 칸 강조 (data 의 행 4번째 값 "up") */
-.cmp-r .better{display:inline-block;margin-left:5px;vertical-align:1px;font-style:normal;font-size:10px;font-weight:700;line-height:15px;padding:0 4px;border-radius:3px;background:#FFE3D3;color:var(--or-d);white-space:nowrap}
+.cmp-r .better{display:inline-block;margin-left:5px;vertical-align:1px;font-style:normal;font-size:10px;font-weight:700;line-height:15px;padding:0 4px;border-radius:3px;background:#E6DCFF;color:var(--or-d);white-space:nowrap}
 .cmp-r .better.t-change{background:#E3EEFF;color:#2557B8}
 .cmp-r .better.t-keep{background:#ECEEF1;color:#5B6472}
-.cmp-r.up .new{background:#FFF3EB;color:var(--or-d)}
+.cmp-r.up .new{background:#F3EEFF;color:var(--or-d)}
 /* 접는 상자(기한) */
 .fold>summary{display:flex;align-items:center;gap:8px}
 .fold>summary h3{margin:0}
@@ -239,7 +244,7 @@ a.mi::after{content:"";position:absolute;right:17px;top:50%;width:7px;height:7px
 /* ── 변경 펫 개요 (기획 PDF 구성) ── */
 .eyb{font-size:12px;font-weight:800;letter-spacing:.4px;color:var(--or);margin-bottom:2px}
 .blk h3.lg{font-size:19px;font-weight:800;letter-spacing:-.4px;margin-bottom:14px}
-.keys{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.keys{display:grid;grid-template-columns:repeat(var(--kc,5),minmax(0,1fr));gap:10px}
 .keys li{border:1px solid var(--line);border-radius:10px;padding:14px 14px 15px;background:#FBFBFC}
 .keys .kn{display:block;font-size:13px;font-weight:800;color:var(--or)}
 .keys b{display:block;font-size:15px;margin:4px 0 2px}
@@ -247,7 +252,7 @@ a.mi::after{content:"";position:absolute;right:17px;top:50%;width:7px;height:7px
 .duo,.gro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
 .gro{grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr)}
 .duo-c{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:#FBFBFC}
-.duo-c.aft{border-color:var(--or);background:#FFF9F5}
+.duo-c.aft{border-color:var(--or);background:#FAF8FF}
 .tagp{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 9px;border-radius:999px;background:var(--line2);color:var(--t2);margin-bottom:10px}
 .tagp.on{background:var(--or);color:#fff}
 .flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
@@ -272,7 +277,7 @@ a.mi::after{content:"";position:absolute;right:17px;top:50%;width:7px;height:7px
 .road h4,.sub1 h4,.evc h4{font-size:14px;font-weight:700;margin-bottom:8px}
 .road ol{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;align-items:end}
 .road li b{display:block;font-size:14px;font-weight:800}.road li span{display:block;font-size:12px;color:var(--t3);margin-bottom:6px}
-.road li i{display:block;border-radius:4px 4px 0 0;background:linear-gradient(180deg,var(--or),#FFB38A)}
+.road li i{display:block;border-radius:4px 4px 0 0;background:linear-gradient(180deg,var(--or),#B79CFF)}
 .road p{font-size:12px;color:var(--or-d);margin-top:8px}
 .pools{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:16px;align-items:start}
 .tier{border:1.5px solid var(--g);border-radius:12px;padding:10px 12px 12px;background:#fff}
@@ -359,6 +364,10 @@ a.mi::after{content:"";position:absolute;right:17px;top:50%;width:7px;height:7px
 .gch button.on{background:var(--t1);border-color:var(--t1);color:#fff}
 .gch button.on em{color:rgba(255,255,255,.7)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:16px 10px}
+.dxh{grid-column:1/-1;display:flex;align-items:center;gap:8px;font-size:16px;font-weight:800;color:var(--t1);padding:6px 0 2px;margin:0}
+.dxh .gdot{width:10px;height:10px;margin:0}
+.dxh em{font-style:normal;font-size:13px;font-weight:600;color:var(--t3)}
+.dxh:not(:first-child){margin-top:14px;padding-top:20px;border-top:1px solid var(--line)}   /* 점프슛·레이업·덩크 칸 나눔(11/17) */
 .pet{display:flex;flex-direction:column;align-items:stretch;text-align:left;border:0;background:none;padding:0;cursor:pointer;min-width:0}
 .pet .ic{position:relative;aspect-ratio:1/1;border-radius:10px;background:var(--line2);border:1px solid transparent;display:grid;place-items:center;overflow:hidden;transition:border-color .15s,background .15s}
 .pet:hover .ic{border-color:var(--g);background:#EEF0F3}
@@ -458,8 +467,8 @@ a.mi::after{content:"";position:absolute;right:17px;top:50%;width:7px;height:7px
   .layout{grid-template-columns:minmax(0,1fr);grid-template-areas:"banner" "main";gap:12px;padding-top:12px;padding-bottom:40px}
   .side{position:static}
   .banner{height:auto;min-height:0}
-  .banner::before{background:linear-gradient(180deg,rgba(255,255,255,.7) 0%,rgba(255,255,255,.3) 55%,rgba(255,255,255,0) 75%)}
-  .banner .bt{max-width:none;padding:20px 20px 138px}
+  .banner::before{background:linear-gradient(180deg,rgba(24,14,64,.9) 0%,rgba(24,14,64,.65) 70%,rgba(24,14,64,.4) 100%)}
+  .banner .bt{max-width:none;padding:20px 20px 24px}
   .banner h1{font-size:23px;margin:10px 0 6px}
   .banner p{font-size:14px}
   .banner .art{height:132px;max-width:72%;right:8px;bottom:-2px}
@@ -480,7 +489,7 @@ a.mi::after{content:"";position:absolute;right:17px;top:50%;width:7px;height:7px
   .cmp-r .new{padding-left:14px;border-top:1px dashed var(--line)}
   .cmp-r .new .arr{display:none}
   .cmp .tag{display:inline-block;flex:none;min-width:34px;font-style:normal;font-size:11.5px;font-weight:700;line-height:18px;text-align:center;border-radius:4px;padding:0 5px;background:var(--line2);color:var(--t3)}
-  .cmp .new .tag{background:#FFEFE6;color:var(--or-d)}
+  .cmp .new .tag{background:#EEE7FF;color:var(--or-d)}
   .menu{grid-template-columns:minmax(0,1fr)}
   .facts>div{grid-template-columns:84px minmax(0,1fr);gap:10px}
   .facts.pn>div{grid-template-columns:100px minmax(0,1fr)}   /* 번호 붙은 항목도 폰에선 좁게 — PC 144px 가 폰까지 와서 설명 칸이 반으로 줄던 것(10/29 검수) */
@@ -512,13 +521,66 @@ a.mi::after{content:"";position:absolute;right:17px;top:50%;width:7px;height:7px
   .info th{width:96px}
   .dlg-ft{padding:10px 16px calc(10px + env(safe-area-inset-bottom))}
 }
+/* ── 프리스타일 도감: 4:3 썸네일 카드 ── */
+.grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:18px 12px}
+.pet .ic{aspect-ratio:4/3;background:#E9EBEF}
+.pet .ic img{width:100%;height:100%;object-fit:cover}
+.pet .play{position:absolute;right:7px;bottom:7px;width:28px;height:28px;border-radius:50%;background:rgba(20,12,50,.72);display:grid;place-items:center;transition:transform .15s,background .15s}
+.pet .play svg{width:12px;height:12px;fill:#fff;margin-left:2px}
+.pet:hover .play{transform:scale(1.12);background:var(--or)}
+.newt{position:absolute;right:7px;top:7px;font-size:10.5px;font-weight:800;line-height:17px;color:#fff;background:#FF4D6D;border-radius:4px;padding:0 6px;letter-spacing:.3px}
+/* 영상 비교 팝업: 넓게, 변경 전 · 후 두 칸 */
+.dlg.vid{width:min(980px,100%)}
+.vc-top{padding-right:36px}
+.vc-top h2{font-size:22px;font-weight:800;letter-spacing:-.5px;line-height:1.3;margin-top:6px}
+.vc-top .alt{font-size:13px;color:var(--t3);margin-top:2px}
+.vc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+.vc.one{grid-template-columns:1fr}
+.vc figure{position:relative;border-radius:10px;overflow:hidden;background:#111}
+.vc video{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:#111}
+.vc figcaption{position:absolute;left:10px;top:10px;font-size:12px;font-weight:800;line-height:22px;padding:0 9px;border-radius:4px;background:rgba(0,0,0,.62);color:#fff;letter-spacing:.2px}
+.vc .aft figcaption{background:var(--or)}
+.vc-ctl{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}
+.vc-ctl button{height:34px;padding:0 13px;border:1px solid var(--line);border-radius:8px;background:#fff;font:inherit;font-size:13.5px;font-weight:600;cursor:pointer}
+.vc-ctl button:hover{background:#FAFBFC}
+.vc-ctl button[aria-pressed="true"]{background:var(--t1);border-color:var(--t1);color:#fff}
+.vc-note{font-size:12.5px;color:var(--t3);margin-top:10px}
+/* 영상 창 Lv.1 능력치 전·후 (11/18) */
+.vst{margin-top:14px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.vst h3{font-size:14px;font-weight:700;padding:10px 14px;background:#F9FAFB;border-bottom:1px solid var(--line);margin:0}
+.vst-g{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.vst-g.one{grid-template-columns:minmax(0,1fr)}
+.vst-c{padding:10px 14px}
+.vst-c+.vst-c{border-left:1px solid var(--line)}
+.vst-c>b{display:block;font-size:12px;font-weight:700;color:var(--t3);margin-bottom:6px}
+.vst-c.aft>b{color:var(--or-d)}
+.vst-c ul{list-style:none;margin:0;padding:0}
+.vst-tw{overflow-x:auto}
+.vst-t{width:100%;border-collapse:collapse;font-size:13px;line-height:1.35}
+.vst-t th,.vst-t td{padding:6px 6px;border-bottom:1px solid var(--line2);text-align:right;white-space:nowrap}
+.vst-t thead th{font-size:11px;font-weight:700;color:var(--t3);white-space:normal;vertical-align:bottom;text-align:right}
+.vst-t th:first-child{text-align:left;color:var(--t2);font-weight:700}
+.vst-t tbody tr:last-child th,.vst-t tbody tr:last-child td{border-bottom:0}
+.vst-c.aft .vst-t td{color:var(--or-d);font-weight:700}
+.vst-c li{display:flex;justify-content:space-between;gap:10px;font-size:13.5px;line-height:1.5;padding:3px 0}
+.vst-c li span{color:var(--t2)}
+.vst-c li em{font-style:normal;font-weight:700;white-space:nowrap}
+.vst-c.aft li em{color:var(--or-d)}
+.vst-n{font-size:12px;color:var(--t3);padding:8px 14px;border-top:1px solid var(--line2)}
+@media (max-width:520px){.vst-g{grid-template-columns:minmax(0,1fr)}.vst-c+.vst-c{border-left:0;border-top:1px solid var(--line)}}
+.vc-new{font-size:13.5px;color:var(--t2);margin-top:10px}
+@media (max-width:759px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .vc{grid-template-columns:1fr}
+  .vc-top h2{font-size:20px}
+}
 </style>
-<script src="/preview/common/hub.js" defer></script>
+<script src="/vmlkte81ttb13mni/common/hub.js" defer></script>
 </head>
 <body>
 <header class="hd">
   <div class="in">
-    <a class="logo" href="#top"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#FF6A1A"/><g fill="#fff"><ellipse cx="11" cy="11.5" rx="2.4" ry="3"/><ellipse cx="21" cy="11.5" rx="2.4" ry="3"/><ellipse cx="7.2" cy="17" rx="2.1" ry="2.6"/><ellipse cx="24.8" cy="17" rx="2.1" ry="2.6"/><path d="M16 15.5c-3.6 0-7 4.6-7 7.4 0 2 1.6 2.8 3.3 2.8 1.5 0 2.4-.8 3.7-.8s2.2.8 3.7.8c1.7 0 3.3-.8 3.3-2.8 0-2.8-3.4-7.4-7-7.4z"/></g></svg><span id="site"></span></a>
+    <a class="logo" href="#top"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#6E3BF2"/><circle cx="16" cy="16" r="8.5" fill="none" stroke="#fff" stroke-width="2.4"/><path d="M7.5 16h17M16 7.5v17" stroke="#fff" stroke-width="2"/></svg><span id="site"></span></a>
     <div class="langs" id="langs"></div>
   </div>
 </header>
@@ -526,7 +588,6 @@ a.mi::after{content:"";position:absolute;right:17px;top:50%;width:7px;height:7px
 <div class="in layout">
   <section class="banner" id="top">
     <div class="bt"><span class="ribbon" id="ribbon"></span><h1 id="title"></h1><p id="lead"></p></div>
-    <img class="art" src="pet_art.png" alt="">
   </section>
   <aside class="side" id="side"></aside>
   <main id="main"></main>
@@ -554,15 +615,14 @@ a.mi::after{content:"";position:absolute;right:17px;top:50%;width:7px;height:7px
 </div>
 
 <script>/* 내용 파일은 매번 새로 받는다 — 브라우저에 남은 옛 내용이 보이지 않게(11/18) */
-["data.js","pets.js","photos.js"].forEach(f => document.write('<script src="' + f + '?v=' + Date.now() + '"><\/script>'));</script>
+["data.js","freestyles.js","photos.js"].forEach(f => document.write('<script src="' + f + '?v=' + Date.now() + '"><\/script>'));</script>
 <script>
 (function () {
 "use strict";
 const N = window.NOTICE || {};
-const PETS = Array.isArray(window.PETS) ? window.PETS : [];
+const FS = Array.isArray(window.FREESTYLES) ? window.FREESTYLES : [];
 const PHOTOS = window.PHOTOS || {};
-const ICONS = window.PET_ICONS || {};
-const SUBS = Array.isArray(window.SUBS) ? window.SUBS : [];
+const PETS = [], SUBS = [];   // 펫 가이드 전용 블록(growth · pools)이 참조하는 이름 — 이 페이지에선 비어 있다
 const qs = new URLSearchParams(location.search);
 const SHOT = qs.has("shot");
 if (SHOT) document.documentElement.classList.add("shot");
@@ -571,38 +631,28 @@ const LANGS = ["kr", "en", "jp"].filter(l => N[l]);
 const HTML_LANG = { kr: "ko", en: "en", jp: "ja" };
 const LANG_NAME = { kr: "KR", en: "EN", jp: "JP" };
 
-/* 등급별 언어 무관 값(만렙·재료 경험치) — 펫 시스템 가이드(10/26) 기준. 색은 화면 규칙. */
+/* 사이클(점프슛 · 레이업 · 덩크)별 색 — 카드 위 표시 · 팝업 배지 */
 const GD = {
-  P: { c: "#8E7CF0", d: "#6A55DC", l: "#C9C0F8", b: "#F1EEFD", max: 15, feed: 200 },
-  G: { c: "#E0A400", d: "#9C7000", l: "#F4D77A", b: "#FDF5DC", max: 12, feed: 50 },
-  S: { c: "#8FA3B8", d: "#5A6D82", l: "#CDD7E1", b: "#EEF2F6", max: 6, feed: 20 },
-  B: { c: "#C9875A", d: "#94592F", l: "#E8C4A9", b: "#F9EFE7", max: 3, feed: 10 }
+  jump:  { c: "#3B82F6", d: "#1D5FCF", l: "#A9C8FB", b: "#EAF2FF" },
+  layup: { c: "#10A37F", d: "#0B7A5F", l: "#9EDFCB", b: "#E6F7F1" },
+  dunk:  { c: "#F2541B", d: "#C23D0B", l: "#FBB79C", b: "#FFEEE7" }
 };
-const ORDER = ["P", "G", "S", "B"];
+const ORDER = ["jump", "layup", "dunk"];
 
 /* 화면 고정 문구의 정본은 data.js 의 NOTICE[L].ui. 없거나 키가 빠지면 아래 KR 값으로 대체한다. */
 const UI_KR = {
-  search: "펫 이름 또는 능력으로 찾기", all: "전체", unit: "종",
-  grade: { P: "플래티넘", G: "골드", S: "실버", B: "브론즈" },
-  unique: "고유 능력", maxLv: "만렙", sub: "서브 능력 칸", subUp: "서브 강화", feedExp: "재료 경험치", how: "얻는 방법",
-  subsCan: "이 등급에 붙을 수 있는 서브 능력", prev: "이전", next: "다음", close: "닫기", none: "없음",
-  photo: "사진 준비 중", issues: "확인된 이슈",
-  gradeInfo: {
-    P: { sub: "3칸 · Lv.3 · 6 · 9 해금", up: "Lv.12 · 15", how: "입양 불가 · <b>골드 펫 조합</b> 성공(25%)으로만 얻을 수 있습니다." },
-    G: { sub: "2칸 · Lv.3 · 6 해금", up: "Lv.9", how: "<b>입양</b> 5%(골드 15종) 또는 <b>실버 펫 조합</b> 성공(40%)" },
-    S: { sub: "1칸 · Lv.3 해금", up: "", how: "<b>입양</b> 25%(실버 4종) 또는 <b>브론즈 펫 조합</b> 성공(60%)" },
-    B: { sub: "", up: "", how: "<b>입양</b> 70%(브론즈 6종)" }
-  },
-  /* ui 형식 밖의 보조 문구 — ui 에 같은 키가 있으면 그 값을 쓴다 */
-  clear: "검색어 지우기", noResult: "찾는 펫이 없습니다. 다른 이름이나 능력으로 찾아보세요.", info: "펫 정보",
-  gradeL: "등급", feedNote: "이 펫을 재료로 쓸 때", mock: "임시 사진", dialog: "펫 상세 정보", tabs: "단원 메뉴"
+  search: "프리스타일 이름 검색", all: "전체", unit: "종",
+  grade: { jump: "점프슛", layup: "레이업", dunk: "덩크" },
+  before: "변경 전", after: "변경 후", isNew: "신규", newOnly: "새로 추가된 프리스타일이라 변경 전 영상이 없습니다.",
+  was: "이전 이름", replay: "처음부터 같이 보기", slow: "느리게", normal: "보통 속도", videoNote: "",
+  prev: "이전", next: "다음", close: "닫기", none: "없음", photo: "사진 준비 중", mock: "개발 중 화면",
+  clear: "검색어 지우기", noResult: "찾는 프리스타일이 없습니다.", dialog: "프리스타일 영상 비교", tabs: "단원 메뉴", zoom: "크게 보기"
 };
-/* 보조 문구만 언어별 기본값을 둔다(ui 형식 키는 KR 로만 대체) */
 const UI_EXTRA = {
-  en: { clear: "Clear search", noResult: "No pets found. Try another name or ability.", info: "Pet info", gradeL: "Grade", feedNote: "when used as material", mock: "Temporary image", dialog: "Pet details", tabs: "Sections" },
-  jp: { clear: "検索語を消す", noResult: "該当するペットがありません。", info: "ペット情報", gradeL: "等級", feedNote: "素材として使ったとき", mock: "仮画像", dialog: "ペット詳細", tabs: "目次" }
+  en: { clear: "Clear search", noResult: "No Freestyles found.", dialog: "Freestyle video comparison", tabs: "Sections", zoom: "Zoom" },
+  jp: { clear: "検索語を消す", dialog: "フリースタイル動画比較", tabs: "目次", zoom: "拡大" }
 };
-const GRADE_ALIAS = { P: ["Platinum", "プラチナ"], G: ["Gold", "ゴールド"], S: ["Silver", "シルバー"], B: ["Bronze", "ブロンズ"] };
+const GRADE_ALIAS = { jump: ["Jump Shot"], layup: ["Layup"], dunk: ["Dunk"] };
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -629,19 +679,17 @@ function U() {
   if (UCACHE && UCACHE_L === L) return UCACHE;
   const src = (N[L] && N[L].ui) || {};
   const u = Object.assign({}, UI_KR, UI_EXTRA[L] || {}, src);
-  u.grade = Object.assign({}, UI_KR.grade, src.grade || {});
-  u.gradeInfo = {};
-  ORDER.forEach(k => { u.gradeInfo[k] = Object.assign({}, UI_KR.gradeInfo[k], (src.gradeInfo || {})[k] || {}); });
+  u.grade = Object.assign({}, UI_KR.grade, src.cat || src.grade || {});
   UCACHE = u; UCACHE_L = L; return u;
 }
 /* 이름·능력: 현재 언어 → en → kr */
 const petName = p => p[L] || p.en || p.kr || "";
-const abil = p => p.ability ? (p.ability[L] || p.ability.en || p.ability.kr || "") : "";
+const abil = p => (U().grade || {})[p.cat] || "";
 /* 표·막대의 첫 칸이 등급 이름이면 등급색 점을 붙인다(세 언어 이름 모두 인식) */
 const GRADE_NAMES = {};
 ORDER.forEach(k => {
   const names = [UI_KR.grade[k]].concat(GRADE_ALIAS[k]);
-  ["kr", "en", "jp"].forEach(l => { const g = N[l] && N[l].ui && N[l].ui.grade; if (g && g[k]) names.push(g[k]); });
+  ["kr", "en", "jp"].forEach(l => { const g = N[l] && N[l].ui && (N[l].ui.cat || N[l].ui.grade); if (g && g[k]) names.push(g[k]); });
   names.forEach(n => { GRADE_NAMES[String(n).trim().toLowerCase()] = k; });
 });
 const gradeOf = name => GRADE_NAMES[String(name == null ? "" : name).replace(/<[^>]*>/g, "").trim().toLowerCase()] || null;
@@ -670,18 +718,9 @@ function photoHTML(key, marks, cls) {
 function pinNums(marks) { let n = 0; return (marks || []).map(m => m ? ++n : 0); }
 window.__phFail = img => { const box = img.parentNode; if (box) box.outerHTML = phEmpty(img.dataset.label || ""); };
 
-/* ── 펫 아이콘: 없음·로드 실패 → 이름 첫 글자를 등급색 사각형에 ── */
-function letterOf(p) { return Array.from(String(petName(p)).trim())[0] || "?"; }
-function iconHTML(p) {
-  const src = ICONS[p.kr];
-  return src
-    ? `<img src="${esc(src)}" alt="" data-l="${esc(letterOf(p))}" onerror="__icFail(this)">`
-    : `<span class="lt" aria-hidden="true">${esc(letterOf(p))}</span>`;
-}
-window.__icFail = img => {
-  const s = document.createElement("span"); s.className = "lt"; s.setAttribute("aria-hidden", "true");
-  s.textContent = img.dataset.l || "?"; img.replaceWith(s);
-};
+/* ── 썸네일: 새 영상에서 뽑은 한 장(img/thumb/<code>.jpg) ── */
+const PLAY = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1l9 5-9 5z"/></svg>';
+function iconHTML(p) { return `<img src="img/thumb/${p.code}.jpg?v=1118b" alt="" loading="lazy" onerror="this.remove()">`; }
 
 /* ── 블록 ── */
 /* 비교표 항목 배지: data 행 4번째 값 up 개선 / change 변경 / keep 유지 (2026-11-18 사용자 지시 — "좋아진 점" 은 한국어 UI 에서 어색) */
@@ -728,8 +767,10 @@ const R = {
     return `<div class="blk">${head}${fig}${noteHTML(b.note)}</div>`;
   },
   alert: b => `<div class="alert"><span class="ic" aria-hidden="true">!</span><div>${b.text || ""}${b.photo ? photoHTML(b.photo) : ""}</div></div>`,
-  table: b => box(b, `${descHTML(b.text)}<div class="tw"><table class="t"><thead><tr>${(b.head || []).map(h => `<th scope="col">${h}</th>`).join("")}</tr></thead><tbody>${(b.rows || []).map(r =>
-    `<tr>${r.map((c, j) => { if (j) return `<td>${c}</td>`; const k = gradeOf(c); return `<th scope="row">${k ? `<i class="gdot" style="${gVars(k)}"></i>` : ""}${c}</th>`; }).join("")}</tr>`).join("")}</tbody></table></div>${noteHTML(b.note)}`),
+  // 첫 칸이 "" 인 행은 위 행의 첫 칸과 합친다(rowspan). grid: true 면 모든 칸을 사각형 테두리로(2026-11-18 사용자 지시)
+  table: b => { const R = b.rows || [], span = i => { let n = 1; while (R[i + n] && R[i + n][0] === "") n++; return n; };
+    return box(b, `${descHTML(b.text)}<div class="tw"><table class="t${b.grid ? " boxed" : ""}"><thead><tr>${(b.head || []).map(h => `<th scope="col">${h}</th>`).join("")}</tr></thead><tbody>${R.map((r, i) =>
+    `<tr>${r.map((c, j) => { if (j) return `<td>${c}</td>`; if (c === "" && i) return ""; const k = gradeOf(c), n = span(i); return `<th scope="row"${n > 1 ? ` rowspan="${n}"` : ""}>${k ? `<i class="gdot" style="${gVars(k)}"></i>` : ""}${c}</th>`; }).join("")}</tr>`).join("")}</tbody></table></div>${noteHTML(b.note)}`); },
   facts: b => { const nums = pinNums(b.marks);
     // 번호는 항목 이름 뒤에 작게('화면 구성 ①') — 항목 이름은 모두 같은 위치에서 시작(10/28 피드백)
     return box(b, `${descHTML(b.text)}<dl class="facts${nums.some(Boolean) ? " pn" : ""}">${(b.items || []).map((f, i) => `<div><dt>${f[0] || ""}${nums[i] ? `<span class="pnum">${nums[i]}</span>` : ""}</dt><dd>${f[1] || ""}</dd></div>`).join("")}</dl>${noteHTML(b.note)}`); },
@@ -745,7 +786,7 @@ const R = {
   deadline: b => `<div class="blk"><details class="fold"${!b.fold || SHOT ? " open" : ""}><summary><h3>${b.label || ""}</h3><span class="dd-badge" data-dl="${esc(b.deadline || "")}"></span>${SVG.chev}</summary><div class="fold-bd">${descHTML(b.text)}${b.v ? `<div class="dl-v">${b.v}</div>` : ""}${(b.items || []).length ? `<ul class="chips">${b.items.map(x => `<li>${x}</li>`).join("")}</ul>` : ""}${noteHTML(b.note)}</div></details></div>`,
   /* ── 변경 펫 개요(기획 PDF '펫 가이드 · 변경점 오버뷰' 10/28 구성) ── */
   // 핵심 변경점 카드 01~05
-  keys: b => `<div class="blk"><ol class="keys">${(b.items || []).map((k, i) => `<li><span class="kn">${String(i + 1).padStart(2, "0")}</span><b>${k[0]}</b><p>${k[1]}</p></li>`).join("")}</ol></div>`,
+  keys: b => `<div class="blk"><ol class="keys" style="--kc:${(b.items || []).length || 5}">${(b.items || []).map((k, i) => `<li><span class="kn">${String(i + 1).padStart(2, "0")}</span><b>${k[0]}</b><p>${k[1]}</p></li>`).join("")}</ol></div>`,
   // 기존 → 변경 흐름 두 칸 + 아래 알림
   duo: b => {
     const flow = (f, hot) => `<div class="flow">${(f || []).map((s, i, a) => `<span class="fs${hot && i === a.length - 1 ? " hot" : ""}">${s}</span>${i < a.length - 1 ? '<i class="fa">→</i>' : ""}`).join("")}</div>`;
@@ -822,85 +863,78 @@ function issuesHTML(t) {
     : `<p class="iss-empty">${t.issuesEmpty || ""}</p>`}</div>`;
 }
 
-/* ── 펫 도감 ── */
+/* ── 프리스타일 도감 ── */
 let Q = "", GF = "all", VIEW = [];
-const HAY = PETS.map(p => norm([p.kr, p.en, p.jp, p.ability && p.ability.kr, p.ability && p.ability.en, p.ability && p.ability.jp].filter(Boolean).join("|")));
+const HAY = FS.map(p => norm([p.kr, p.en, p.jp, p.was && p.was.kr, p.code].filter(Boolean).join("|")));
 function cardHTML(i) {
-  const p = PETS[i], u = U();
-  return `<button type="button" class="pet" data-i="${i}" style="${gVars(p.grade)}"><span class="ic">${iconHTML(p)}<span class="gt"><i></i>${esc(u.grade[p.grade] || p.grade || "")}</span></span><b>${esc(petName(p))}</b><small>${esc(abil(p))}</small></button>`;
+  const p = FS[i], u = U();
+  return `<button type="button" class="pet" data-i="${i}" style="${gVars(p.cat)}"><span class="ic">${iconHTML(p)}<span class="gt"><i></i>${esc(u.grade[p.cat] || "")}</span>${p.isNew ? `<span class="newt">${esc(u.isNew)}</span>` : ""}<span class="play">${PLAY}</span></span><b>${esc(petName(p))}</b>${u.compareHint && !p.isNew ? `<small>${esc(u.compareHint)}</small>` : ""}</button>`;
 }
 function renderDex() {
   const grid = $("#dxgrid"); if (!grid) return;
   const u = U(), nq = norm(Q);
-  const hit = PETS.map((p, i) => i).filter(i => !nq || HAY[i].includes(nq));
-  const cnt = { all: hit.length }; ORDER.forEach(k => cnt[k] = hit.filter(i => PETS[i].grade === k).length);
+  const hit = FS.map((p, i) => i).filter(i => !nq || HAY[i].includes(nq));
+  const cnt = { all: hit.length }; ORDER.forEach(k => cnt[k] = hit.filter(i => FS[i].cat === k).length);
   $("#dxg").innerHTML = ["all"].concat(ORDER).map(k =>
     `<button type="button" data-g="${k}" class="${GF === k ? "on" : ""}" aria-pressed="${GF === k}"${k === "all" ? "" : ` style="${gVars(k)}"`}>${k === "all" ? "" : '<i class="gdot"></i>'}${k === "all" ? u.all : u.grade[k]} <em>${cnt[k]}</em></button>`).join("");
-  VIEW = hit.filter(i => GF === "all" || PETS[i].grade === GF);
-  grid.innerHTML = VIEW.map(cardHTML).join("");
+  VIEW = hit.filter(i => GF === "all" || FS[i].cat === GF);
+  // '전체'일 때는 점프슛 · 레이업 · 덩크를 칸으로 나눠 제목을 붙인다(11/17 사용자 요청). 영상 이전/다음 순서도 칸 순서와 같게
+  if (GF === "all") VIEW = ORDER.flatMap(k => VIEW.filter(i => FS[i].cat === k));
+  grid.innerHTML = GF !== "all" ? VIEW.map(cardHTML).join("")
+    : ORDER.map(k => { const g = VIEW.filter(i => FS[i].cat === k); return g.length ? `<h4 class="dxh" style="${gVars(k)}"><i class="gdot"></i>${esc(u.grade[k] || "")}<em>${g.length}</em></h4>` + g.map(cardHTML).join("") : ""; }).join("");
   $("#dxn").innerHTML = `<strong>${VIEW.length}</strong>${esc(u.unit)}`;
   const e = $("#dxe"); e.hidden = VIEW.length > 0; e.textContent = u.noResult;
   $("#dxs").classList.toggle("has", !!Q);
 }
 
-/* ── 펫 상세 팝업 ── */
+/* ── 영상 비교 팝업: 변경 전 · 후를 나란히, 같이 처음부터 · 느리게 ── */
 const ov = $("#ov"), dlg = $("#dlg"), dlgB = $("#dlgB"), btnP = $("#dlgP"), btnN = $("#dlgNx");
-let CUR = -1, LIST = [], lastFocus = null;
-/* "이 등급에 붙을 수 있는 서브 능력" + 개수. 문구에 {n} 이 있으면 그 자리에 넣고,
-   없으면 단위가 한·일 글자(종/種)일 때 "N종", 영문 단위일 때 "(N)" 으로 붙인다 */
-const subsCanHTML = (u, n) => {
-  const s = String(u.subsCan || ""), unit = String(u.unit || "");
-  if (s.indexOf("{n}") >= 0) return s.replace("{n}", `<b>${n}</b>`);
-  return /^[\s\w]/.test(unit) || !unit ? `${s} (<b>${n}</b>)` : `${s} <b>${n}</b>${esc(unit)}`;
-};
-const num = v => { const n = parseFloat(String(v == null ? "" : v).replace(/[^0-9.\-]/g, "")); return isFinite(n) ? n : NaN; };
+let CUR = -1, LIST = [], lastFocus = null, RATE = 1;
+const vids = () => Array.from(dlgB.querySelectorAll("video"));
+/* Lv.1 능력치 전·후 — 숫자는 freestyles.js 의 FS_STAT(인게임 밸런스 v11) */
+function statHTML(p, u) {
+  const S = window.FS_STAT; if (!S || S.hold) return "";
+  const nm = k => (S.names[k] && (S.names[k][L] || S.names[k].kr)) || k;
+  const f = v => "+" + (Math.round(v * 100) / 100) + "%";
+  const LV = [1, 2, 3, 4, 5];
+  // 표 하나: 머리줄 = 레벨 · 능력치들 · 횟수, 줄 = Lv.1~5
+  const tbl = (cls, cap, cols, val, uses, useLbl) =>
+    `<div class="vst-c ${cls}"><b>${esc(cap)}</b><div class="vst-tw"><table class="vst-t"><thead><tr><th scope="col">${esc(u.lv || "Lv.")}</th>${cols.map(k => `<th scope="col">${esc(nm(k))}</th>`).join("")}<th scope="col">${esc(useLbl)}</th></tr></thead><tbody>` +
+    LV.map((n, i) => `<tr><th scope="row">Lv.${n}</th>${cols.map((k, j) => `<td>${esc(val(j, i))}</td>`).join("")}<td>${esc(String(uses[i]))}</td></tr>`).join("") +
+    `</tbody></table></div></div>`;
+  const N = S.neu[p.grp || p.cat], O = p.isNew ? null : S.old[p.code];
+  const bef = O ? tbl("bef", u.before, O.s.map(x => x[0]), (j, i) => f(O.s[j][1] * (i + 1)), O.u, u.useOld || "") : "";
+  const aft = N ? tbl("aft", u.after, N.s.map(x => x[0]), (j, i) => f(N.s[j][1][i]), N.u, u.useNew || "") : "";
+  const note = p.cat === "dunk" && u.statDunk ? `<p class="vst-n">${esc(u.statDunk)}</p>` : "";
+  return `<section class="vst"><h3>${esc(u.statTitle || "")}</h3><div class="vst-g${bef ? "" : " one"}">${bef}${aft}</div>${note}</section>`;
+}
 function fillPet() {
-  const p = PETS[CUR], g = GD[p.grade] || GD.B, u = U(), gi = u.gradeInfo[p.grade] || {};
-  dlg.setAttribute("style", gVars(p.grade));
-  const shown = petName(p);
-  const a = num(p.lv1), z = num(p.max);
-  const ratio = a > 0 && z > 0 ? Math.max(3, Math.min(100, a / z * 100)) : null;
-  const subs = SUBS.filter(s => s && Array.isArray(s.grades) && s.grades.indexOf(p.grade) >= 0);
+  const p = FS[CUR], u = U();
+  dlg.setAttribute("style", gVars(p.cat));
+  const was = p.was && p.was[L];   // 이전 이름은 그 언어로 있을 때만
+  const v = (dir, cls, cap) => `<figure class="${cls}"><video src="video/${dir}/${p.code}.mp4?v=1118c" muted loop playsinline autoplay preload="auto"></video><figcaption>${esc(cap)}</figcaption></figure>`;
   dlgB.innerHTML =
-    `<div class="pv-top"><div class="pv-ic">${iconHTML(p)}</div><div><span class="gbadge"><i></i>${esc(u.grade[p.grade] || p.grade || "")}</span><h2 id="dlgT">${esc(shown)}</h2></div></div>` +   /* 다른 언어 이름은 보여 주지 않는다 — 언어별 화면엔 그 언어만(10/28) */
-    `<section class="pv-sec"><h3>${u.unique}</h3><div class="abox"><b>${esc(abil(p))}</b>` +
-      `<div class="lvv"><span>Lv.1<strong>${esc(p.lv1 == null ? "–" : p.lv1)}</strong></span><span class="ar" aria-hidden="true">→</span><span class="r">Lv.${g.max} · ${u.maxLv}<strong>${esc(p.max == null ? "–" : p.max)}</strong></span></div>` +
-      (Array.isArray(p.lvs) && p.lvs.length > 1
-        // 레벨 슬라이더: 끌면 그 레벨의 고유 능력 값(pets.js lvs, 라이브 STATIC 레벨별 값). 열릴 때 Lv.1 → 만렙으로 차오른다
-        ? `<div class="lvs"><div class="lvs-h"><span>Lv.<b class="lvN">${SHOT ? p.lvs.length : 1}</b></span><strong class="lvV">${esc(SHOT ? p.lvs[p.lvs.length - 1] : p.lvs[0])}</strong></div><input type="range" class="lvr" min="1" max="${p.lvs.length}" step="1" value="${SHOT ? p.lvs.length : 1}" aria-label="Lv" style="--p:${SHOT ? 100 : 0}%"></div></div></section>`
-        : `<div class="lvb${SHOT ? " go" : ""}" aria-hidden="true" style="--from:${ratio != null ? ratio.toFixed(1) : 100}%"><i class="fill"></i>${ratio != null ? "<em></em>" : ""}</div></div></section>`) +
-    `<section class="pv-sec"><h3>${u.info}</h3><table class="info"><tbody>` +
-      `<tr><th scope="row">${u.gradeL}</th><td><i class="gdot"></i>${esc(u.grade[p.grade] || p.grade || "")}</td></tr>` +
-      `<tr><th scope="row">${u.maxLv}</th><td>Lv.${g.max}</td></tr>` +
-      `<tr><th scope="row">${u.sub}</th><td>${gi.sub || u.none}</td></tr>` +
-      `<tr><th scope="row">${u.subUp}</th><td>${gi.up && gi.up !== "–" && gi.up !== "-" ? gi.up : u.none}</td></tr>` +
-      `<tr><th scope="row">${u.feedExp}</th><td>${g.feed} <span class="sm">${u.feedNote}</span></td></tr>` +
-      `<tr><th scope="row">${u.how}</th><td><div class="how">${gi.how || ""}</div></td></tr>` +
-    `</tbody></table></section>` +
-    (subs.length ? `<details class="pv-subs"${SHOT ? " open" : ""}><summary><span>${subsCanHTML(u, subs.length)}</span>${SVG.chev}</summary><ul class="chips">${subs.map(s =>
-      `<li>${esc(tx(s.name))}${s.value != null && s.value !== "" ? ` <em>${esc(s.value)}</em>` : ""}</li>`).join("")}</ul></details>` : "");
+    `<div class="vc-top"><span class="gbadge"><i></i>${esc(u.grade[p.cat] || "")}</span>${p.isNew ? ` <span class="gbadge" style="--gd:#fff;--gb:#FF4D6D">${esc(u.isNew)}</span>` : ""}<h2 id="dlgT">${esc(petName(p))}</h2>${was ? `<p class="alt">${esc(u.was)}: ${esc(was)}</p>` : ""}</div>` +
+    (p.isNew
+      ? `<div class="vc one">${v("after", "aft", u.after)}</div><p class="vc-new">${esc(u.newOnly)}</p>`
+      : `<div class="vc">${v("before", "bef", u.before)}${v("after", "aft", u.after)}</div>`) +
+    `<div class="vc-ctl"><button type="button" data-vc="replay">${esc(u.replay)}</button><button type="button" data-vc="slow" aria-pressed="${RATE < 1}">${esc(RATE < 1 ? u.normal : u.slow)}</button></div>` +
+    statHTML(p, u) +
+    (u.videoNote ? `<p class="vc-note">※ ${esc(u.videoNote)}</p>` : "");
+  vids().forEach(x => { x.playbackRate = RATE; if (SHOT) { x.removeAttribute("autoplay"); x.currentTime = 1.5; } });
   const k = LIST.indexOf(CUR);
   btnP.disabled = k <= 0; btnN.disabled = k < 0 || k >= LIST.length - 1;
   $("#dlgN").textContent = `${k + 1} / ${LIST.length}`;
   dlgB.scrollTop = 0;
-  const bar = dlgB.querySelector(".lvb");   // 그린 다음 프레임에 차오르기 시작
-  if (bar && !SHOT) { void bar.offsetWidth; setTimeout(() => bar.classList.add("go"), 30); }   // 강제 리플로 후 클래스 → 전환이 시작점부터 그려진다
-  const r = dlgB.querySelector(".lvr");
-  if (r) {
-    const p = PETS[CUR], n = p.lvs.length, lvN = dlgB.querySelector(".lvN"), lvV = dlgB.querySelector(".lvV");
-    const show = l => { r.value = l; lvN.textContent = l; lvV.textContent = p.lvs[l - 1]; r.style.setProperty("--p", ((l - 1) / (n - 1) * 100) + "%"); };
-    r.addEventListener("input", () => { clearInterval(lvTimer); show(+r.value); });
-    clearInterval(lvTimer);
-    if (!SHOT && !matchMedia("(prefers-reduced-motion: reduce)").matches) {   // Lv.1 → 만렙 차오르기
-      let l = 1; show(1);
-      lvTimer = setInterval(() => { l++; show(l); if (l >= n) clearInterval(lvTimer); }, Math.max(45, Math.round(900 / n)));
-    } else show(n);
-  }
 }
-let lvTimer = 0;
-function setPetParam(name) {
+dlgB.addEventListener("click", e => {
+  const b = e.target.closest("[data-vc]"); if (!b) return;
+  if (b.dataset.vc === "replay") vids().forEach(x => { x.currentTime = 0; x.play().catch(() => {}); });
+  else { RATE = RATE < 1 ? 1 : 0.5; vids().forEach(x => x.playbackRate = RATE); const u = U(); b.textContent = RATE < 1 ? u.normal : u.slow; b.setAttribute("aria-pressed", RATE < 1); }
+});
+function setPetParam(code) {
   const p = new URLSearchParams(location.search);
-  if (name) p.set("pet", name); else p.delete("pet");
+  if (code) p.set("fs", code); else p.delete("fs");
   const s = p.toString();
   try { history.replaceState(history.state, "", location.pathname + (s ? "?" + s : "") + location.hash); } catch (e) { /* file:// 등 */ }
 }
@@ -910,20 +944,22 @@ function lockScroll(on) {
   else { de.classList.remove("lock"); document.body.style.paddingRight = ""; }
 }
 function openPet(i, list) {
-  if (!PETS[i]) return;
+  if (!FS[i]) return;
   LIST = list && list.indexOf(i) >= 0 ? list : (VIEW.indexOf(i) >= 0 ? VIEW.slice() : [i]);
   CUR = i;
+  dlg.classList.add("vid");
   fillPet();
   if (ov.hidden) {
     lastFocus = document.activeElement;
     lockScroll(true); ov.hidden = false;
     dlg.focus({ preventScroll: true });
   }
-  setPetParam(PETS[i].kr);
+  setPetParam(FS[i].code);
 }
 function closePet() {
   if (ov.hidden) return;
-  ov.hidden = true; lockScroll(false); setPetParam(null);
+  vids().forEach(x => x.pause());
+  ov.hidden = true; lockScroll(false); setPetParam(null); dlgB.innerHTML = "";   // 닫으면 영상도 멈추고 내린다
   const card = document.querySelector(`.pet[data-i="${CUR}"]`);
   const back = card || (lastFocus && document.contains(lastFocus) ? lastFocus : null);
   if (back && back.focus) back.focus({ preventScroll: true });
@@ -932,7 +968,7 @@ function closePet() {
 function stepPet(d) {
   const k = LIST.indexOf(CUR) + d;
   if (k < 0 || k >= LIST.length) return;
-  CUR = LIST[k]; fillPet(); setPetParam(PETS[CUR].kr);
+  CUR = LIST[k]; fillPet(); setPetParam(FS[CUR].code);
 }
 function trapTab(e) {
   const f = Array.from(dlg.querySelectorAll('button:not([disabled]),summary,a[href],input,[tabindex]:not([tabindex="-1"])')).filter(x => x.offsetParent !== null);
@@ -952,7 +988,6 @@ ov.addEventListener("click", e => { if (e.target === ov && downOnOv) closePet();
 document.addEventListener("keydown", e => {
   if (ov.hidden) return;
   if (e.key === "Escape") { e.preventDefault(); closePet(); }
-  else if (e.target.classList && e.target.classList.contains("lvr")) return;   // 레벨 슬라이더의 ←/→ 는 레벨 이동
   else if (e.key === "ArrowLeft") { e.preventDefault(); stepPet(-1); }
   else if (e.key === "ArrowRight") { e.preventDefault(); stepPet(1); }
   else if (e.key === "Tab") trapTab(e);
@@ -1084,10 +1119,10 @@ setInterval(tick, 60000);
 // 링크로 들어오면 항상 맨 위에서 시작한다 — 주소에 #칸이 붙어 있어도 그 칸으로 내려가지 않고, #칸 표시도 지운다(10/28·11/17 사용자 지시)
 if (location.hash) { try { history.replaceState(history.state, "", location.pathname + location.search); } catch (_) {} }
 scrollTo(0, 0);
-/* ?pet=<한글 이름> 으로 들어오면 바로 열기 */
-const want = qs.get("pet");
+/* ?fs=<코드> 로 들어오면 그 프리스타일 영상 바로 열기 */
+const want = qs.get("fs");
 if (want) {
-  const i = PETS.findIndex(p => p.kr === want || p.en === want || p.jp === want);
+  const i = FS.findIndex(p => String(p.code) === want);
   if (i >= 0) openPet(i, VIEW.slice()); else setPetParam(null);
 }
 })();
