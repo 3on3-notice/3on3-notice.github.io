@@ -28,7 +28,7 @@ window.SITE = {
           tags: { new: "新規", renew: "改編", change: "変更", event: "イベント", end: "終了", reward: "配布", limit: "期限" } }
   },
   pages: [
-    { id: "freestyle", path: "/freestyle/", date: "2026-11-18", state: "live", color: "#6E3BF2", art: "/freestyle/bg.jpg",
+    { id: "freestyle", path: "/freestyle/", date: "2026-11-18", state: "live", color: "#6E3BF2", art: "/img/links/freestyle-guide.jpg",
       kr: { title: "프리스타일 가이드", desc: "새로워진 프리스타일 — 구매 · 사이클 · 강화와 모션 변경 전 · 후 영상" },
       en: { title: "Freestyle Guide", desc: "The renewed Freestyle — buying, cycles, enhancement and before/after motion videos" },
       jp: { title: "フリースタイルガイド", desc: "リニューアルされたフリースタイル — 購入・サイクル・強化とモーション変更前後の動画" } },
