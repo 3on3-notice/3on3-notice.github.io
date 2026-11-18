@@ -1,0 +1,1132 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>프리스타일 가이드</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%236E3BF2'/%3E%3Ccircle cx='16' cy='16' r='8.5' fill='none' stroke='%23fff' stroke-width='2.4'/%3E%3Cpath d='M7.5 16h17M16 7.5v17' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+/* 프리스타일 가이드 화면 — 펫 가이드(/preview/pet/) 화면 엔진을 그대로 가져와 도감을 '변경 전·후 영상 비교'로 바꿨다. 내용은 data.js / freestyles.js / photos.js 에서만 온다. */
+:root{
+  --bg:#F5F6F7;--card:#fff;--line:#E5E8EB;--line2:#F2F4F6;
+  --t1:#191F28;--t2:#4E5968;--t3:#8B95A1;--t4:#B0B8C1;
+  --or:#6E3BF2;--or-d:#5526D6;--or-bg:#F4EFFF;
+  --gnb:48px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--t1);font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Malgun Gothic","맑은 고딕","Apple SD Gothic Neo","Yu Gothic UI",Meiryo,sans-serif;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-wrap:break-word}
+html:lang(ko) body{word-break:keep-all}
+html:lang(ja) body{font-family:"Pretendard Variable",Pretendard,"Yu Gothic UI","Yu Gothic",Meiryo,"Hiragino Sans",-apple-system,"Malgun Gothic",sans-serif;line-break:strict}
+ul,ol{list-style:none}
+a{color:inherit}
+button{font:inherit;color:inherit}
+summary{list-style:none;cursor:pointer}
+summary::-webkit-details-marker{display:none}
+:focus-visible{outline:2px solid var(--t1);outline-offset:2px}
+.in{max-width:1180px;margin:0 auto;padding:0 20px}
+.sm{font-size:12.5px;color:var(--t3)}
+
+/* ── 헤더 ── */
+.hd{background:#fff}
+.hd .in{height:56px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{display:flex;align-items:center;gap:8px;font-size:19px;font-weight:800;letter-spacing:-.4px;text-decoration:none;color:var(--t1)}
+.logo svg{width:26px;height:26px;flex:none}
+.langs{display:flex;align-items:center}
+.langs button{position:relative;border:0;background:none;font-size:13px;color:var(--t3);padding:4px 10px;cursor:pointer}
+.langs button+button::before{content:"";position:absolute;left:0;top:50%;width:1px;height:10px;margin-top:-5px;background:var(--line)}
+.langs button.on{color:var(--t1);font-weight:700}
+
+/* ── 탭 메뉴(GNB) ── */
+.gnb{position:sticky;top:0;z-index:30;background:#fff;border-bottom:1px solid var(--line)}
+.tabs{position:relative;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;margin:0 -10px}
+.tabs::-webkit-scrollbar{display:none}
+.tabs a{position:relative;flex:none;display:flex;align-items:center;height:var(--gnb);padding:0 10px;font-size:15px;font-weight:600;color:var(--t2);text-decoration:none;white-space:nowrap}
+.tabs a:hover{color:var(--t1)}
+.tabs a.on{color:var(--t1)}
+.tabs a.on::after{content:"";position:absolute;left:10px;right:10px;bottom:0;height:2px;background:var(--t1)}
+/* 탭이 넘치면 가장자리에 흐림 표시 */
+.gnb .in{position:relative}
+.gnb .in::before,.gnb .in::after{content:"";position:absolute;top:0;bottom:0;width:32px;z-index:1;pointer-events:none;opacity:0;transition:opacity .15s}
+.gnb .in::before{left:0;background:linear-gradient(90deg,#fff 20%,rgba(255,255,255,0))}
+.gnb .in::after{right:0;background:linear-gradient(270deg,#fff 20%,rgba(255,255,255,0))}
+.gnb.more-l .in::before,.gnb.more-r .in::after{opacity:1}
+
+/* ── 본문 1단: 배너 → 확인된 이슈 → 단원 (오른쪽 칸 없음, 10/28 사용자 지시) ── */
+.layout{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"banner" "main";gap:16px;align-items:start;padding-top:20px;padding-bottom:56px}
+.banner{grid-area:banner}
+.side{grid-area:side}
+main{grid-area:main;min-width:0}
+
+/* 배너 카드 */
+.banner{position:relative;height:220px;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#1E1446 url(bg.jpg) right center/cover no-repeat}
+.banner::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(24,14,64,.92) 0%,rgba(24,14,64,.6) 50%,rgba(24,14,64,.1) 80%)}
+.banner .bt h1,.banner .bt p{color:#fff}.banner .bt p{opacity:.88}
+.banner .bt{position:relative;z-index:2;padding:28px 32px;max-width:60%}
+.ribbon{display:inline-block;font-size:12.5px;font-weight:700;color:#fff;background:var(--or);border-radius:4px;padding:3px 9px;letter-spacing:.1px}
+.ribbon:empty{display:none}
+.banner h1{font-size:30px;font-weight:800;letter-spacing:-.8px;line-height:1.25;margin:12px 0 8px}
+.banner p{font-size:15px;color:var(--t2);line-height:1.55}
+.banner .art{position:absolute;z-index:1;right:14px;bottom:-2px;height:214px;max-width:46%;object-fit:contain;object-position:right bottom}
+
+/* 확인된 이슈 상자 */
+.box{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.iss-h{display:flex;align-items:center;gap:6px;padding:14px 18px;border-bottom:1px solid var(--line)}
+.iss-h h2{font-size:16px;font-weight:700;letter-spacing:-.2px}
+.iss-h .cnt{font-size:14px;font-weight:700;color:var(--or)}
+.iss details+details{border-top:1px solid var(--line2)}
+.iss summary{position:relative;display:block;padding:14px 40px 14px 18px}
+.iss summary:hover{background:#FAFBFC}
+.iss .ti{display:block;font-size:14px;font-weight:600;line-height:1.45;margin-top:6px}
+.iss .dt{display:block;font-size:12px;color:var(--t3);margin-top:3px}
+.iss summary .chev{position:absolute;right:16px;top:18px}
+.iss .tx{padding:0 18px 16px;font-size:13.5px;color:var(--t2);line-height:1.7}
+.iss-empty{padding:22px 18px;font-size:14px;color:var(--t3)}
+.sb{display:inline-block;font-size:11.5px;font-weight:700;line-height:18px;border-radius:4px;padding:0 6px}
+.sb.checking{background:#FFF6DA;color:#A06A00}
+.sb.planned{background:#EEE7FF;color:var(--or-d)}
+.sb.fixed{background:#E8F3FF;color:#1B64DA}
+.chev{width:16px;height:16px;flex:none;color:var(--t4);transition:transform .2s}
+details[open]>summary .chev{transform:rotate(180deg)}
+
+/* ── 단원 ── */
+.ch{margin-top:40px;scroll-margin-top:calc(var(--gnb) + 14px)}
+.blk[id^="ph-"]{scroll-margin-top:calc(var(--gnb) + 14px)}
+.blk[id^="ph-"]:target{border-color:var(--or);box-shadow:0 0 0 3px var(--or-bg)}
+.ch:first-child{margin-top:12px}
+.ch-h{padding-bottom:12px;margin-bottom:14px;border-bottom:1px solid var(--line)}
+.ch-h h2{font-size:21px;font-weight:800;letter-spacing:-.5px;line-height:1.35}
+.ch-h p{font-size:14.5px;color:var(--t3);margin-top:3px}
+.blk{background:#fff;border:1px solid var(--line);border-radius:10px;padding:22px 24px;margin-bottom:12px}
+.blk h3{font-size:16px;font-weight:700;letter-spacing:-.2px;margin-bottom:12px}
+.desc{font-size:14.5px;color:var(--t2);margin-bottom:14px}
+.rt{font-size:15px;color:var(--t2);line-height:1.7}
+.note{margin-top:12px;font-size:13px;color:var(--t3);line-height:1.6;padding-left:15px;text-indent:-15px}
+/* 사진 붙은 블록: 사진을 가운데 크게 → 아래에 설명 (팀 피드백 10/28 21:57 #6) */
+.wp .fig.big{max-width:880px;margin:0 auto 18px}
+/* 한글은 단어 중간에서 끊지 않는다 (#4 줄바꿈). 일문은 띄어쓰기가 없어 그대로 둔다 */
+html:lang(ko) body{word-break:keep-all}
+.desc,.rt,.facts dd,.steps p,.mi p,.note,.ev-p{text-wrap:pretty}
+
+/* 사진 칸 */
+.ph{position:relative;aspect-ratio:16/9;border-radius:8px;overflow:hidden;background:var(--line2);border:1px solid var(--line)}
+.ph img{display:block;width:100%;height:100%;object-fit:contain}
+.ph.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:8px;text-align:center;font-size:12.5px;color:var(--t3);line-height:1.4}
+.ph.empty svg{width:24px;height:24px;color:var(--t4);margin-bottom:2px}
+.ph.empty .sm{font-size:11.5px;color:var(--t4)}
+.ph .mk{position:absolute;left:8px;top:8px;font-size:11px;font-weight:700;color:#fff;background:rgba(25,31,40,.72);border-radius:4px;padding:1px 6px}
+.fig figcaption{font-size:12.5px;color:var(--t3);margin-top:6px}
+.fig figcaption .lgy{display:block;margin-top:3px;font-size:12px;color:var(--t3)}
+/* 사진 위 번호(설명 항목과 짝) · 돋보기 */
+/* 번호 크기는 사진 폭에 비례(PC 880px 에서 26px) — 폰에서 캐릭터를 가리지 않게 최소 14px 까지 줄인다(10/28 피드백) */
+.ph{container-type:inline-size}
+.ph .pin{position:absolute;width:26px;height:26px;width:clamp(14px,2.95cqw,26px);height:clamp(14px,2.95cqw,26px);transform:translate(-50%,-50%);border-radius:50%;background:var(--or);color:#fff;font-size:13px;font-size:clamp(8.5px,1.48cqw,13px);font-weight:800;line-height:1;display:grid;place-items:center;box-shadow:0 0 0 2px #fff,0 2px 6px rgba(0,0,0,.45);pointer-events:none}
+.ph .zoom{position:absolute;right:8px;bottom:8px;width:34px;height:34px;border:0;border-radius:50%;background:rgba(25,31,40,.72);color:#fff;display:grid;place-items:center;cursor:zoom-in}
+.ph .zoom svg{width:18px;height:18px}
+.ph img{cursor:zoom-in}
+.ph .zoom:hover{background:rgba(25,31,40,.9)}
+@container (max-width:520px){.ph .pin{box-shadow:0 0 0 1.5px #fff,0 1px 3px rgba(0,0,0,.45)}.ph .zoom{width:26px;height:26px;right:6px;bottom:6px}.ph .zoom svg{width:14px;height:14px}}   /* 폰에선 돋보기도 작게(사진 가림 줄이기) */
+.pnum{display:inline-grid;place-items:center;flex:none;width:20px;height:20px;margin-right:6px;border-radius:50%;background:var(--or);color:#fff;font-size:11.5px;font-weight:800;vertical-align:1px}
+.facts.pn>div{grid-template-columns:144px minmax(0,1fr)}
+/* 번호는 항목 이름 뒤에 작게: '화면 구성 ①' (10/28 피드백) */
+.facts.pn .pnum{width:16px;height:16px;margin:0 0 0 5px;font-size:10px;vertical-align:1px}
+/* 크게 보기 */
+.lb{position:fixed;inset:0;z-index:60;background:rgba(10,14,20,.92);display:none;align-items:center;justify-content:center;padding:44px 12px 12px;cursor:zoom-out}
+.lb.on{display:flex}
+#lbB{width:100%;display:flex;justify-content:center}   /* 폭을 안 주면 .ph(container-type)의 내용 폭이 0으로 잡혀 사진이 안 보인다(10/29) */
+.lb .ph{width:min(100%,calc((100vh - 60px) * 16 / 9));aspect-ratio:16/9;border:0;background:#000;cursor:zoom-out}
+.lb .ph img{cursor:zoom-out}
+.lb .ph .pin{width:clamp(16px,2.95cqw,32px);height:clamp(16px,2.95cqw,32px);font-size:clamp(9.5px,1.48cqw,15px)}
+.lb-x{position:absolute;top:8px;right:10px;width:36px;height:36px;border:0;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;font-size:22px;line-height:36px;cursor:pointer}
+/* 맨 위 · 맨 아래 */
+.jump{position:fixed;right:18px;bottom:22px;z-index:40;display:flex;flex-direction:column;gap:8px}
+.jump button{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--t1);box-shadow:0 2px 10px rgba(25,31,40,.12);display:grid;place-items:center;cursor:pointer;transition:opacity .2s}
+.jump button:hover{border-color:#C9CED4;background:#FAFBFC}
+.jump button svg{width:20px;height:20px}
+.jump button[hidden]{display:none}
+
+/* 찾아가는 순서 */
+.steps{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));column-gap:34px;row-gap:0}
+/* 제목 · 설명 · 그림을 칸끼리 같은 줄에 맞춘다(설명이 1줄이든 2줄이든 그림은 같은 높이에서 시작) */
+.steps li{position:relative;display:grid;grid-row:span 3;grid-template-rows:subgrid;align-content:start}
+.steps li>.fig{align-self:start}
+.steps li:not(:last-child)::after{content:"";position:absolute;right:-22px;top:7px;width:8px;height:8px;border-top:2px solid var(--t4);border-right:2px solid var(--t4);transform:rotate(45deg)}
+.st-h{display:flex;align-items:center;gap:8px}
+.num{flex:none;width:22px;height:22px;border-radius:50%;background:var(--or);color:#fff;font-size:12.5px;font-weight:700;display:grid;place-items:center}
+.st-h b{font-size:15.5px;font-weight:700}
+.steps p{font-size:14px;color:var(--t2);line-height:1.55;margin:6px 0 10px}
+.before{margin-top:14px;font-size:13px;color:var(--t3)}
+
+/* 메뉴 구성 */
+.menu{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;max-width:640px}   /* 인게임 메뉴처럼 세로 1열 (#5) */
+.mi{display:block;height:100%;border:1px solid var(--line);border-radius:8px;padding:13px 16px;text-decoration:none;position:relative}
+a.mi{padding-right:36px}
+a.mi:hover{background:#FAFBFC;border-color:#D1D6DB}
+a.mi::after{content:"";position:absolute;right:17px;top:50%;width:7px;height:7px;margin-top:-4px;border-top:1.5px solid var(--t3);border-right:1.5px solid var(--t3);transform:rotate(45deg)}
+.mi b{font-size:15px;font-weight:700}
+.mi .en{margin-left:6px;font-size:11px;font-weight:600;letter-spacing:.5px;color:var(--t3)}
+.mi p{font-size:13.5px;color:var(--t2);margin-top:2px;line-height:1.5}
+
+/* 주의 */
+.alert{display:flex;gap:10px;align-items:flex-start;background:var(--or-bg);border:1px solid #DDD0FF;border-radius:10px;padding:14px 18px;margin-bottom:12px;font-size:14.5px;line-height:1.6}
+.alert .ic{flex:none;width:18px;height:18px;border-radius:50%;background:var(--or);color:#fff;font-size:12px;font-weight:800;line-height:1;display:grid;place-items:center;margin-top:2px}
+.alert b{color:var(--or-d)}
+.alert .fig{margin-top:10px;max-width:440px}
+
+/* 표 */
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.t{width:100%;min-width:400px;border-collapse:collapse;font-size:14px;border-top:1px solid var(--t1)}
+.t th,.t td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:center;vertical-align:middle}
+.t thead th{background:#F9FAFB;color:var(--t2);font-weight:600;font-size:13px}
+.t tbody th{text-align:left;font-weight:600;white-space:nowrap}
+.t td{color:var(--t2)}
+.t.boxed th,.t.boxed td{border:1px solid var(--line)}
+.t.boxed tbody th{background:#FAFAFB;white-space:normal;min-width:150px}
+.t.boxed td:nth-last-child(2){color:var(--t3)}
+.t.boxed td:last-child,.t.boxed thead th:last-child{background:#F3EEFF;color:var(--or-d);font-weight:800}
+.gdot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--g,var(--t4));margin-right:6px;vertical-align:1px}
+
+/* 작은 칸(정의 목록) */
+.facts>div{display:grid;grid-template-columns:120px minmax(0,1fr);gap:14px;padding:12px 0;border-top:1px solid var(--line2)}
+.facts>div:first-child{border-top:0;padding-top:2px}
+.facts>div:last-child{padding-bottom:0}
+.facts dt{font-size:14px;font-weight:600;color:var(--t3)}
+.facts dd{font-size:14.5px}
+
+/* 확률 막대 */
+.bars{display:flex;flex-direction:column;gap:11px}
+.bars li{display:grid;grid-template-columns:84px minmax(0,1fr) 42px minmax(0,150px);gap:10px;align-items:center;font-size:14px}
+.bars .nm{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bars .tr{height:10px;border-radius:5px;background:var(--line2);overflow:hidden}
+.bars .tr i{display:block;height:100%;border-radius:5px;background:var(--g)}
+.bars .pc{font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+.bars .nt{font-size:13px;color:var(--t3);line-height:1.4}
+
+/* 바뀌기 전 → 후 */
+.swap{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+.sg{border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.sg h4{font-size:13.5px;font-weight:700;padding:9px 14px;background:#F9FAFB;border-bottom:1px solid var(--line)}
+.sg li{display:grid;grid-template-columns:minmax(0,1fr) 14px minmax(0,1fr);gap:8px;align-items:center;padding:10px 14px;font-size:14px;line-height:1.45}
+.sg li+li{border-top:1px solid var(--line2)}
+.sg s{color:var(--t3)}
+.sg .ar{color:var(--t4);text-align:center}
+.sg b{font-weight:600}
+
+/* 기존 → 변경 비교표 (첫 화면 핵심) */
+.cmp{border-top:1px solid var(--t1);font-size:14.5px}
+.cmp-h,.cmp-r{display:grid;grid-template-columns:var(--kw,200px) minmax(0,1fr) minmax(0,1.2fr);border-bottom:1px solid var(--line)}
+.cmp-h>span{padding:10px 14px;background:#F9FAFB;font-size:13px;font-weight:600;color:var(--t2)}
+.cmp-h>span:last-child{color:var(--or-d)}
+.cmp-r>*{padding:13px 14px;line-height:1.55}
+.cmp-r .k{font-weight:700;color:var(--t1);white-space:nowrap}
+.cmp-r .old{color:var(--t3)}
+.cmp-r .old.none{color:var(--t4)}
+.cmp-r .new{position:relative;font-weight:600;color:var(--t1);background:#FFFBF8}
+.cmp-r .new .arr{display:none}   /* 강조 칸 화살표 없앰 (#3) */
+.cmp .tag{display:none}
+.cmp-r b{font-weight:800}
+/* 개선·변경·유지 배지: 항목 옆 배지 + 변경 칸 강조 (data 의 행 4번째 값 "up") */
+.cmp-r .better{display:inline-block;margin-left:5px;vertical-align:1px;font-style:normal;font-size:10px;font-weight:700;line-height:15px;padding:0 4px;border-radius:3px;background:#E6DCFF;color:var(--or-d);white-space:nowrap}
+.cmp-r .better.t-change{background:#E3EEFF;color:#2557B8}
+.cmp-r .better.t-keep{background:#ECEEF1;color:#5B6472}
+.cmp-r.up .new{background:#F3EEFF;color:var(--or-d)}
+/* 접는 상자(기한) */
+.fold>summary{display:flex;align-items:center;gap:8px}
+.fold>summary h3{margin:0}
+.fold>summary .chev{margin-left:auto}
+.fold-bd{padding-top:14px}
+.dd-badge{font-size:12px;font-weight:700;line-height:20px;border-radius:4px;padding:0 7px;background:var(--or);color:#fff}
+.dd-badge.end{background:var(--line2);color:var(--t3)}
+.dd-badge:empty{display:none}
+.dl-v{font-size:20px;font-weight:800;letter-spacing:-.3px;margin-bottom:12px}
+/* ── 변경 펫 개요 (기획 PDF 구성) ── */
+.eyb{font-size:12px;font-weight:800;letter-spacing:.4px;color:var(--or);margin-bottom:2px}
+.blk h3.lg{font-size:19px;font-weight:800;letter-spacing:-.4px;margin-bottom:14px}
+.keys{display:grid;grid-template-columns:repeat(var(--kc,5),minmax(0,1fr));gap:10px}
+.keys li{border:1px solid var(--line);border-radius:10px;padding:14px 14px 15px;background:#FBFBFC}
+.keys .kn{display:block;font-size:13px;font-weight:800;color:var(--or)}
+.keys b{display:block;font-size:15px;margin:4px 0 2px}
+.keys p{font-size:12.5px;color:var(--t2);line-height:1.5}
+.duo,.gro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+.gro{grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr)}
+.duo-c{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:#FBFBFC}
+.duo-c.aft{border-color:var(--or);background:#FAF8FF}
+.tagp{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 9px;border-radius:999px;background:var(--line2);color:var(--t2);margin-bottom:10px}
+.tagp.on{background:var(--or);color:#fff}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.fs{font-size:13.5px;font-weight:600;padding:7px 12px;border-radius:7px;background:#fff;border:1px solid var(--line)}
+.fs.hot{background:var(--or);border-color:var(--or);color:#fff}
+.fa{font-style:normal;color:var(--t4);font-weight:700}
+.dn{margin-top:10px;font-size:12.5px;color:var(--t3);border:1px dashed var(--line);border-radius:7px;padding:8px 10px}
+.ck{margin-top:10px;font-size:13px;color:var(--t1)}
+.old1{border:1px solid var(--line);border-radius:8px;background:#fff;padding:10px 12px}
+.old1 small{display:block;font-size:11.5px;color:var(--t3)}.old1 b{font-size:15px}
+.pcard{display:flex;gap:12px;align-items:center;margin-bottom:10px}
+.pcard .pic{flex:none;width:58px;height:58px;border-radius:12px;background:#fff;border:1px solid var(--line);overflow:hidden;display:grid;place-items:center}
+.pcard .pic img{width:100%;height:100%;object-fit:contain}
+.pin2{flex:1;min-width:0}.pin2 b{font-size:15px}.lvt{font-size:12px;color:var(--t3)}
+.pbar{height:6px;border-radius:3px;background:var(--line2);margin-top:6px;overflow:hidden}.pbar i{display:block;height:100%;background:var(--or)}
+.slots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.slot{border-radius:8px;padding:8px 9px;background:#fff;border:1px solid var(--line);min-height:76px}
+.slot small{display:block;font-size:11px;color:var(--t3)}.slot b{display:block;font-size:12.5px;line-height:1.35;margin:2px 0}.slot span{font-size:11px;color:var(--t3)}
+.slot.uq{background:var(--or);border-color:var(--or)}.slot.uq small,.slot.uq span,.slot.uq b{color:#fff}
+.slot.lock{border-style:dashed;background:transparent}
+.road{margin-top:12px;border:1px solid var(--line);border-radius:10px;padding:14px 16px 12px;background:#FBFBFC}
+.road h4,.sub1 h4,.evc h4{font-size:14px;font-weight:700;margin-bottom:8px}
+.road ol{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;align-items:end}
+.road li b{display:block;font-size:14px;font-weight:800}.road li span{display:block;font-size:12px;color:var(--t3);margin-bottom:6px}
+.road li i{display:block;border-radius:4px 4px 0 0;background:linear-gradient(180deg,var(--or),#B79CFF)}
+.road p{font-size:12px;color:var(--or-d);margin-top:8px}
+.pools{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:16px;align-items:start}
+.tier{border:1.5px solid var(--g);border-radius:12px;padding:10px 12px 12px;background:#fff}
+.tier .tier{margin-top:10px}
+.tier.p{background:var(--gb)}
+.th{display:flex;justify-content:space-between;gap:8px;margin-bottom:6px}.th b{font-size:13.5px;color:var(--gd)}.th span{font-size:12px;color:var(--t3);white-space:nowrap}
+.pchips{display:flex;flex-wrap:wrap;gap:4px}.pchips li{font-size:11.5px;padding:2px 8px;border-radius:999px;background:var(--line2);color:var(--t2)}
+.leg li{display:flex;gap:8px;align-items:baseline;font-size:13.5px;margin-bottom:6px}.leg li i{flex:none;width:9px;height:9px;border-radius:50%;background:var(--g)}
+.leg p{font-size:13px;color:var(--t2);margin-top:8px}
+.acq .sub1{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:#FBFBFC}
+.acq2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;margin-top:12px}
+.was{font-size:12.5px;color:var(--t3);margin-left:6px}
+.eq{display:flex;align-items:center;gap:10px}.eq div{flex:1;text-align:center;border:1px solid var(--line);border-radius:8px;background:#fff;padding:8px}
+.eq small{display:block;font-size:11px;color:var(--t3)}.eq b{font-size:16px}.eq i{font-style:normal;font-weight:800;color:var(--or);font-size:18px}
+.acq2 p{font-size:13px;color:var(--t2);margin-top:8px}
+.plat li{display:flex;justify-content:space-between;gap:8px;border:1px solid var(--line);border-radius:8px;background:#fff;padding:8px 12px;margin-bottom:6px;font-size:13.5px}
+.plat li.no span{color:#D84A3A;font-weight:700}.plat li.ok{border-color:#3FB6C6;background:#F1FBFC}.plat li.ok span{color:#178FA0;font-weight:700}
+.plat+.was{margin-left:0}
+.evc{border:1px solid #9ADCE6;background:#F3FBFD;border-radius:12px;padding:16px 18px}
+.evc-t{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:12px}
+.evb{display:inline-block;font-size:11.5px;font-weight:700;background:#BDEFF6;color:#0F6E7C;border-radius:999px;padding:2px 9px}
+.evn{display:block;font-size:17px;margin:6px 0 2px}.evc-t p{font-size:13px;color:var(--t2)}
+.evw small{display:block;font-size:11.5px;color:var(--t3);margin-bottom:4px}.evw span{display:inline-block;font-size:12.5px;font-weight:600;background:#fff;border:1px solid var(--line);border-radius:6px;padding:4px 9px;margin:0 4px 4px 0}
+.evr{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:6px}
+.evr li{background:#fff;border:1px solid #CFEFF4;border-radius:8px;padding:8px 10px}.evr li b{display:block;font-size:13px;color:#0F6E7C}.evr li span{font-size:12px;color:var(--t2)}
+.evr li.last{background:#8FE3EE;border-color:#8FE3EE}.evr li.last span{color:var(--t1)}
+.evlink{display:inline-block;margin-top:10px;font-size:13px;font-weight:700;color:#0F6E7C;text-decoration:none}
+@media (max-width:759px){
+  .keys{grid-template-columns:1fr 1fr}.duo,.gro,.pools,.acq2{grid-template-columns:minmax(0,1fr)}
+  .slots{grid-template-columns:1fr 1fr}.blk h3.lg{font-size:17px}
+}
+/* 한정 이벤트 카드 — 작게: PC 는 배너를 왼쪽 썸네일(300px)로, 글·표도 한 단계 작게 (10/28 "너무 커, 줄여") */
+.ev{padding:0;overflow:hidden;margin-bottom:10px}
+.ev-img{background:var(--line2);border-bottom:1px solid var(--line)}
+.ev-img img{display:block;width:100%;height:auto}
+.ev-bd{padding:14px 18px 16px}
+.ev-h{display:flex;align-items:center;gap:8px;margin-bottom:2px}
+.ev-h h3{margin-bottom:0;font-size:15px}
+.ev-p{font-size:12.5px;color:var(--t3);margin-bottom:8px}
+.ev .desc{font-size:13.5px;margin-bottom:8px}
+.ev .tw{margin:8px 0 0}
+.ev .t{font-size:12.5px;min-width:0}
+.ev .t th,.ev .t td{padding:6px 10px}
+.ev .chips{margin-top:8px}
+.ev .chips li{font-size:12px;padding:3px 10px}
+.ev .note{font-size:12px;margin-top:8px}
+@media (min-width:760px){
+  /* 배너는 원래 비율 그대로(잘라내지 않음) 왼쪽 칸 위에 붙인다 */
+  .ev:has(.ev-img){display:grid;grid-template-columns:360px minmax(0,1fr);align-items:start}
+  .ev-img{border-bottom:0;background:none;padding:14px 0 14px 14px}
+  .ev-img img{width:100%;height:auto;border-radius:8px;border:1px solid var(--line)}
+}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips li{font-size:13px;color:var(--t2);background:var(--line2);border-radius:999px;padding:5px 12px}
+.chips em{font-style:normal;font-weight:700;color:var(--t1)}
+
+/* 자주 묻는 질문 */
+.faq{padding-top:6px;padding-bottom:6px}
+.faq details+details{border-top:1px solid var(--line2)}
+.faq summary{display:flex;align-items:flex-start;gap:10px;padding:14px 0;font-size:15px;font-weight:600}
+.faq summary .chev{margin:3px 0 0 auto}
+.faq .q{color:var(--or);font-weight:800}
+.faq .a{display:flex;gap:10px;padding:0 26px 16px 0;font-size:14.5px;color:var(--t2)}
+.faq .a i{font-style:normal;font-weight:800;color:var(--t4)}
+
+/* ── 펫 도감 ── */
+.dx-bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.srch{position:relative;flex:1 1 260px;max-width:380px}
+.srch input{width:100%;height:42px;border:1px solid var(--line);border-radius:8px;background:#fff;padding:0 38px 0 40px;font:inherit;font-size:14.5px;color:var(--t1);outline:none;-webkit-appearance:none;appearance:none}
+.srch input::placeholder{color:var(--t3)}
+.srch input:focus{border-color:var(--t1)}
+.srch input::-webkit-search-cancel-button{display:none}
+.srch>svg{position:absolute;left:13px;top:50%;width:18px;height:18px;margin-top:-9px;color:var(--t3);pointer-events:none}
+.clr{position:absolute;right:9px;top:50%;width:22px;height:22px;margin-top:-11px;border:0;border-radius:50%;background:var(--t4);color:#fff;cursor:pointer;display:none;place-items:center}
+.clr svg{width:12px;height:12px}
+.srch.has .clr{display:grid}
+.dx-n{margin-left:auto;font-size:13.5px;color:var(--t3)}
+.dx-n strong{color:var(--t1)}
+.gch{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+.gch button{display:flex;align-items:center;gap:5px;height:34px;padding:0 13px;border:1px solid var(--line);border-radius:17px;background:#fff;font-size:13.5px;font-weight:600;color:var(--t2);cursor:pointer}
+.gch button:hover{border-color:#D1D6DB}
+.gch button .gdot{margin:0}
+.gch button em{font-style:normal;font-weight:500;color:var(--t3)}
+.gch button.on{background:var(--t1);border-color:var(--t1);color:#fff}
+.gch button.on em{color:rgba(255,255,255,.7)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:16px 10px}
+.dxh{grid-column:1/-1;display:flex;align-items:center;gap:8px;font-size:16px;font-weight:800;color:var(--t1);padding:6px 0 2px;margin:0}
+.dxh .gdot{width:10px;height:10px;margin:0}
+.dxh em{font-style:normal;font-size:13px;font-weight:600;color:var(--t3)}
+.dxh:not(:first-child){margin-top:14px;padding-top:20px;border-top:1px solid var(--line)}   /* 점프슛·레이업·덩크 칸 나눔(11/17) */
+.pet{display:flex;flex-direction:column;align-items:stretch;text-align:left;border:0;background:none;padding:0;cursor:pointer;min-width:0}
+.pet .ic{position:relative;aspect-ratio:1/1;border-radius:10px;background:var(--line2);border:1px solid transparent;display:grid;place-items:center;overflow:hidden;transition:border-color .15s,background .15s}
+.pet:hover .ic{border-color:var(--g);background:#EEF0F3}
+.pet:focus-visible{outline:0}
+.pet:focus-visible .ic{outline:2px solid var(--t1);outline-offset:2px}
+.pet .ic img{width:84%;height:84%;object-fit:contain}
+.gt{position:absolute;left:6px;top:6px;display:flex;align-items:center;gap:4px;font-size:10.5px;font-weight:700;line-height:17px;color:var(--gd);background:rgba(255,255,255,.92);border-radius:4px;padding:0 5px}
+.gt i{width:6px;height:6px;border-radius:50%;background:var(--g)}
+.pet b{font-size:13.5px;font-weight:600;line-height:1.35;margin-top:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pet small{font-size:12px;color:var(--t3);line-height:1.4;margin-top:2px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.lt{width:56%;aspect-ratio:1/1;border-radius:24%;display:grid;place-items:center;color:#fff;font-weight:800;font-size:24px;line-height:1;background:linear-gradient(150deg,var(--gl),var(--g))}
+.dx-empty{padding:40px 0;text-align:center;font-size:14px;color:var(--t3)}
+
+/* 바닥글 */
+.foot{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-size:13.5px;color:var(--t3);line-height:1.7}
+.foot .upd{font-size:12.5px;color:var(--t4);margin-top:4px}
+
+/* ── 펫 상세 팝업 ── */
+.lock,.lock body{overflow:hidden}
+.ov{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(0,0,0,.48);animation:fade .18s ease}
+.ov[hidden]{display:none}
+.dlg{position:relative;width:min(560px,100%);max-height:min(88vh,860px);display:flex;flex-direction:column;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.18);outline:none;animation:pop .2s ease}
+@keyframes fade{from{opacity:0}}
+@keyframes pop{from{opacity:0;transform:scale(.97)}}
+@keyframes up{from{transform:translateY(40%)}}
+.grab{display:none}
+.x{position:absolute;right:12px;top:12px;z-index:2;width:36px;height:36px;border:0;border-radius:50%;background:none;cursor:pointer;display:grid;place-items:center;color:var(--t2)}
+.x:hover{background:var(--line2)}
+.x svg{width:20px;height:20px}
+.dlg-bd{overflow-y:auto;overscroll-behavior:contain;padding:28px 28px 22px}
+.pv-top{display:flex;align-items:center;gap:18px;padding-right:30px}
+.pv-ic{flex:none;width:96px;height:96px;border-radius:14px;background:var(--line2);display:grid;place-items:center;overflow:hidden}
+.pv-ic img{width:86%;height:86%;object-fit:contain}
+.pv-ic .lt{font-size:36px;width:62%}
+.gbadge{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;line-height:20px;color:var(--gd);background:var(--gb);border-radius:4px;padding:0 8px}
+.gbadge i{width:6px;height:6px;border-radius:50%;background:var(--g)}
+.pv-top h2{font-size:22px;font-weight:800;letter-spacing:-.5px;line-height:1.3;margin-top:6px}
+.pv-top .alt{font-size:13px;color:var(--t3);margin-top:2px}
+.pv-sec{margin-top:24px}
+.pv-sec>h3{font-size:14px;font-weight:700;margin-bottom:8px}
+.abox{border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.abox>b{font-size:16px;font-weight:700}
+.lvv{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;margin-top:12px;font-size:12.5px;color:var(--t3)}
+.lvv strong{display:block;font-size:19px;font-weight:800;color:var(--t1);letter-spacing:-.3px;font-variant-numeric:tabular-nums}
+.lvv .r{text-align:right}
+.lvv .r strong{color:var(--gd)}
+.lvv .ar{color:var(--t4);font-size:16px;padding-bottom:3px}
+/* 고유 능력 막대: 팝업이 열리면 Lv.1 자리(--from)에서 만렙(100%)까지 차오른다. 숫자는 Lv.1·만렙 두 값만 쓴다 */
+.lvb{position:relative;height:8px;border-radius:4px;margin-top:10px;background:var(--line2)}
+.lvb .fill{position:absolute;left:0;top:0;bottom:0;width:var(--from);border-radius:4px;background:linear-gradient(90deg,var(--gb),var(--g));transition:width 1.2s cubic-bezier(.25,.8,.25,1) .2s}
+.lvb em{position:absolute;top:50%;left:var(--from);width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:#fff;border:2px solid var(--g);transition:left 1.2s cubic-bezier(.25,.8,.25,1) .2s}
+.lvb.go .fill{width:100%}
+.lvb.go em{left:100%}
+.lvv .r strong{transition:color .3s 1.2s}
+/* 레벨 슬라이더 */
+.lvs{margin-top:12px;border-top:1px dashed var(--line);padding-top:10px}
+.lvs-h{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;color:var(--t3);margin-bottom:6px}
+.lvs-h b{font-size:15px;color:var(--t1);font-variant-numeric:tabular-nums}
+.lvs-h strong{font-size:20px;font-weight:800;color:var(--gd);font-variant-numeric:tabular-nums}
+.lvr{-webkit-appearance:none;appearance:none;width:100%;height:8px;border-radius:4px;background:linear-gradient(90deg,var(--g) var(--p,0%),var(--line2) var(--p,0%));outline:none;cursor:pointer;margin:6px 0 2px}
+.lvr::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:#fff;border:3px solid var(--g);box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.lvr::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:#fff;border:3px solid var(--g)}
+.lvr:focus-visible{box-shadow:0 0 0 3px var(--gb)}
+@media (prefers-reduced-motion:reduce){.lvb .fill,.lvb em{transition:none}}
+.info{width:100%;border-collapse:collapse;font-size:14px;border-top:1px solid var(--t1)}
+.info th,.info td{padding:11px 0;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+.info th{width:112px;font-weight:600;color:var(--t3);padding-right:12px}
+.info td .gdot{background:var(--g)}
+.info .how{line-height:1.6}
+.info .how li{position:relative;padding-left:11px}
+.info .how li+li{margin-top:3px}
+.info .how li::before{content:"";position:absolute;left:0;top:10px;width:3px;height:3px;border-radius:50%;background:var(--t3)}
+.info b{font-weight:700}
+.pv-subs{margin-top:16px;border:1px solid var(--line);border-radius:10px}
+.pv-subs>summary{display:flex;align-items:center;gap:6px;padding:13px 16px;font-size:14px;font-weight:600}
+.pv-subs>summary b{color:var(--or-d)}
+.pv-subs>summary .chev{margin-left:auto}
+.pv-subs .chips{padding:0 16px 14px}
+.dlg-ft{flex:none;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 16px;border-top:1px solid var(--line);background:#fff}
+.nv{display:flex;align-items:center;gap:2px;height:38px;padding:0 14px;border:1px solid var(--line);border-radius:8px;background:#fff;font-size:14px;font-weight:600;cursor:pointer}
+.nv svg{width:16px;height:16px}
+.nv:hover:not(:disabled){background:#FAFBFC}
+.nv:disabled{color:var(--t4);cursor:default}
+.pos{font-size:13px;color:var(--t3);font-variant-numeric:tabular-nums}
+
+/* 캡처용(?shot): 움직임 없음 */
+.shot{scroll-behavior:auto}
+.shot *,.shot *::before,.shot *::after{animation:none!important;transition:none!important}
+
+/* ── 모바일 ── */
+@media (max-width:759px){
+  .in{padding:0 16px}
+  .hd .in{height:52px}
+  .logo{font-size:17px}.logo svg{width:24px;height:24px}
+  .tabs{margin:0 -16px;padding:0 6px}
+  .tabs a{font-size:14.5px}
+  .layout{grid-template-columns:minmax(0,1fr);grid-template-areas:"banner" "main";gap:12px;padding-top:12px;padding-bottom:40px}
+  .side{position:static}
+  .banner{height:auto;min-height:0}
+  .banner::before{background:linear-gradient(180deg,rgba(24,14,64,.9) 0%,rgba(24,14,64,.65) 70%,rgba(24,14,64,.4) 100%)}
+  .banner .bt{max-width:none;padding:20px 20px 24px}
+  .banner h1{font-size:23px;margin:10px 0 6px}
+  .banner p{font-size:14px}
+  .banner .art{height:132px;max-width:72%;right:8px;bottom:-2px}
+  .ch{margin-top:32px}
+  .ch:first-child{margin-top:20px}
+  .ch-h h2{font-size:19px}
+  .ch-h p{font-size:14px}
+  .blk{padding:18px 16px}
+  .steps{grid-template-columns:minmax(0,1fr);gap:0}
+  .steps li{margin-bottom:28px}.steps li:last-child{margin-bottom:0}
+  .steps li:not(:last-child)::after{right:auto;top:auto;left:50%;bottom:-19px;margin-left:-4px;transform:rotate(135deg)}
+  .cmp{border-top:0}
+  .cmp-h{display:none}
+  .cmp-r{display:block;border:1px solid var(--line);border-radius:8px;margin-top:8px;overflow:hidden}
+  .cmp-r:first-of-type{margin-top:0}
+  .cmp-r .k{display:block;padding:11px 14px;background:#F9FAFB;border-bottom:1px solid var(--line);font-size:14.5px}
+  .cmp-r .old,.cmp-r .new{display:flex;gap:10px;align-items:baseline;padding:10px 14px}
+  .cmp-r .new{padding-left:14px;border-top:1px dashed var(--line)}
+  .cmp-r .new .arr{display:none}
+  .cmp .tag{display:inline-block;flex:none;min-width:34px;font-style:normal;font-size:11.5px;font-weight:700;line-height:18px;text-align:center;border-radius:4px;padding:0 5px;background:var(--line2);color:var(--t3)}
+  .cmp .new .tag{background:#EEE7FF;color:var(--or-d)}
+  .menu{grid-template-columns:minmax(0,1fr)}
+  .facts>div{grid-template-columns:84px minmax(0,1fr);gap:10px}
+  .facts.pn>div{grid-template-columns:100px minmax(0,1fr)}   /* 번호 붙은 항목도 폰에선 좁게 — PC 144px 가 폰까지 와서 설명 칸이 반으로 줄던 것(10/29 검수) */
+  .bars li{grid-template-columns:72px minmax(0,1fr) 40px;gap:4px 8px}
+  .bars .nt{grid-column:2/-1;margin-top:-2px}
+  .bars .nt:empty{display:none}
+  .swap{grid-template-columns:minmax(0,1fr)}
+  .dx-bar{gap:8px}
+  .srch{flex-basis:100%;max-width:none}
+  .dx-n{margin-left:0}
+  .gch{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -16px 16px;padding:0 16px}
+  .gch::-webkit-scrollbar{display:none}
+  .gch button{flex:none}
+  .grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px 8px}
+  .pet b{font-size:13px}
+  .pet small{font-size:11.5px}
+  .lt{font-size:20px}
+  /* 팝업 → 아래에서 올라오는 시트 */
+  .ov{align-items:flex-end;padding:0}
+  .dlg{width:100%;max-height:88vh;border-radius:16px 16px 0 0;animation:up .24s cubic-bezier(.2,.8,.2,1)}
+  .grab{display:flex;justify-content:center;flex:none;padding:10px 0 6px;touch-action:none;cursor:grab}
+  .grab i{width:40px;height:4px;border-radius:2px;background:#D1D6DB}
+  .x{top:8px;right:8px}
+  .dlg-bd{padding:10px 20px 18px}
+  .pv-top{gap:14px}
+  .pv-ic{width:80px;height:80px;border-radius:12px}
+  .pv-ic .lt{font-size:30px}
+  .pv-top h2{font-size:20px}
+  .info th{width:96px}
+  .dlg-ft{padding:10px 16px calc(10px + env(safe-area-inset-bottom))}
+}
+/* ── 프리스타일 도감: 4:3 썸네일 카드 ── */
+.grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:18px 12px}
+.pet .ic{aspect-ratio:4/3;background:#E9EBEF}
+.pet .ic img{width:100%;height:100%;object-fit:cover}
+.pet .play{position:absolute;right:7px;bottom:7px;width:28px;height:28px;border-radius:50%;background:rgba(20,12,50,.72);display:grid;place-items:center;transition:transform .15s,background .15s}
+.pet .play svg{width:12px;height:12px;fill:#fff;margin-left:2px}
+.pet:hover .play{transform:scale(1.12);background:var(--or)}
+.newt{position:absolute;right:7px;top:7px;font-size:10.5px;font-weight:800;line-height:17px;color:#fff;background:#FF4D6D;border-radius:4px;padding:0 6px;letter-spacing:.3px}
+/* 영상 비교 팝업: 넓게, 변경 전 · 후 두 칸 */
+.dlg.vid{width:min(980px,100%)}
+.vc-top{padding-right:36px}
+.vc-top h2{font-size:22px;font-weight:800;letter-spacing:-.5px;line-height:1.3;margin-top:6px}
+.vc-top .alt{font-size:13px;color:var(--t3);margin-top:2px}
+.vc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+.vc.one{grid-template-columns:1fr}
+.vc figure{position:relative;border-radius:10px;overflow:hidden;background:#111}
+.vc video{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:#111}
+.vc figcaption{position:absolute;left:10px;top:10px;font-size:12px;font-weight:800;line-height:22px;padding:0 9px;border-radius:4px;background:rgba(0,0,0,.62);color:#fff;letter-spacing:.2px}
+.vc .aft figcaption{background:var(--or)}
+.vc-ctl{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}
+.vc-ctl button{height:34px;padding:0 13px;border:1px solid var(--line);border-radius:8px;background:#fff;font:inherit;font-size:13.5px;font-weight:600;cursor:pointer}
+.vc-ctl button:hover{background:#FAFBFC}
+.vc-ctl button[aria-pressed="true"]{background:var(--t1);border-color:var(--t1);color:#fff}
+.vc-note{font-size:12.5px;color:var(--t3);margin-top:10px}
+/* 영상 창 Lv.1 능력치 전·후 (11/18) */
+.vst{margin-top:14px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.vst h3{font-size:14px;font-weight:700;padding:10px 14px;background:#F9FAFB;border-bottom:1px solid var(--line);margin:0}
+.vst-g{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.vst-g.one{grid-template-columns:minmax(0,1fr)}
+.vst-c{padding:10px 14px}
+.vst-c+.vst-c{border-left:1px solid var(--line)}
+.vst-c>b{display:block;font-size:12px;font-weight:700;color:var(--t3);margin-bottom:6px}
+.vst-c.aft>b{color:var(--or-d)}
+.vst-c ul{list-style:none;margin:0;padding:0}
+.vst-tw{overflow-x:auto}
+.vst-t{width:100%;border-collapse:collapse;font-size:13px;line-height:1.35}
+.vst-t th,.vst-t td{padding:6px 6px;border-bottom:1px solid var(--line2);text-align:right;white-space:nowrap}
+.vst-t thead th{font-size:11px;font-weight:700;color:var(--t3);white-space:normal;vertical-align:bottom;text-align:right}
+.vst-t th:first-child{text-align:left;color:var(--t2);font-weight:700}
+.vst-t tbody tr:last-child th,.vst-t tbody tr:last-child td{border-bottom:0}
+.vst-c.aft .vst-t td{color:var(--or-d);font-weight:700}
+.vst-c li{display:flex;justify-content:space-between;gap:10px;font-size:13.5px;line-height:1.5;padding:3px 0}
+.vst-c li span{color:var(--t2)}
+.vst-c li em{font-style:normal;font-weight:700;white-space:nowrap}
+.vst-c.aft li em{color:var(--or-d)}
+.vst-n{font-size:12px;color:var(--t3);padding:8px 14px;border-top:1px solid var(--line2)}
+@media (max-width:520px){.vst-g{grid-template-columns:minmax(0,1fr)}.vst-c+.vst-c{border-left:0;border-top:1px solid var(--line)}}
+.vc-new{font-size:13.5px;color:var(--t2);margin-top:10px}
+@media (max-width:759px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .vc{grid-template-columns:1fr}
+  .vc-top h2{font-size:20px}
+}
+</style>
+<script src="/preview/common/hub.js" defer></script>
+</head>
+<body>
+<header class="hd">
+  <div class="in">
+    <a class="logo" href="#top"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#6E3BF2"/><circle cx="16" cy="16" r="8.5" fill="none" stroke="#fff" stroke-width="2.4"/><path d="M7.5 16h17M16 7.5v17" stroke="#fff" stroke-width="2"/></svg><span id="site"></span></a>
+    <div class="langs" id="langs"></div>
+  </div>
+</header>
+<nav class="gnb" id="gnb"><div class="in"><div class="tabs" id="tabs"></div></div></nav>
+<div class="in layout">
+  <section class="banner" id="top">
+    <div class="bt"><span class="ribbon" id="ribbon"></span><h1 id="title"></h1><p id="lead"></p></div>
+  </section>
+  <aside class="side" id="side"></aside>
+  <main id="main"></main>
+</div>
+
+<!-- 사진 크게 보기 -->
+<div class="lb" id="lb" role="dialog" aria-modal="true"><button type="button" class="lb-x" id="lbX" aria-label="close">×</button><div id="lbB"></div></div>
+<!-- 맨 위 · 맨 아래로 -->
+<div class="jump" id="jump">
+  <button type="button" id="jTop" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg></button>
+  <button type="button" id="jBot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+</div>
+
+<div class="ov" id="ov" hidden>
+  <div class="dlg" id="dlg" role="dialog" aria-modal="true" aria-labelledby="dlgT" tabindex="-1">
+    <div class="grab" id="grab" aria-hidden="true"><i></i></div>
+    <button type="button" class="x" id="dlgX"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="dlg-bd" id="dlgB"></div>
+    <div class="dlg-ft">
+      <button type="button" class="nv" id="dlgP"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg><span></span></button>
+      <span class="pos" id="dlgN"></span>
+      <button type="button" class="nv" id="dlgNx"><span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+    </div>
+  </div>
+</div>
+
+<script>/* 내용 파일은 매번 새로 받는다 — 브라우저에 남은 옛 내용이 보이지 않게(11/18) */
+["data.js","freestyles.js","photos.js"].forEach(f => document.write('<script src="' + f + '?v=' + Date.now() + '"><\/script>'));</script>
+<script>
+(function () {
+"use strict";
+const N = window.NOTICE || {};
+const FS = Array.isArray(window.FREESTYLES) ? window.FREESTYLES : [];
+const PHOTOS = window.PHOTOS || {};
+const PETS = [], SUBS = [];   // 펫 가이드 전용 블록(growth · pools)이 참조하는 이름 — 이 페이지에선 비어 있다
+const qs = new URLSearchParams(location.search);
+const SHOT = qs.has("shot");
+if (SHOT) document.documentElement.classList.add("shot");
+
+const LANGS = ["kr", "en", "jp"].filter(l => N[l]);
+const HTML_LANG = { kr: "ko", en: "en", jp: "ja" };
+const LANG_NAME = { kr: "KR", en: "EN", jp: "JP" };
+
+/* 사이클(점프슛 · 레이업 · 덩크)별 색 — 카드 위 표시 · 팝업 배지 */
+const GD = {
+  jump:  { c: "#3B82F6", d: "#1D5FCF", l: "#A9C8FB", b: "#EAF2FF" },
+  layup: { c: "#10A37F", d: "#0B7A5F", l: "#9EDFCB", b: "#E6F7F1" },
+  dunk:  { c: "#F2541B", d: "#C23D0B", l: "#FBB79C", b: "#FFEEE7" }
+};
+const ORDER = ["jump", "layup", "dunk"];
+
+/* 화면 고정 문구의 정본은 data.js 의 NOTICE[L].ui. 없거나 키가 빠지면 아래 KR 값으로 대체한다. */
+const UI_KR = {
+  search: "프리스타일 이름 검색", all: "전체", unit: "종",
+  grade: { jump: "점프슛", layup: "레이업", dunk: "덩크" },
+  before: "변경 전", after: "변경 후", isNew: "신규", newOnly: "새로 추가된 프리스타일이라 변경 전 영상이 없습니다.",
+  was: "이전 이름", replay: "처음부터 같이 보기", slow: "느리게", normal: "보통 속도", videoNote: "",
+  prev: "이전", next: "다음", close: "닫기", none: "없음", photo: "사진 준비 중", mock: "개발 중 화면",
+  clear: "검색어 지우기", noResult: "찾는 프리스타일이 없습니다.", dialog: "프리스타일 영상 비교", tabs: "단원 메뉴", zoom: "크게 보기"
+};
+const UI_EXTRA = {
+  en: { clear: "Clear search", noResult: "No Freestyles found.", dialog: "Freestyle video comparison", tabs: "Sections", zoom: "Zoom" },
+  jp: { clear: "検索語を消す", dialog: "フリースタイル動画比較", tabs: "目次", zoom: "拡大" }
+};
+const GRADE_ALIAS = { jump: ["Jump Shot"], layup: ["Layup"], dunk: ["Dunk"] };
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const tx = o => o == null ? "" : (typeof o === "object" ? (o[L] || o.en || o.kr || "") : String(o));
+const norm = s => String(s || "").toLowerCase().replace(/\s+/g, "");
+const SVG = {
+  chev: '<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>',
+  cam: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l1.6-2.4h6.8L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.4"/></svg>',
+  search: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>',
+  x: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>',
+  zoom: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5M10.5 8v5M8 10.5h5"/></svg>'
+};
+
+function pickLang() {
+  const q = qs.get("lang"); if (q && N[q]) return q;
+  const n = (navigator.language || "").toLowerCase();
+  const g = n.startsWith("ko") ? "kr" : n.startsWith("ja") ? "jp" : "en";
+  return N[g] ? g : (LANGS[0] || "kr");
+}
+let L = pickLang();
+/* 화면 문구: NOTICE[L].ui → (보조 문구만) 언어별 기본값 → KR 값 순으로 채운다 */
+let UCACHE = null, UCACHE_L = null;
+function U() {
+  if (UCACHE && UCACHE_L === L) return UCACHE;
+  const src = (N[L] && N[L].ui) || {};
+  const u = Object.assign({}, UI_KR, UI_EXTRA[L] || {}, src);
+  u.grade = Object.assign({}, UI_KR.grade, src.cat || src.grade || {});
+  UCACHE = u; UCACHE_L = L; return u;
+}
+/* 이름·능력: 현재 언어 → en → kr */
+const petName = p => p[L] || p.en || p.kr || "";
+const abil = p => (U().grade || {})[p.cat] || "";
+/* 표·막대의 첫 칸이 등급 이름이면 등급색 점을 붙인다(세 언어 이름 모두 인식) */
+const GRADE_NAMES = {};
+ORDER.forEach(k => {
+  const names = [UI_KR.grade[k]].concat(GRADE_ALIAS[k]);
+  ["kr", "en", "jp"].forEach(l => { const g = N[l] && N[l].ui && (N[l].ui.cat || N[l].ui.grade); if (g && g[k]) names.push(g[k]); });
+  names.forEach(n => { GRADE_NAMES[String(n).trim().toLowerCase()] = k; });
+});
+const gradeOf = name => GRADE_NAMES[String(name == null ? "" : name).replace(/<[^>]*>/g, "").trim().toLowerCase()] || null;
+const gVars = k => { const g = GD[k] || GD.B; return `--g:${g.c};--gd:${g.d};--gl:${g.l};--gb:${g.b}`; };
+
+/* ── 사진 칸: src 없음·로드 실패 → 회색 자리 + label ── */
+function phEmpty(label) {
+  return `<div class="ph empty">${SVG.cam}<span>${esc(label)}</span><span class="sm">${esc(U().photo)}</span></div>`;
+}
+// marks: 설명 항목 순서대로 [x%, y%] 또는 null. null 이 아닌 것에만 1,2,3… 번호 동그라미를 찍는다
+function pinsHTML(marks) {
+  let n = 0;
+  return (marks || []).map(m => m ? `<span class="pin" style="left:${+m[0]}%;top:${+m[1]}%">${++n}</span>` : "").join("");
+}
+function photoHTML(key, marks, cls) {
+  const ph = PHOTOS[key] || {};
+  const label = tx(ph.label) || key;
+  const cap = tx(ph.cap);
+  const inner = ph.src
+    ? `<div class="ph"><img src="${esc(ph.src)}" alt="${esc(label)}" data-label="${esc(label)}" onerror="__phFail(this)">${pinsHTML(marks)}${ph.mock ? `<span class="mk">${esc(U().mock)}</span>` : ""}<button type="button" class="zoom" aria-label="${esc(U().zoom || "크게 보기")}">${SVG.zoom}</button></div>`
+    : phEmpty(label);
+  const lg = ph.legacy && U().legacyPhoto ? `<span class="lgy">${U().legacyPhoto}</span>` : "";
+  return `<figure class="fig${cls ? " " + cls : ""}">${inner}${cap || lg ? `<figcaption>${cap || ""}${lg}</figcaption>` : ""}</figure>`;
+}
+// 설명 항목 번호: marks 가 있는 항목만 순서대로 1,2,3…
+function pinNums(marks) { let n = 0; return (marks || []).map(m => m ? ++n : 0); }
+window.__phFail = img => { const box = img.parentNode; if (box) box.outerHTML = phEmpty(img.dataset.label || ""); };
+
+/* ── 썸네일: 새 영상에서 뽑은 한 장(img/thumb/<code>.jpg) ── */
+const PLAY = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1l9 5-9 5z"/></svg>';
+function iconHTML(p) { return `<img src="img/thumb/${p.code}.jpg?v=1118b" alt="" loading="lazy" onerror="this.remove()">`; }
+
+/* ── 블록 ── */
+/* 비교표 항목 배지: data 행 4번째 값 up 개선 / change 변경 / keep 유지 (2026-11-18 사용자 지시 — "좋아진 점" 은 한국어 UI 에서 어색) */
+const CMP_TAG = { up: { kr: "개선", en: "Improved", jp: "改善" }, change: { kr: "변경", en: "Changed", jp: "変更" }, keep: { kr: "유지", en: "Kept", jp: "維持" } };
+const MENU_PHOTO = { "PET LINEUP": "lineup", "ADOPT PET": "adopt", "PET HOUSE": "house", "PET COMBINATION": "combination" };
+const hasPhotoBlock = k => ((N[L] || {}).chapters || []).some(c => (c.blocks || []).some(b => b.photo === k && b.type !== "img" && b.type !== "alert"));
+const noteHTML = n => !n ? "" : (Array.isArray(n) ? n : [n]).filter(Boolean).map(x => `<p class="note">※ ${x}</p>`).join("");   // 여러 줄이면 ※ 줄마다
+const descHTML = t => t ? `<p class="desc">${t}</p>` : "";
+function box(b, inner, cls) {
+  const head = (b.eyebrow ? `<p class="eyb">${b.eyebrow}</p>` : "") + (b.label ? `<h3${b.eyebrow ? ' class="lg"' : ""}>${b.label}</h3>` : "");
+  // 사진이 붙은 블록은 id="ph-<사진키>" — '펫 메뉴 구성'의 각 칸이 이 칸으로 바로 이동한다
+  if (b.photo) return `<div class="blk wp ${cls || ""}" id="ph-${esc(b.photo)}">${head}${photoHTML(b.photo, b.marks, "big")}<div class="cm">${inner}</div></div>`;
+  return `<div class="blk ${cls || ""}">${head}${inner}</div>`;
+}
+// 기존 위치는 빗금 없이 글자만 흐리게(10/28 피드백 "빗금 제거")
+const beforeHTML = s => `<p class="before">${s}</p>`;
+const R = {
+  text: b => box(b, `<div class="rt">${b.text || ""}</div>`),
+  steps: b => {
+    const it = b.items || [];
+    return `<div class="blk">${b.label ? `<h3>${b.label}</h3>` : ""}<ol class="steps" style="--n:${Math.max(1, it.length)}">${it.map((s, i) =>
+      `<li><div class="st-h"><span class="num">${i + 1}</span><b>${s[0] || ""}</b></div><p>${s[1] || ""}</p>${s[2] ? photoHTML(s[2]) : ""}</li>`).join("")}</ol>${b.before ? beforeHTML(b.before) : ""}${noteHTML(b.note)}</div>`;
+  },
+  compare: b => {
+    const h = b.head || [], u = U();
+    const hk = h[0] || "", ho = h[1] || "", hn = h[2] || "";
+    const isNone = v => v == null || /^\s*[–—-]?\s*$/.test(String(v));
+    const arr = '<svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>';
+    return box(b, `${descHTML(b.text)}<div class="cmp" role="table">${h.length ? `<div class="cmp-h" role="row"><span role="columnheader">${hk}</span><span role="columnheader">${ho}</span><span role="columnheader">${hn}</span></div>` : ""}${(b.rows || []).map(r =>
+      `<div class="cmp-r${r[3] === "up" ? " up" : ""}" role="row"><span class="k" role="rowheader">${r[0] || ""}${CMP_TAG[r[3]] ? `<em class="better t-${r[3]}">${CMP_TAG[r[3]][L] || CMP_TAG[r[3]].en}</em>` : ""}</span><span class="old${isNone(r[1]) ? " none" : ""}" role="cell"><em class="tag">${ho}</em><span>${isNone(r[1]) ? u.none : r[1]}</span></span><span class="new" role="cell">${arr}<em class="tag">${hn}</em><span>${isNone(r[2]) ? u.none : r[2]}</span></span></div>`).join("")}</div>${noteHTML(b.note)}`);
+  },
+  menu: b => box(b, `<ul class="menu">${(b.items || []).map(m => {
+    const inner = `<b>${m[0] || ""}</b>${m[1] ? `<span class="en">${m[1]}</span>` : ""}${m[2] ? `<p>${m[2]}</p>` : ""}`;
+    // 인게임 메뉴 영문명 → '펫 시스템 설명'의 그 화면 칸(사진키). 칸이 없으면 data 의 4번째 값(단원)으로
+    const ph = MENU_PHOTO[String(m[1] || "").toUpperCase()];
+    const to = ph && hasPhotoBlock(ph) ? "ph-" + ph : m[3];
+    return `<li>${to ? `<a class="mi" href="#${esc(to)}">${inner}</a>` : `<div class="mi">${inner}</div>`}</li>`;
+  }).join("")}</ul>${noteHTML(b.note)}`),
+  img: b => {
+    const head = b.label ? `<h3>${b.label}</h3>` : "";
+    const fig = b.photo ? photoHTML(b.photo)
+      : b.src ? `<figure class="fig"><div class="ph"><img src="${esc(b.src)}" alt="${esc(b.cap || "")}" data-label="${esc(b.cap || "")}" onerror="__phFail(this)"></div>${b.cap ? `<figcaption>${b.cap}</figcaption>` : ""}</figure>`
+      : `<figure class="fig">${phEmpty(b.cap || b.label || "")}</figure>`;
+    return `<div class="blk">${head}${fig}${noteHTML(b.note)}</div>`;
+  },
+  alert: b => `<div class="alert"><span class="ic" aria-hidden="true">!</span><div>${b.text || ""}${b.photo ? photoHTML(b.photo) : ""}</div></div>`,
+  // 첫 칸이 "" 인 행은 위 행의 첫 칸과 합친다(rowspan). grid: true 면 모든 칸을 사각형 테두리로(2026-11-18 사용자 지시)
+  table: b => { const R = b.rows || [], span = i => { let n = 1; while (R[i + n] && R[i + n][0] === "") n++; return n; };
+    return box(b, `${descHTML(b.text)}<div class="tw"><table class="t${b.grid ? " boxed" : ""}"><thead><tr>${(b.head || []).map(h => `<th scope="col">${h}</th>`).join("")}</tr></thead><tbody>${R.map((r, i) =>
+    `<tr>${r.map((c, j) => { if (j) return `<td>${c}</td>`; if (c === "" && i) return ""; const k = gradeOf(c), n = span(i); return `<th scope="row"${n > 1 ? ` rowspan="${n}"` : ""}>${k ? `<i class="gdot" style="${gVars(k)}"></i>` : ""}${c}</th>`; }).join("")}</tr>`).join("")}</tbody></table></div>${noteHTML(b.note)}`); },
+  facts: b => { const nums = pinNums(b.marks);
+    // 번호는 항목 이름 뒤에 작게('화면 구성 ①') — 항목 이름은 모두 같은 위치에서 시작(10/28 피드백)
+    return box(b, `${descHTML(b.text)}<dl class="facts${nums.some(Boolean) ? " pn" : ""}">${(b.items || []).map((f, i) => `<div><dt>${f[0] || ""}${nums[i] ? `<span class="pnum">${nums[i]}</span>` : ""}</dt><dd>${f[1] || ""}</dd></div>`).join("")}</dl>${noteHTML(b.note)}`); },
+  bars: b => box(b, `${descHTML(b.text)}<ul class="bars">${(b.items || []).map(x => {
+    const k = gradeOf(x[0]), v = Math.max(0, Math.min(100, parseFloat(x[1]) || 0));
+    const pc = typeof x[1] === "number" ? x[1] + "%" : (x[1] || "");
+    return `<li style="${k ? gVars(k) : "--g:var(--or)"}"><span class="nm"><i class="gdot"></i>${x[0] || ""}</span><span class="tr"><i style="width:${v}%"></i></span><span class="pc">${pc}</span><span class="nt">${x[2] || ""}</span></li>`;
+  }).join("")}</ul>${noteHTML(b.note)}`),
+  swap: b => box(b, `${descHTML(b.text)}<div class="swap">${(b.groups || []).map(g => {
+    const k = gradeOf(g.g);
+    return `<div class="sg" style="${k ? gVars(k) : ""}"><h4><i class="gdot"></i>${g.g || ""}</h4><ul>${(g.rows || []).map(r => `<li><s>${r[0] || ""}</s><span class="ar">→</span><b>${r[1] || ""}</b></li>`).join("")}</ul></div>`;
+  }).join("")}</div>${noteHTML(b.note)}`),
+  deadline: b => `<div class="blk"><details class="fold"${!b.fold || SHOT ? " open" : ""}><summary><h3>${b.label || ""}</h3><span class="dd-badge" data-dl="${esc(b.deadline || "")}"></span>${SVG.chev}</summary><div class="fold-bd">${descHTML(b.text)}${b.v ? `<div class="dl-v">${b.v}</div>` : ""}${(b.items || []).length ? `<ul class="chips">${b.items.map(x => `<li>${x}</li>`).join("")}</ul>` : ""}${noteHTML(b.note)}</div></details></div>`,
+  /* ── 변경 펫 개요(기획 PDF '펫 가이드 · 변경점 오버뷰' 10/28 구성) ── */
+  // 핵심 변경점 카드 01~05
+  keys: b => `<div class="blk"><ol class="keys" style="--kc:${(b.items || []).length || 5}">${(b.items || []).map((k, i) => `<li><span class="kn">${String(i + 1).padStart(2, "0")}</span><b>${k[0]}</b><p>${k[1]}</p></li>`).join("")}</ol></div>`,
+  // 기존 → 변경 흐름 두 칸 + 아래 알림
+  duo: b => {
+    const flow = (f, hot) => `<div class="flow">${(f || []).map((s, i, a) => `<span class="fs${hot && i === a.length - 1 ? " hot" : ""}">${s}</span>${i < a.length - 1 ? '<i class="fa">→</i>' : ""}`).join("")}</div>`;
+    const side = (s, after) => `<div class="duo-c${after ? " aft" : ""}"><span class="tagp${after ? " on" : ""}">${s.tag}</span>${flow(s.flow, after)}${s.note ? `<p class="dn">${s.note}</p>` : ""}${s.check ? `<p class="ck">✓ ${s.check}</p>` : ""}</div>`;
+    return box(b, `<div class="duo">${side(b.before || {}, false)}${side(b.after || {}, true)}</div>${b.alert ? `<div class="alert" style="margin:14px 0 0"><span class="ic" aria-hidden="true">!</span><div>${b.alert}</div></div>` : ""}`);
+  },
+  // 능력 구조: 기존 1칸 vs 변경 펫 카드(예시 펫) + 레벨업 로드맵
+  growth: b => {
+    const a = b.after || {}, p = PETS.find(x => x.kr === a.pet) || PETS[0], gmax = (GD[p.grade] || {}).max || 15;
+    const sub = k => { const s = SUBS.find(x => x.name && x.name.kr === k); return s ? tx(s.name) : k; };
+    const slots = (a.slots || []).map((s, i) => i === 0
+      ? `<div class="slot uq"><small>${s[0]}</small><b>${esc(abil(p))}</b><span>${s[2]}</span></div>`
+      : s[1] ? `<div class="slot"><small>${s[0]}</small><b>${esc(sub(s[1]))}</b><span>${s[2]}</span></div>`
+             : `<div class="slot lock"><small>${s[0]}</small><b aria-hidden="true">🔒</b><span>${s[2]}</span></div>`).join("");
+    const bf = b.before || {}, rm = b.roadmap || {};
+    return box(b, `<div class="gro">
+      <div class="duo-c"><span class="tagp">${bf.tag}</span><div class="old1"><small>${bf.k}</small><b>${bf.v}</b></div><p class="dn">${bf.note || ""}</p></div>
+      <div class="duo-c aft"><span class="tagp on">${a.tag}</span>
+        <div class="pcard" style="${gVars(p.grade)}"><div class="pic">${iconHTML(p)}</div><div class="pin2"><b>${esc(petName(p))}</b> <span class="gbadge"><i></i>${esc((U().grade || {})[p.grade] || "")}</span> <span class="lvt">Lv.${a.lv} / ${gmax}</span><div class="pbar"><i style="width:${Math.round(a.lv / gmax * 100)}%"></i></div></div></div>
+        <div class="slots">${slots}</div></div></div>
+      <div class="road"><h4>${rm.label || ""}</h4><ol>${(rm.steps || []).map((s, i, arr) => `<li><b>${s[0]}</b><span>${s[1]}</span><i style="height:${14 + i * (40 / Math.max(1, arr.length - 1))}px"></i></li>`).join("")}</ol><p>${rm.note || ""}</p></div>${noteHTML(b.note)}`);
+  },
+  // 서브 능력 등장 풀: 실버 ⊃ 골드 ⊃ 플래티넘 겹침 상자 + 설명
+  pools: b => {
+    const has = g => SUBS.filter(s => (s.grades || []).indexOf(g) >= 0);
+    const only = (g, inner) => has(g).filter(s => (s.grades || []).indexOf(inner) < 0);
+    const chips = arr => `<ul class="pchips">${arr.map(s => `<li>${esc(tx(s.name))}</li>`).join("")}</ul>`;
+    const t = b.tiers || {}, u = U(), n = g => has(g).length;
+    const unit = u.unit || "";
+    return box(b, `<div class="pools"><div class="nest">
+      <div class="tier s" style="${gVars("S")}"><div class="th"><b>${t.S}</b><span>${n("S")}${unit}</span></div>${chips(only("S", "G"))}
+        <div class="tier g" style="${gVars("G")}"><div class="th"><b>${t.G}</b><span>${n("G")}${unit}</span></div>${chips(only("G", "P"))}
+          <div class="tier p" style="${gVars("P")}"><div class="th"><b>${t.P}</b><span>${n("P")}${unit}</span></div>${chips(has("P"))}</div></div></div></div>
+      <div class="leg"><ul>${(b.legend || []).map(l => `<li style="${gVars(l[0])}"><i></i>${l[1]}</li>`).join("")}</ul><p>${b.foot || ""}</p></div></div>`);
+  },
+  // 획득 방법: 입양 위치 + 재화(코인 = 포인트) + 플래티넘 얻는 곳
+  acquire: b => {
+    const pa = b.path || {}, cu = b.cur || {}, pl = b.plat || {};
+    return box(b, `<div class="acq"><div class="sub1"><h4>${pa.label}</h4><div class="flow">${(pa.steps || []).map((s, i, a) => `<span class="fs${i === a.length - 1 ? " hot" : ""}">${s}</span>${i < a.length - 1 ? '<i class="fa">›</i>' : ""}`).join("")}<span class="was">${pa.before || ""}</span></div></div>
+      <div class="acq2"><div class="sub1"><h4>${cu.label}</h4><div class="eq"><div><small>${cu.unit}</small><b>${cu.a}</b></div><i>=</i><div><small>${cu.unit}</small><b>${cu.b}</b></div></div><p>${cu.text}</p></div>
+        <div class="sub1"><h4>${pl.label}</h4><ul class="plat">${(pl.rows || []).map(r => `<li class="${r[2] ? "ok" : "no"}"><b>${r[0]}</b><span>${r[1]}</span></li>`).join("")}</ul><p class="was">${pl.before || ""}</p></div></div></div>`);
+  },
+  // 진행 중인 이벤트 카드: 기간·보상은 '한정 이벤트' 단원의 같은 key 블록에서 가져온다(값을 두 곳에 쓰지 않게)
+  eventcard: b => {
+    const ev = ((N[L] || {}).chapters || []).flatMap(c => c.blocks || []).find(x => x.type === "event" && x.key === b.key) || {};
+    const rows = ((ev.table || {}).rows || []);
+    return box(b, `<div class="evc"><div class="evc-t"><div><span class="evb">${b.badge || ""} · ${ev.period || ""}</span><b class="evn">${b.title || ev.label || ""}</b><p>${b.text || ""}</p></div>
+      <div class="evw"><small>${(b.where || {}).label || ""}</small><div>${((b.where || {}).items || []).map(x => `<span>${x}</span>`).join("")}</div></div></div>
+      ${rows.length ? `<h4>${b.rewardsLabel || ""}</h4><ol class="evr">${rows.map((r, i) => `<li${i === rows.length - 1 ? ' class="last"' : ""}><b>${r[0]}${b.rewardUnit || ""}</b><span>${r[1]}${r[2] ? " x" + r[2] : ""}</span></li>`).join("")}</ol>` : ""}
+      <a class="evlink" href="#ev-${esc(b.key)}">${b.more || ""} ›</a></div>`);
+  },
+  /* 한정 이벤트: 배너 이미지 + 이름·D-N + 기간 + 설명 + (보상 표) + (칩) + 유의 사항 */
+  event: b => {
+    const img = b.img ? `<div class="ev-img"><img src="${esc(b.img)}" alt="${esc(b.label || "")}" loading="lazy" onerror="this.parentNode.remove()"></div>` : "";
+    const tb = b.table ? `<div class="tw"><table class="t"><thead><tr>${(b.table.head || []).map(h => `<th scope="col">${h}</th>`).join("")}</tr></thead><tbody>${(b.table.rows || []).map(r =>
+      `<tr>${r.map((c, j) => j ? `<td>${c}</td>` : `<th scope="row">${c}</th>`).join("")}</tr>`).join("")}</tbody></table></div>` : "";
+    const chips = (b.items || []).length ? `<ul class="chips">${b.items.map(x => `<li>${x}</li>`).join("")}</ul>` : "";
+    return `<div class="blk ev" id="ev-${esc(b.key || "")}">${img}<div class="ev-bd"><div class="ev-h"><h3>${b.label || ""}</h3><span class="dd-badge" data-dl="${esc(b.deadline || "")}"></span></div>${b.period ? `<p class="ev-p">${b.period}</p>` : ""}${descHTML(b.text)}${tb}${chips}${noteHTML(b.note)}</div></div>`;
+  },
+  faq: b => `<div class="blk faq">${b.label ? `<h3>${b.label}</h3>` : ""}${(b.items || []).map(f =>
+    `<details${SHOT ? " open" : ""}><summary><span class="q">Q</span><span>${f[0] || ""}</span>${SVG.chev}</summary><div class="a"><i>A</i><div>${f[1] || ""}</div></div></details>`).join("")}</div>`,
+  dex: b => `<div class="blk dexb">${b.label ? `<h3>${b.label}</h3>` : ""}<div class="dx-bar"><label class="srch" id="dxs">${SVG.search}<input type="search" id="dxq" autocomplete="off" spellcheck="false" enterkeyhint="search"><button type="button" class="clr" id="dxc">${SVG.x}</button></label><span class="dx-n" id="dxn" aria-live="polite"></span></div><div class="gch" id="dxg"></div><div class="grid" id="dxgrid"></div><p class="dx-empty" id="dxe" hidden></p></div>`
+};
+function block(b, t) {
+  try { const f = b && R[b.type]; return f ? f(b, t) : ""; }
+  catch (err) { console.warn("block skipped:", b && b.type, err); return ""; }
+}
+
+/* ── 확인된 이슈 ── */
+function issuesHTML(t) {
+  const is = Array.isArray(t.issues) ? t.issues : [], st = t.st || {}, dl = t.dl || {};
+  return `<div class="box iss"><div class="iss-h"><h2>${t.issuesLabel || U().issues}</h2>${is.length ? `<span class="cnt">${is.length}</span>` : ""}</div>${is.length
+    ? is.map((x, i) => `<details${i === 0 || SHOT ? " open" : ""}><summary><span class="sb ${esc(x.status)}">${st[x.status] || x.status || ""}</span><span class="ti">${x.title || ""}</span><span class="dt">${x.status === "fixed" ? (dl.fixed || "") : (dl.found || "")} ${x.date || ""}</span>${SVG.chev}</summary><div class="tx">${x.text || ""}</div></details>`).join("")
+    : `<p class="iss-empty">${t.issuesEmpty || ""}</p>`}</div>`;
+}
+
+/* ── 프리스타일 도감 ── */
+let Q = "", GF = "all", VIEW = [];
+const HAY = FS.map(p => norm([p.kr, p.en, p.jp, p.was && p.was.kr, p.code].filter(Boolean).join("|")));
+function cardHTML(i) {
+  const p = FS[i], u = U();
+  return `<button type="button" class="pet" data-i="${i}" style="${gVars(p.cat)}"><span class="ic">${iconHTML(p)}<span class="gt"><i></i>${esc(u.grade[p.cat] || "")}</span>${p.isNew ? `<span class="newt">${esc(u.isNew)}</span>` : ""}<span class="play">${PLAY}</span></span><b>${esc(petName(p))}</b>${u.compareHint && !p.isNew ? `<small>${esc(u.compareHint)}</small>` : ""}</button>`;
+}
+function renderDex() {
+  const grid = $("#dxgrid"); if (!grid) return;
+  const u = U(), nq = norm(Q);
+  const hit = FS.map((p, i) => i).filter(i => !nq || HAY[i].includes(nq));
+  const cnt = { all: hit.length }; ORDER.forEach(k => cnt[k] = hit.filter(i => FS[i].cat === k).length);
+  $("#dxg").innerHTML = ["all"].concat(ORDER).map(k =>
+    `<button type="button" data-g="${k}" class="${GF === k ? "on" : ""}" aria-pressed="${GF === k}"${k === "all" ? "" : ` style="${gVars(k)}"`}>${k === "all" ? "" : '<i class="gdot"></i>'}${k === "all" ? u.all : u.grade[k]} <em>${cnt[k]}</em></button>`).join("");
+  VIEW = hit.filter(i => GF === "all" || FS[i].cat === GF);
+  // '전체'일 때는 점프슛 · 레이업 · 덩크를 칸으로 나눠 제목을 붙인다(11/17 사용자 요청). 영상 이전/다음 순서도 칸 순서와 같게
+  if (GF === "all") VIEW = ORDER.flatMap(k => VIEW.filter(i => FS[i].cat === k));
+  grid.innerHTML = GF !== "all" ? VIEW.map(cardHTML).join("")
+    : ORDER.map(k => { const g = VIEW.filter(i => FS[i].cat === k); return g.length ? `<h4 class="dxh" style="${gVars(k)}"><i class="gdot"></i>${esc(u.grade[k] || "")}<em>${g.length}</em></h4>` + g.map(cardHTML).join("") : ""; }).join("");
+  $("#dxn").innerHTML = `<strong>${VIEW.length}</strong>${esc(u.unit)}`;
+  const e = $("#dxe"); e.hidden = VIEW.length > 0; e.textContent = u.noResult;
+  $("#dxs").classList.toggle("has", !!Q);
+}
+
+/* ── 영상 비교 팝업: 변경 전 · 후를 나란히, 같이 처음부터 · 느리게 ── */
+const ov = $("#ov"), dlg = $("#dlg"), dlgB = $("#dlgB"), btnP = $("#dlgP"), btnN = $("#dlgNx");
+let CUR = -1, LIST = [], lastFocus = null, RATE = 1;
+const vids = () => Array.from(dlgB.querySelectorAll("video"));
+/* Lv.1 능력치 전·후 — 숫자는 freestyles.js 의 FS_STAT(인게임 밸런스 v11) */
+function statHTML(p, u) {
+  const S = window.FS_STAT; if (!S || S.hold) return "";
+  const nm = k => (S.names[k] && (S.names[k][L] || S.names[k].kr)) || k;
+  const f = v => "+" + (Math.round(v * 100) / 100) + "%";
+  const LV = [1, 2, 3, 4, 5];
+  // 표 하나: 머리줄 = 레벨 · 능력치들 · 횟수, 줄 = Lv.1~5
+  const tbl = (cls, cap, cols, val, uses, useLbl) =>
+    `<div class="vst-c ${cls}"><b>${esc(cap)}</b><div class="vst-tw"><table class="vst-t"><thead><tr><th scope="col">${esc(u.lv || "Lv.")}</th>${cols.map(k => `<th scope="col">${esc(nm(k))}</th>`).join("")}<th scope="col">${esc(useLbl)}</th></tr></thead><tbody>` +
+    LV.map((n, i) => `<tr><th scope="row">Lv.${n}</th>${cols.map((k, j) => `<td>${esc(val(j, i))}</td>`).join("")}<td>${esc(String(uses[i]))}</td></tr>`).join("") +
+    `</tbody></table></div></div>`;
+  const N = S.neu[p.grp || p.cat], O = p.isNew ? null : S.old[p.code];
+  const bef = O ? tbl("bef", u.before, O.s.map(x => x[0]), (j, i) => f(O.s[j][1] * (i + 1)), O.u, u.useOld || "") : "";
+  const aft = N ? tbl("aft", u.after, N.s.map(x => x[0]), (j, i) => f(N.s[j][1][i]), N.u, u.useNew || "") : "";
+  const note = p.cat === "dunk" && u.statDunk ? `<p class="vst-n">${esc(u.statDunk)}</p>` : "";
+  return `<section class="vst"><h3>${esc(u.statTitle || "")}</h3><div class="vst-g${bef ? "" : " one"}">${bef}${aft}</div>${note}</section>`;
+}
+function fillPet() {
+  const p = FS[CUR], u = U();
+  dlg.setAttribute("style", gVars(p.cat));
+  const was = p.was && p.was[L];   // 이전 이름은 그 언어로 있을 때만
+  const v = (dir, cls, cap) => `<figure class="${cls}"><video src="video/${dir}/${p.code}.mp4?v=1118c" muted loop playsinline autoplay preload="auto"></video><figcaption>${esc(cap)}</figcaption></figure>`;
+  dlgB.innerHTML =
+    `<div class="vc-top"><span class="gbadge"><i></i>${esc(u.grade[p.cat] || "")}</span>${p.isNew ? ` <span class="gbadge" style="--gd:#fff;--gb:#FF4D6D">${esc(u.isNew)}</span>` : ""}<h2 id="dlgT">${esc(petName(p))}</h2>${was ? `<p class="alt">${esc(u.was)}: ${esc(was)}</p>` : ""}</div>` +
+    (p.isNew
+      ? `<div class="vc one">${v("after", "aft", u.after)}</div><p class="vc-new">${esc(u.newOnly)}</p>`
+      : `<div class="vc">${v("before", "bef", u.before)}${v("after", "aft", u.after)}</div>`) +
+    `<div class="vc-ctl"><button type="button" data-vc="replay">${esc(u.replay)}</button><button type="button" data-vc="slow" aria-pressed="${RATE < 1}">${esc(RATE < 1 ? u.normal : u.slow)}</button></div>` +
+    statHTML(p, u) +
+    (u.videoNote ? `<p class="vc-note">※ ${esc(u.videoNote)}</p>` : "");
+  vids().forEach(x => { x.playbackRate = RATE; if (SHOT) { x.removeAttribute("autoplay"); x.currentTime = 1.5; } });
+  const k = LIST.indexOf(CUR);
+  btnP.disabled = k <= 0; btnN.disabled = k < 0 || k >= LIST.length - 1;
+  $("#dlgN").textContent = `${k + 1} / ${LIST.length}`;
+  dlgB.scrollTop = 0;
+}
+dlgB.addEventListener("click", e => {
+  const b = e.target.closest("[data-vc]"); if (!b) return;
+  if (b.dataset.vc === "replay") vids().forEach(x => { x.currentTime = 0; x.play().catch(() => {}); });
+  else { RATE = RATE < 1 ? 1 : 0.5; vids().forEach(x => x.playbackRate = RATE); const u = U(); b.textContent = RATE < 1 ? u.normal : u.slow; b.setAttribute("aria-pressed", RATE < 1); }
+});
+function setPetParam(code) {
+  const p = new URLSearchParams(location.search);
+  if (code) p.set("fs", code); else p.delete("fs");
+  const s = p.toString();
+  try { history.replaceState(history.state, "", location.pathname + (s ? "?" + s : "") + location.hash); } catch (e) { /* file:// 등 */ }
+}
+function lockScroll(on) {
+  const de = document.documentElement;
+  if (on) { const w = innerWidth - de.clientWidth; de.classList.add("lock"); if (w > 0) document.body.style.paddingRight = w + "px"; }
+  else { de.classList.remove("lock"); document.body.style.paddingRight = ""; }
+}
+function openPet(i, list) {
+  if (!FS[i]) return;
+  LIST = list && list.indexOf(i) >= 0 ? list : (VIEW.indexOf(i) >= 0 ? VIEW.slice() : [i]);
+  CUR = i;
+  dlg.classList.add("vid");
+  fillPet();
+  if (ov.hidden) {
+    lastFocus = document.activeElement;
+    lockScroll(true); ov.hidden = false;
+    dlg.focus({ preventScroll: true });
+  }
+  setPetParam(FS[i].code);
+}
+function closePet() {
+  if (ov.hidden) return;
+  vids().forEach(x => x.pause());
+  ov.hidden = true; lockScroll(false); setPetParam(null); dlgB.innerHTML = "";   // 닫으면 영상도 멈추고 내린다
+  const card = document.querySelector(`.pet[data-i="${CUR}"]`);
+  const back = card || (lastFocus && document.contains(lastFocus) ? lastFocus : null);
+  if (back && back.focus) back.focus({ preventScroll: true });
+  CUR = -1;
+}
+function stepPet(d) {
+  const k = LIST.indexOf(CUR) + d;
+  if (k < 0 || k >= LIST.length) return;
+  CUR = LIST[k]; fillPet(); setPetParam(FS[CUR].code);
+}
+function trapTab(e) {
+  const f = Array.from(dlg.querySelectorAll('button:not([disabled]),summary,a[href],input,[tabindex]:not([tabindex="-1"])')).filter(x => x.offsetParent !== null);
+  if (!f.length) { e.preventDefault(); return; }
+  const first = f[0], last = f[f.length - 1], a = document.activeElement;
+  if (e.shiftKey && (a === first || a === dlg || !dlg.contains(a))) { e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && (a === last || !dlg.contains(a))) { e.preventDefault(); first.focus(); }
+}
+
+/* 팝업 이벤트 */
+$("#dlgX").onclick = closePet;
+btnP.onclick = () => stepPet(-1);
+btnN.onclick = () => stepPet(1);
+let downOnOv = false;
+ov.addEventListener("pointerdown", e => { downOnOv = e.target === ov; });
+ov.addEventListener("click", e => { if (e.target === ov && downOnOv) closePet(); downOnOv = false; });
+document.addEventListener("keydown", e => {
+  if (ov.hidden) return;
+  if (e.key === "Escape") { e.preventDefault(); closePet(); }
+  else if (e.key === "ArrowLeft") { e.preventDefault(); stepPet(-1); }
+  else if (e.key === "ArrowRight") { e.preventDefault(); stepPet(1); }
+  else if (e.key === "Tab") trapTab(e);
+});
+/* 모바일 시트: 손잡이를 아래로 끌면 닫힘 */
+(function () {
+  const grab = $("#grab"); let sy = null, dy = 0;
+  grab.addEventListener("pointerdown", e => { sy = e.clientY; dy = 0; try { grab.setPointerCapture(e.pointerId); } catch (_) {} dlg.style.transition = "none"; });
+  grab.addEventListener("pointermove", e => { if (sy == null) return; dy = Math.max(0, e.clientY - sy); dlg.style.transform = `translateY(${dy}px)`; });
+  const end = () => { if (sy == null) return; sy = null; dlg.style.transition = ""; dlg.style.transform = ""; if (dy > 90) closePet(); };
+  grab.addEventListener("pointerup", end); grab.addEventListener("pointercancel", end);
+})();
+
+/* ── 문서 전체 클릭·입력 ── */
+document.addEventListener("click", e => {
+  const c = e.target.closest(".pet"); if (c) { openPet(+c.dataset.i, VIEW.slice()); return; }
+  const g = e.target.closest("#dxg button"); if (g) { GF = g.dataset.g; renderDex(); return; }
+  if (e.target.closest("#dxc")) { e.preventDefault(); Q = ""; $("#dxq").value = ""; renderDex(); $("#dxq").focus(); return; }
+  const lb = e.target.closest("#langs button");
+  if (lb && lb.dataset.l !== L && N[lb.dataset.l]) {
+    L = lb.dataset.l;
+    const p = new URLSearchParams(location.search); p.set("lang", L);
+    // 언어를 바꾸면 맨 위에서 다시 시작한다 — 주소의 #단원 표시도 지운다(10/28 사용자 지시)
+    try { history.replaceState(history.state, "", location.pathname + "?" + p.toString()); } catch (_) {}
+    render();
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }
+});
+document.addEventListener("input", e => { if (e.target.id === "dxq") { Q = e.target.value; renderDex(); } });
+
+/* ── 스크롤 따라 현재 단원 탭 표시 ── */
+let SPY = null, spyRaf = 0;
+function spy() {
+  spyRaf = 0;
+  const secs = document.querySelectorAll(".ch"); if (!secs.length) return;
+  const gnbH = $("#gnb").offsetHeight + 24;
+  let cur = secs[0].id;
+  secs.forEach(s => { if (s.getBoundingClientRect().top - gnbH <= 0) cur = s.id; });
+  if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4 && scrollY > 0) cur = secs[secs.length - 1].id;
+  if (cur === SPY) return; SPY = cur;
+  const tabs = $("#tabs");
+  tabs.querySelectorAll("a").forEach(a => { const on = a.dataset.id === cur; a.classList.toggle("on", on); if (on) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current"); });
+  const on = tabs.querySelector("a.on");
+  if (on && tabs.scrollWidth > tabs.clientWidth) tabs.scrollTo({ left: on.offsetLeft - (tabs.clientWidth - on.offsetWidth) / 2, behavior: SHOT ? "auto" : "smooth" });
+}
+addEventListener("scroll", () => { if (!spyRaf) spyRaf = requestAnimationFrame(spy); }, { passive: true });
+addEventListener("resize", () => { SPY = null; spy(); tabFade(); });
+function tabFade() {
+  const t = $("#tabs"), g = $("#gnb"); if (!t) return;
+  g.classList.toggle("more-l", t.scrollLeft > 2);
+  g.classList.toggle("more-r", t.scrollLeft + t.clientWidth < t.scrollWidth - 2);
+}
+$("#tabs").addEventListener("scroll", tabFade, { passive: true });
+
+/* 기한 배지(D-N / 종료) */
+function tick() {
+  const t = N[L] || {};
+  document.querySelectorAll(".dd-badge[data-dl]").forEach(el => {
+    const d = new Date(el.dataset.dl); if (!el.dataset.dl || isNaN(d)) { el.textContent = ""; return; }
+    const ms = d - Date.now();
+    el.textContent = ms > 0 ? "D-" + Math.ceil(ms / 864e5) : (t.ended || "");
+    el.classList.toggle("end", ms <= 0);
+  });
+}
+
+/* ── 그리기 ── */
+function render() {
+  const t = N[L];
+  if (!t) { $("#main").innerHTML = '<div class="blk">data.js 를 불러오지 못했습니다.</div>'; return; }
+  const u = U();
+  document.documentElement.lang = HTML_LANG[L] || "ko";
+  const title = Array.isArray(t.title) ? t.title.join("") : (t.title || "");
+  document.title = [t.site, title].filter(Boolean).join(" · ");
+  $("#site").textContent = t.site || "";
+  $("#langs").innerHTML = LANGS.map(l => `<button type="button" data-l="${l}" lang="${HTML_LANG[l]}" class="${l === L ? "on" : ""}" aria-pressed="${l === L}">${LANG_NAME[l]}</button>`).join("");
+  $("#ribbon").textContent = t.ribbon || "";
+  $("#title").textContent = title;
+  $("#lead").textContent = t.lead || "";
+  const ch = Array.isArray(t.chapters) ? t.chapters : [];
+  $("#gnb").setAttribute("aria-label", u.tabs);
+  $("#tabs").innerHTML = ch.map(c => `<a href="#${esc(c.id)}" data-id="${esc(c.id)}">${c.nav || c.title || ""}</a>`).join("");
+  $("#side").hidden = true;   // 안내서라 '확인된 이슈' 칸은 쓰지 않는다 (10/28 사용자 지시)
+  $("#main").innerHTML = ch.map(c =>
+    `<section class="ch" id="${esc(c.id)}" aria-labelledby="h-${esc(c.id)}"><div class="ch-h"><h2 id="h-${esc(c.id)}">${c.title || ""}</h2>${c.q ? `<p>${c.q}</p>` : ""}</div>${(c.blocks || []).map(b => block(b, t)).join("")}</section>`).join("") +
+    `<footer class="foot"><p>© JOYCITY · 3on3 FreeStyle</p></footer>`;   // 인사말·날짜 없이 제작사만 (10/28 사용자 지시)
+  const q = $("#dxq");
+  if (q) { q.value = Q; q.placeholder = u.search; q.setAttribute("aria-label", u.search); $("#dxc").setAttribute("aria-label", u.clear); }
+  dlg.setAttribute("aria-label", u.dialog);
+  $("#dlgX").setAttribute("aria-label", u.close);
+  btnP.querySelector("span").textContent = u.prev;
+  btnN.querySelector("span").textContent = u.next;
+  renderDex(); tick(); SPY = null; spy(); tabFade(); fitCmp();
+  if (!ov.hidden && CUR >= 0) fillPet();
+}
+
+/* 비교표 항목 칸: 그린 뒤 가장 긴 '항목 + 좋아진 점' 실제 폭에 맞춘다(머리줄과 줄 정렬) */
+function fitCmp() {
+  document.querySelectorAll(".cmp").forEach(c => {
+    const w = Math.max(0, ...[...c.querySelectorAll(".cmp-r .k")].map(k => k.scrollWidth));
+    if (w) c.style.setProperty("--kw", (w + 2) + "px");
+  });
+}
+addEventListener("resize", fitCmp);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitCmp);   // 웹글꼴이 늦게 와도 다시 맞춤
+/* 사진 크게 보기: 사진·돋보기를 누르면 번호까지 그대로 화면 가득 (팀 피드백 #4) */
+const lb = $("#lb"), lbB = $("#lbB");
+function openLb(ph) { lbB.innerHTML = ""; const c = ph.cloneNode(true); c.querySelectorAll(".zoom,.mk").forEach(x => x.remove()); lbB.appendChild(c); lb.classList.add("on"); lockScroll(true); }
+function closeLb() { lb.classList.remove("on"); lbB.innerHTML = ""; if (ov.hidden) lockScroll(false); }
+document.addEventListener("click", e => {
+  const ph = e.target.closest("main .ph, .side .ph");
+  if (ph && !ph.classList.contains("empty") && (e.target.closest(".zoom") || e.target.tagName === "IMG")) { e.preventDefault(); openLb(ph); }
+});
+lb.addEventListener("click", closeLb);
+document.addEventListener("keydown", e => { if (e.key === "Escape" && lb.classList.contains("on")) { e.stopImmediatePropagation(); closeLb(); } }, true);
+/* 맨 위 · 맨 아래 버튼 */
+const jTop = $("#jTop"), jBot = $("#jBot");
+function jumpVis() {
+  const y = scrollY, max = document.documentElement.scrollHeight - innerHeight;
+  jTop.hidden = y < 300; jBot.hidden = y > max - 300;
+}
+jTop.onclick = () => scrollTo({ top: 0, behavior: "smooth" });
+jBot.onclick = () => scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" });
+addEventListener("scroll", jumpVis, { passive: true }); addEventListener("resize", jumpVis);
+
+try { history.scrollRestoration = "manual"; } catch (_) {}
+render();
+jumpVis();
+setInterval(tick, 60000);
+// 링크로 들어오면 항상 맨 위에서 시작한다 — 주소에 #칸이 붙어 있어도 그 칸으로 내려가지 않고, #칸 표시도 지운다(10/28·11/17 사용자 지시)
+if (location.hash) { try { history.replaceState(history.state, "", location.pathname + location.search); } catch (_) {} }
+scrollTo(0, 0);
+/* ?fs=<코드> 로 들어오면 그 프리스타일 영상 바로 열기 */
+const want = qs.get("fs");
+if (want) {
+  const i = FS.findIndex(p => String(p.code) === want);
+  if (i >= 0) openPet(i, VIEW.slice()); else setPetParam(null);
+}
+})();
+</script>
+<div id="pv-badge" style="position:fixed;right:10px;bottom:10px;z-index:99999;background:#111;color:#FFD400;font:700 12px/1 sans-serif;padding:7px 10px;border-radius:6px;opacity:.9;pointer-events:none">미리보기 · 공개 전 확인용</div>
+</body>
+</html>
