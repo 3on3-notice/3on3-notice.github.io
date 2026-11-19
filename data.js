@@ -13,7 +13,7 @@ window.NOTICE = {
     left: "남음", ended: "종료", d: "일", h: "시간", m: "분",
     foot: "앞으로도 이용자분들께서 불편을 겪지 않도록 최선을 다하겠습니다. 감사합니다.",
     issuesEmpty: "현재 확인된 이슈가 없습니다.", st: { checking: "확인 중", planned: "수정 예정", fixed: "수정 완료", notice: "공지", delivered: "지급 완료" }, added: "추가", dl: { found: "확인", fixed: "수정" },
-    issues: [],
+    issues: [{ id: "item-display-inventory-mypick" }, { id: "freestyle-piece-price-gumiho-action" }],
     cards: [
       { sec: "event", tag: "new", hl: true, title: "초월 8성 자이언트 G 업데이트", img: "img/banner/1118-p8-giant-g-char.jpg", pop: "img/banner/1118-p8-giant-g-{L}.jpg",
         desc: "새로운 8성 초월 캐릭터가 등장합니다! 더욱 강해진 스킬과 이펙트로 무장한 자이언트 G를 8성 초월과 함께 만나보세요!" },
@@ -54,7 +54,7 @@ window.NOTICE = {
     secs: { issues: "Post-Maintenance Updates", event: "Events", shop: "Shop", system: "Systems", fix: "Bug Fixes & Improvements" },
     left: "left", ended: "Ended", d: "d", h: "h", m: "m", foot: "Thank you.",
     issuesEmpty: "There are no known issues at this time.", st: { checking: "Investigating", planned: "Fix Scheduled", fixed: "Fixed", notice: "Notice", delivered: "Delivered" }, added: "Added", dl: { found: "Reported", fixed: "Fixed" },
-    issues: [],
+    issues: [{ id: "item-display-inventory-mypick" }, { id: "freestyle-piece-price-gumiho-action" }],
     cards: [
       { sec: "event", tag: "new", hl: true, title: "Intensive P8 Giant G Update", img: "img/banner/1118-p8-giant-g-char.jpg", pop: "img/banner/1118-p8-giant-g-{L}.jpg",
         desc: "A new P8 Intensive character has arrived! Meet Giant G with P8 Intensive, featuring enhanced skills and upgraded effects!" },
@@ -95,7 +95,7 @@ window.NOTICE = {
     secs: { issues: "追加のお知らせ", event: "イベント", shop: "ショップ", system: "システム", fix: "バグ修正および機能改善" },
     left: "残り", ended: "終了", d: "日", h: "時間", m: "分", leftFirst: true, foot: "ありがとうございます。",
     issuesEmpty: "現在確認されている不具合はありません。", st: { checking: "確認中", planned: "修正予定", fixed: "修正済み", notice: "お知らせ", delivered: "配布済み" }, added: "追加", dl: { found: "確認", fixed: "修正" },
-    issues: [],
+    issues: [{ id: "item-display-inventory-mypick" }, { id: "freestyle-piece-price-gumiho-action" }],
     cards: [
       { sec: "event", tag: "new", hl: true, title: "超越8星 ジャイアントG アップデート", img: "img/banner/1118-p8-giant-g-char.jpg", pop: "img/banner/1118-p8-giant-g-{L}.jpg",
         desc: "新たな8星超越キャラクター登場！さらに強力になったスキルとエフェクトをまとったジャイアントGを8星超越でチェックしよう！" },
